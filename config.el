@@ -109,11 +109,6 @@
            (file+headline ,(concat org-directory "tasks.org") "Inbox")
            "* TODO %?\nSCHEDULED: %t\n%c\n\n%i\n"
            :empty-lines 1)
-          ("j" "Journal entry" plain (function org-journal-find-location)
-           "* %(format-time-string org-journal-time-format)%?\n%i")
-          ("w" "Work Timesheet" entry
-           (file+olp+datetree ,(concat org-directory "timesheet.org"))
-           "* %? %^g\n%T")
           ("l" "Current file log entry" entry
            (file+olp+datetree buffer-file-name)
            "* %? \n")
@@ -178,8 +173,7 @@
 (setq pandoc-data-dir "~/.pandoc/pandoc-mode/")
 
 (setq yas-snippet-dirs
-      '("~/Dropbox/emacs/yasnippets"                 ;; personal snippets
-        ))
+      '("~/Dropbox/emacs/yasnippets"))                 ;; personal snippets
 
 (yas-global-mode 1) ;; or M-x yas-reload-all if you've started YASnippet already.
 
@@ -194,7 +188,4 @@
 (map!
  "\C-cl" 'org-store-link
  "\C-cc" 'org-capture
- "\C-cj" 'org-journal-new-entry
-)
-
-
+ "\C-cj" 'org-journal-new-entry)
