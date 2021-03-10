@@ -57,3 +57,144 @@
 (add-load-path! "~/Dropbox/emacs/lisp")
 (add-to-list 'default-frame-alist '(height . 60))
 (add-to-list 'default-frame-alist '(width . 120))
+
+;; looky-feely
+
+(global-visual-line-mode)
+
+
+
+
+;; Org Mode
+
+
+(setq org-return-follows-link t)
+
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "STRT(s)" "|" "DONE(d)")))
+
+
+
+(setq org-agenda-files (list
+                   (concat org-directory "timesheet.org")
+                   (concat org-directory "fusionary.org")
+                   (concat org-directory "tasks.org")))
+
+
+ (setq org-agenda-include-diary t
+       org-agenda-start-on-weekday nil
+       org-agenda-start-day nil
+       org-agenda-log-mode-items (quote (closed))
+       org-agenda-persistent-filter t
+       org-agenda-skip-scheduled-if-deadline-is-shown (quote not-today)
+       org-agenda-skip-deadline-prewarning-if-scheduled t
+       org-agenda-skip-scheduled-if-done t
+       org-agenda-skip-deadline-if-done t
+       org-agenda-span (quote day)
+       org-deadline-warning-days 7
+       org-tags-column 0
+       org-log-done 'time
+       org-log-into-drawer t
+       org-log-redeadline 'note
+       org-agenda-text-search-extra-files (quote (agenda-archives))
+       org-agenda-window-setup (quote current-window))
+
+(after! org
+  (setq org-capture-templates
+        `(("t" "Todo to Inbox" entry
+           (file+headline ,(concat org-directory "tasks.org") "Inbox")
+           "* TODO %?\nSCHEDULED: %t\n\n%i\n"
+           :empty-lines 1)
+          ("T" "Todo to Inbox with Clipboard" entry
+           (file+headline ,(concat org-directory "tasks.org") "Inbox")
+           "* TODO %?\nSCHEDULED: %t\n%c\n\n%i\n"
+           :empty-lines 1)
+          ("j" "Journal entry" plain (function org-journal-find-location)
+           "* %(format-time-string org-journal-time-format)%?\n%i")
+          ("w" "Work Timesheet" entry
+           (file+olp+datetree ,(concat org-directory "timesheet.org"))
+           "* %? %^g\n%T")
+          ("l" "Current file log entry" entry
+           (file+olp+datetree buffer-file-name)
+           "* %? \n")
+          ("d" "Daybook" entry
+           (file+olp+datetree ,(concat org-directory "daybook.org"))
+           "* %?\n\n" :time-prompt t)
+          ("n" "Take a note" entry
+           (file+headline ,(concat org-directory "notes.org") "Notes")
+           "* %i%? \n %U\n" :empty-lines 1 :prepend t))))
+
+
+(setq org-journal-dir "~/Dropbox/notes/journal"
+    org-journal-file-type 'monthly
+    org-journal-file-format "%Y-%m-%d.org"
+    org-journal-find-file #'find-file
+    org-journal-time-prefix ""
+    org-journal-time-format ""
+    org-journal-enable-agenda-integration nil
+    org-journal-enable-encryption nil
+    org-journal-date-format "%A, %B %d %Y")
+
+(defun org-journal-file-header-func (time)
+  "Custom function to create journal header."
+  (concat
+    (pcase org-journal-file-type
+      (`daily "")
+      (`weekly "#+TITLE: Weekly Journal\n#+STARTUP: folded")
+      (`monthly "#+TITLE: Monthly Journal\n#+STARTUP: folded")
+      (`yearly "#+TITLE: Yearly Journal\n#+STARTUP: folded"))))
+
+(setq org-journal-file-header 'org-journal-file-header-func)
+
+(add-hook 'org-journal-mode-hook 'turn-on-auto-fill)
+(add-hook 'org-journal-mode-hook #'+zen/toggle)
+
+
+;; LaTeX ---------------------------------------------------------------------
+
+;; My default LaTeX class
+(with-eval-after-load 'ox-latex
+  (add-to-list 'org-latex-classes
+               '("scrartcl"
+                 "\\documentclass{scrartcl}"
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
+(setq org-latex-caption-above nil)
+(setq org-latex-pdf-process
+       (quote
+          ("xelatex -interaction nonstopmode  %f" "xelatex -interaction nonstopmode %f")))
+
+(setq TeX-source-correlate-mode t)
+(setq TeX-source-correlate-start-server t)
+(setq TeX-source-correlate-method 'synctex)
+
+;; /LaTeX --------------------------------------------------------------------
+
+(add-hook 'markdown-mode-hook 'pandoc-mode)
+(setq pandoc-data-dir "~/.pandoc/pandoc-mode/")
+
+(setq yas-snippet-dirs
+      '("~/Dropbox/emacs/yasnippets"                 ;; personal snippets
+        ))
+
+(yas-global-mode 1) ;; or M-x yas-reload-all if you've started YASnippet already.
+
+(defun jab/insert-weather ()
+  "Use wttr to insert the current weather at point"
+  (interactive)
+  (let ((w (shell-command-to-string "curl -s 'wttr.in/49301?0q&format=%c+%C+%t' | head -n6")))
+  (insert (mapconcat (function (lambda (x) (format ": %s" x)))
+           (split-string w "\n")
+           "\n"))))
+
+(map!
+ "\C-cl" 'org-store-link
+ "\C-cc" 'org-capture
+ "\C-cj" 'org-journal-new-entry
+)
+
+
