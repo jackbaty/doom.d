@@ -177,6 +177,8 @@
 
 (yas-global-mode 1) ;; or M-x yas-reload-all if you've started YASnippet already.
 
+(setq bookmark-default-file "~/Dropbox/emacs/bookmarks")
+
 (defun jab/insert-weather ()
   "Use wttr to insert the current weather at point"
   (interactive)
