@@ -111,7 +111,8 @@
            "* %?\n\n" :time-prompt t)
           ("n" "Take a note" entry
            (file+headline ,(concat org-directory "notes.org") "Notes")
-           "* %i%? \n %U\n" :empty-lines 1 :prepend t))))
+           "* %i%? \n %U\n" :empty-lines 1 :prepend t)))
+  (setq org-attach-id-dir  "data/"))
 
 
 (setq org-journal-dir "~/Dropbox/notes/journal"
