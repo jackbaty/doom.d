@@ -68,12 +68,6 @@
 ;; Org Mode
 
 
-(setq org-return-follows-link t)
-
-(setq org-todo-keywords
-      '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "STRT(s)" "|" "DONE(d)")))
-
-
 
 (setq org-agenda-files (list
                    (concat org-directory "timesheet.org")
@@ -81,7 +75,10 @@
                    (concat org-directory "tasks.org")))
 
 
- (setq org-agenda-include-diary t
+
+(after! org
+  (setq org-return-follows-link t)
+   (setq org-agenda-include-diary t
        org-agenda-start-on-weekday nil
        org-agenda-start-day nil
        org-agenda-log-mode-items (quote (closed))
@@ -90,7 +87,6 @@
        org-agenda-skip-deadline-prewarning-if-scheduled t
        org-agenda-skip-scheduled-if-done t
        org-agenda-skip-deadline-if-done t
-       org-agenda-span (quote day)
        org-deadline-warning-days 7
        org-tags-column 0
        org-log-done 'time
@@ -98,8 +94,6 @@
        org-log-redeadline 'note
        org-agenda-text-search-extra-files (quote (agenda-archives))
        org-agenda-window-setup (quote current-window))
-
-(after! org
   (setq org-capture-templates
         `(("t" "Todo to Inbox" entry
            (file+headline ,(concat org-directory "tasks.org") "Inbox")
@@ -148,6 +142,17 @@
 ;; LaTeX ---------------------------------------------------------------------
 
 ;; My default LaTeX class
+;; (with-eval-after-load 'ox-latex
+;;   (add-to-list 'org-latex-classes
+;;                '("scrartcl"
+;;                  "\\documentclass{scrartcl}"
+;;                  ("\\section{%s}" . "\\section*{%s}")
+;;                  ("\\subsection{%s}" . "\\subsection*{%s}")
+;;                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+;;                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
+;;                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
+
 (with-eval-after-load 'ox-latex
   (add-to-list 'org-latex-classes
                '("scrartcl"
@@ -156,7 +161,18 @@
                  ("\\subsection{%s}" . "\\subsection*{%s}")
                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+  (add-to-list 'org-latex-classes
+             '("org-plain-latex"
+               "\\documentclass{article}
+           [NO-DEFAULT-PACKAGES]
+           [PACKAGES]
+           [EXTRA]"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 
 (setq org-latex-caption-above nil)
 (setq org-latex-pdf-process
@@ -176,6 +192,8 @@
       '("~/Dropbox/emacs/yasnippets"))                 ;; personal snippets
 
 (yas-global-mode 1) ;; or M-x yas-reload-all if you've started YASnippet already.
+
+(setq +zen-text-scale 0.8)  ;; Not quite so large, there Doom
 
 (setq bookmark-default-file "~/Dropbox/emacs/bookmarks")
 
