@@ -109,9 +109,9 @@
           ("d" "Daybook" entry
            (file+olp+datetree ,(concat org-directory "daybook.org"))
            "* %?\n\n" :time-prompt t)
-          ("n" "Take a note" entry
+          ("n" "Take a note" plain
            (file+headline ,(concat org-directory "notes.org") "Notes")
-           "* %i%? \n %U\n" :empty-lines 1 :prepend t)))
+           "%U\n%?" :empty-lines 1 :prepend t)))
   (setq org-attach-id-dir  "data/"))
 
 
@@ -143,16 +143,6 @@
 ;; LaTeX ---------------------------------------------------------------------
 
 ;; My default LaTeX class
-;; (with-eval-after-load 'ox-latex
-;;   (add-to-list 'org-latex-classes
-;;                '("scrartcl"
-;;                  "\\documentclass{scrartcl}"
-;;                  ("\\section{%s}" . "\\section*{%s}")
-;;                  ("\\subsection{%s}" . "\\subsection*{%s}")
-;;                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-;;                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
-;;                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
-
 
 (with-eval-after-load 'ox-latex
   (add-to-list 'org-latex-classes
@@ -197,6 +187,8 @@
 (setq +zen-text-scale 0.8)  ;; Not quite so large, there Doom
 
 (setq bookmark-default-file "~/Dropbox/emacs/bookmarks")
+
+(setq deft-directory "~/Dropbox/notes/org-roam")
 
 (defun jab/insert-weather ()
   "Use wttr to insert the current weather at point"
