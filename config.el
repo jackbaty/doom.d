@@ -111,7 +111,8 @@
            "* %?\n\n" :time-prompt t)
           ("n" "Take a note" plain
            (file+headline ,(concat org-directory "notes.org") "Notes")
-           "%U\n%?" :empty-lines 1 :prepend t)))
+           "%u\n%?" :empty-lines 1 :prepend t)))
+
   (setq org-attach-id-dir  "data/"))
 
 
