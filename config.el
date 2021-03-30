@@ -19,13 +19,15 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
+(setq doom-font (font-spec :family "Operator Mono Light" :size 15)
+      doom-variable-pitch-font (font-spec :family "Helvetica Neue" :size 15))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-flatwhite)
+;;(setq doom-theme 'doom-flatwhite)
+
+(setq doom-theme 'modus-operandi)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -70,8 +72,6 @@
 
 
 (setq org-agenda-files (list
-                   (concat org-directory "timesheet.org")
-                   (concat org-directory "fusionary.org")
                    (concat org-directory "tasks.org")))
 
 
@@ -109,6 +109,9 @@
           ("d" "Daybook" entry
            (file+olp+datetree ,(concat org-directory "daybook.org"))
            "* %?\n\n" :time-prompt t)
+          ("j" "Journal entry" plain (function org-journal-date-location)
+                               "** TODO %?\n <%(princ org-journal--date-location-scheduled-time)>\n"
+                               :jump-to-captured t)
           ("n" "Take a note" plain
            (file+headline ,(concat org-directory "notes.org") "Notes")
            "%U\n%?" :empty-lines 1 :prepend t)))
@@ -122,7 +125,7 @@
     org-journal-find-file #'find-file
     org-journal-time-prefix ""
     org-journal-time-format ""
-    org-journal-enable-agenda-integration nil
+    org-journal-enable-agenda-integration t
     org-journal-enable-encryption nil
     org-journal-date-format "%A, %B %d %Y")
 
@@ -139,6 +142,19 @@
 
 (add-hook 'org-journal-mode-hook 'turn-on-auto-fill)
 (add-hook 'org-journal-mode-hook #'+zen/toggle)
+
+
+(defvar org-journal--date-location-scheduled-time nil)
+
+(defun org-journal-date-location (&optional scheduled-time)
+  (let ((scheduled-time (or scheduled-time (org-read-date nil nil nil "Date:"))))
+    (setq org-journal--date-location-scheduled-time scheduled-time)
+    (org-journal-new-entry t (org-time-string-to-time scheduled-time))
+    (unless (eq org-journal-file-type 'daily)
+      (org-narrow-to-subtree))
+    (goto-char (point-max))))
+
+
 
 
 ;; LaTeX ---------------------------------------------------------------------
@@ -213,9 +229,10 @@
   "Use wttr to insert the current weather at point"
   (interactive)
   (let ((w (shell-command-to-string "curl -s 'wttr.in/49301?0q&format=%c+%C+%t' | head -n6")))
-  (insert (mapconcat (function (lambda (x) (format ": %s" x)))
-           (split-string w "\n")
-           "\n"))))
+  (insert (concat w "\n"))))
+
+
+
 
 (map!
  "\C-cl" 'org-store-link
