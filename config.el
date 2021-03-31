@@ -116,7 +116,9 @@
            (file+headline ,(concat org-directory "notes.org") "Notes")
            "%U\n%?" :empty-lines 1 :prepend t)))
 
-  (setq org-attach-id-dir  "data/"))
+  (setq org-attach-id-dir  "attach/")
+  (setq org-download-image-org-width 600)
+  (setq org-attach-auto-tag nil))
 
 
 (setq org-journal-dir "~/Dropbox/notes/journal"
