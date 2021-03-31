@@ -206,22 +206,22 @@
 (setq bookmark-default-file "~/Dropbox/emacs/bookmarks")
 
 (setq deft-directory "~/Dropbox/notes/org-roam")
-(setq org-roam-directory "~/Dropbox/notes/org-roam")
 
-(use-package! org-roam
-  :after org
-  :commands
-  (org-roam-buffer
-   org-roam-setup
-   org-roam-capture
-   org-roam-node-find)
-  :config
-  (setq org-roam-directory "~/Dropbox/notes/org-roam"
-        org-roam-mode-sections
-        (list #'org-roam-backlinks-insert-section
-              #'org-roam-reflinks-insert-section
-              #'org-roam-unlinked-references-insert-section))
-  (org-roam-setup))
+;;(setq org-roam-directory "~/Dropbox/notes/org-roam")
+;; (use-package! org-roam
+;;   :after org
+;;   :commands
+;;   (org-roam-buffer
+;;    org-roam-setup
+;;    org-roam-capture
+;;    org-roam-node-find)
+;;   :config
+;;   (setq org-roam-directory "~/Dropbox/notes/org-roam"
+;;         org-roam-mode-sections
+;;         (list #'org-roam-backlinks-insert-section
+;;               #'org-roam-reflinks-insert-section
+;;               #'org-roam-unlinked-references-insert-section))
+;;   (org-roam-setup))
 
 
 
