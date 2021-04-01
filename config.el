@@ -118,10 +118,11 @@
 
 
 (setq org-agenda-custom-commands
-      '(("A" "Archive Agenda"
+      '(("n" "Agenda and Todos" ((agenda "")(alltodo "")))
+        ("A" "Archive Agenda"
          (
           (agenda ""
-                  ((org-agenda-files '("~/org/notes.org"))))
+                  ((org-agenda-files '("~/org/notes.org" "~/org/daybook.org"))))
           ))))
 
   (setq org-download-method 'attach
