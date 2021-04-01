@@ -113,9 +113,16 @@
           ("n" "Take a note" entry
            (file+headline ,(concat org-directory "notes.org") "Notes")
            "* %?\n%U" :prepend t)))
-
   (setq org-attach-id-dir  "attach/")
   (setq org-attach-auto-tag nil))
+
+
+(setq org-agenda-custom-commands
+      '(("A" "Archive Agenda"
+         (
+          (agenda ""
+                  ((org-agenda-files '("~/org/notes.org"))))
+          ))))
 
   (setq org-download-method 'attach
     org-download-image-dir "attach/"
@@ -134,16 +141,16 @@
 
 
 
-(defun org-journal-file-header-func (time)
-  "Custom function to create journal header."
-  (concat
-    (pcase org-journal-file-type
-      (`daily "")
-      (`weekly "#+TITLE: Weekly Journal\n#+STARTUP: folded")
-      (`monthly "#+TITLE: Monthly Journal\n#+STARTUP: folded")
-      (`yearly "#+TITLE: Yearly Journal\n#+STARTUP: folded"))))
+;; (defun org-journal-file-header-func (time)
+;;   "Custom function to create journal header."
+;;   (concat
+;;     (pcase org-journal-file-type
+;;       (`daily "")
+;;       (`weekly "#+TITLE: Weekly Journal\n#+STARTUP: folded")
+;;       (`monthly "#+TITLE: Monthly Journal\n#+STARTUP: folded")
+;;       (`yearly "#+TITLE: Yearly Journal\n#+STARTUP: folded"))))
 
-(setq org-journal-file-header 'org-journal-file-header-func)
+;; (setq org-journal-file-header 'org-journal-file-header-func)
 
 (add-hook 'org-journal-mode-hook 'turn-on-auto-fill)
 (add-hook 'org-journal-mode-hook #'+zen/toggle)
