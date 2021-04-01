@@ -69,12 +69,10 @@
 
 ;; Org Mode
 
-
-
 (setq org-agenda-files (list
-                   (concat org-directory "tasks.org")))
-
-
+                   (concat org-directory "tasks.org")
+                   (concat org-directory "notes.org")
+                   (concat org-directory "daybook.org")))
 
 (after! org
   (setq org-return-follows-link t)
@@ -108,28 +106,33 @@
            "* %? \n")
           ("d" "Daybook" entry
            (file+olp+datetree ,(concat org-directory "daybook.org"))
-           "* %?\n\n" :time-prompt t)
+           "* %?\n%t\n" :time-prompt t)
           ("j" "Journal entry" plain (function org-journal-date-location)
                                "** TODO %?\n <%(princ org-journal--date-location-scheduled-time)>\n"
                                :jump-to-captured t)
-          ("n" "Take a note" plain
+          ("n" "Take a note" entry
            (file+headline ,(concat org-directory "notes.org") "Notes")
-           "%U\n%?" :empty-lines 1 :prepend t)))
+           "* %?\n%U" :prepend t)))
 
   (setq org-attach-id-dir  "attach/")
-  (setq org-download-image-org-width 600)
   (setq org-attach-auto-tag nil))
 
+  (setq org-download-method 'attach
+    org-download-image-dir "attach/"
+    org-download-image-org-width 600
+    org-download-heading-lvl nil)
 
-(setq org-journal-dir "~/Dropbox/notes/journal"
+  (setq org-journal-dir "~/Dropbox/notes/journal"
     org-journal-file-type 'monthly
-    org-journal-file-format "%Y-%m-%d.org"
+    org-journal-file-format "%Y-%m.org"
     org-journal-find-file #'find-file
     org-journal-time-prefix ""
     org-journal-time-format ""
-    org-journal-enable-agenda-integration t
+    org-journal-enable-agenda-integration nil
     org-journal-enable-encryption nil
     org-journal-date-format "%A, %B %d %Y")
+
+
 
 (defun org-journal-file-header-func (time)
   "Custom function to create journal header."

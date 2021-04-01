@@ -154,8 +154,8 @@
        ;;ocaml             ; an objective camel
        (org                ; organize your plain life in plain text
         +journal
-        +pretty
         +dragndrop
+        +pretty
         +noter
         +pandoc)
        ;;php               ; perl's insecure younger brother
