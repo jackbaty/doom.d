@@ -117,14 +117,6 @@
   (setq org-attach-auto-tag nil))
 
 
-(setq org-agenda-custom-commands
-      '(("n" "Agenda and Todos" ((agenda "")(alltodo "")))
-        ("A" "Archive Agenda"
-         (
-          (agenda ""
-                  ((org-agenda-files '("~/org/notes.org" "~/org/daybook.org"))))
-          ))))
-
   (setq org-download-method 'attach
     org-download-image-dir "attach/"
     org-download-image-org-width 600
@@ -220,22 +212,20 @@
 
 (setq deft-directory "~/Dropbox/notes/org-roam")
 
-;;(setq org-roam-directory "~/Dropbox/notes/org-roam")
-;; (use-package! org-roam
-;;   :after org
-;;   :commands
-;;   (org-roam-buffer
-;;    org-roam-setup
-;;    org-roam-capture
-;;    org-roam-node-find)
-;;   :config
-;;   (setq org-roam-directory "~/Dropbox/notes/org-roam"
-;;         org-roam-mode-sections
-;;         (list #'org-roam-backlinks-insert-section
-;;               #'org-roam-reflinks-insert-section
-;;               #'org-roam-unlinked-references-insert-section))
-;;   (org-roam-setup))
-
+(use-package! org-roam
+  :after org
+  :commands
+  (org-roam-buffer
+   org-roam-setup
+   org-roam-capture
+   org-roam-node-find)
+  :config
+  (setq org-roam-directory "~/Dropbox/notes/org-roam")
+  (setq org-roam-mode-sections
+        (list #'org-roam-backlinks-insert-section
+              #'org-roam-reflinks-insert-section
+              #'org-roam-unlinked-references-insert-section))
+  (org-roam-setup))
 
 
 (defun jab/insert-weather ()
