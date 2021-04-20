@@ -56,7 +56,7 @@
 ;; they are implemented.
 
 
-(add-load-path! "~/Dropbox/emacs/lisp")
+(add-load-path! "~/Sync/emacs/lisp")
 (add-to-list 'default-frame-alist '(height . 60))
 (add-to-list 'default-frame-alist '(width . 120))
 
@@ -122,7 +122,7 @@
     org-download-image-org-width 600
     org-download-heading-lvl nil)
 
-  (setq org-journal-dir "~/Dropbox/notes/journal"
+  (setq org-journal-dir "~/org/journal"
     org-journal-file-type 'monthly
     org-journal-file-format "%Y-%m.org"
     org-journal-find-file #'find-file
@@ -202,15 +202,15 @@
 (setq pandoc-data-dir "~/.pandoc/pandoc-mode/")
 
 (setq yas-snippet-dirs
-      '("~/Dropbox/emacs/yasnippets"))                 ;; personal snippets
+      '("~/Sync/emacs/yasnippets"))                 ;; personal snippets
 
 (yas-global-mode 1) ;; or M-x yas-reload-all if you've started YASnippet already.
 
 (setq +zen-text-scale 0.8)  ;; Not quite so large, there Doom
 
-(setq bookmark-default-file "~/Dropbox/emacs/bookmarks")
+(setq bookmark-default-file "~/Sync/emacs/bookmarks")
 
-(setq deft-directory "~/Dropbox/notes/org-roam")
+(setq deft-directory "~/org/org-roam")
 
 (use-package! org-roam
   :after org
@@ -220,7 +220,7 @@
    org-roam-capture
    org-roam-node-find)
   :config
-  (setq org-roam-directory "~/Dropbox/notes/org-roam")
+  (setq org-roam-directory "~/org/org-roam")
   (setq org-roam-mode-sections
         (list #'org-roam-backlinks-insert-section
               #'org-roam-reflinks-insert-section
