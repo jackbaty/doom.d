@@ -210,8 +210,6 @@
 
 (setq bookmark-default-file "~/Sync/emacs/bookmarks")
 
-(setq deft-directory "~/org/org-roam")
-
 (use-package! org-roam
   :after org
   :commands
