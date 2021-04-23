@@ -23,7 +23,25 @@
        org-agenda-text-search-extra-files (quote (agenda-archives))
        org-agenda-window-setup (quote current-window))
   (setq org-attach-id-dir  "attach/")
-  (setq org-attach-auto-tag nil))
+  (setq org-attach-auto-tag nil)
+    (setq org-capture-templates
+        `(("t" "Todo to Inbox" entry
+           (file+headline ,(concat org-directory "tasks.org") "Inbox")
+           "* TODO %?\nSCHEDULED: %t\n\n%i\n"
+           :empty-lines 1)
+          ("T" "Todo to Inbox with Clipboard" entry
+           (file+headline ,(concat org-directory "tasks.org") "Inbox")
+           "* TODO %?\nSCHEDULED: %t\n%c\n\n%i\n"
+           :empty-lines 1)
+          ("l" "Current file log entry" entry
+           (file+olp+datetree buffer-file-name)
+           "* %? \n")
+          ("d" "Daybook" entry
+           (file+olp+datetree ,(concat org-directory "daybook.org"))
+           "* %?\n%t\n" :time-prompt t)
+          ("n" "Take a note" entry
+           (file+headline ,(concat org-directory "notes.org") "Notes")
+           "* %?\n%U" :prepend t))))
 
 
   (setq org-download-method 'attach
