@@ -60,188 +60,29 @@
 (add-to-list 'default-frame-alist '(height . 60))
 (add-to-list 'default-frame-alist '(width . 120))
 
-;; looky-feely
-
-(global-visual-line-mode)
-
-
-
-
-;; Org Mode
-
-(setq org-agenda-files (list
-                   (concat org-directory "tasks.org")
-                   (concat org-directory "notes.org")
-                   (concat org-directory "daybook.org")))
-
-(after! org
-  (setq org-return-follows-link t)
-   (setq org-agenda-include-diary t
-       org-agenda-start-on-weekday nil
-       org-agenda-start-day nil
-       org-agenda-log-mode-items (quote (closed))
-       org-agenda-persistent-filter t
-       org-agenda-skip-scheduled-if-deadline-is-shown (quote not-today)
-       org-agenda-skip-deadline-prewarning-if-scheduled t
-       org-agenda-skip-scheduled-if-done t
-       org-agenda-skip-deadline-if-done t
-       org-deadline-warning-days 7
-       org-tags-column 0
-       org-log-done 'time
-       org-log-into-drawer t
-       org-log-redeadline 'note
-       org-agenda-text-search-extra-files (quote (agenda-archives))
-       org-agenda-window-setup (quote current-window))
-  (setq org-capture-templates
-        `(("t" "Todo to Inbox" entry
-           (file+headline ,(concat org-directory "tasks.org") "Inbox")
-           "* TODO %?\nSCHEDULED: %t\n\n%i\n"
-           :empty-lines 1)
-          ("T" "Todo to Inbox with Clipboard" entry
-           (file+headline ,(concat org-directory "tasks.org") "Inbox")
-           "* TODO %?\nSCHEDULED: %t\n%c\n\n%i\n"
-           :empty-lines 1)
-          ("l" "Current file log entry" entry
-           (file+olp+datetree buffer-file-name)
-           "* %? \n")
-          ("d" "Daybook" entry
-           (file+olp+datetree ,(concat org-directory "daybook.org"))
-           "* %?\n%t\n" :time-prompt t)
-          ("j" "Journal entry" plain (function org-journal-date-location)
-                               "** TODO %?\n <%(princ org-journal--date-location-scheduled-time)>\n"
-                               :jump-to-captured t)
-          ("n" "Take a note" entry
-           (file+headline ,(concat org-directory "notes.org") "Notes")
-           "* %?\n%U" :prepend t)))
-  (setq org-attach-id-dir  "attach/")
-  (setq org-attach-auto-tag nil))
-
-
-  (setq org-download-method 'attach
-    org-download-image-dir "attach/"
-    org-download-image-org-width 600
-    org-download-heading-lvl nil)
-
-  (setq org-journal-dir "~/org/journal"
-    org-journal-file-type 'monthly
-    org-journal-file-format "%Y-%m.org"
-    org-journal-find-file #'find-file
-    org-journal-time-prefix ""
-    org-journal-time-format ""
-    org-journal-enable-agenda-integration nil
-    org-journal-enable-encryption nil
-    org-journal-date-format "%A, %B %d %Y")
-
-
-
-;; (defun org-journal-file-header-func (time)
-;;   "Custom function to create journal header."
-;;   (concat
-;;     (pcase org-journal-file-type
-;;       (`daily "")
-;;       (`weekly "#+TITLE: Weekly Journal\n#+STARTUP: folded")
-;;       (`monthly "#+TITLE: Monthly Journal\n#+STARTUP: folded")
-;;       (`yearly "#+TITLE: Yearly Journal\n#+STARTUP: folded"))))
-
-;; (setq org-journal-file-header 'org-journal-file-header-func)
-
-(add-hook 'org-journal-mode-hook 'turn-on-auto-fill)
-(add-hook 'org-journal-mode-hook #'+zen/toggle)
-
-
-(defvar org-journal--date-location-scheduled-time nil)
-
-(defun org-journal-date-location (&optional scheduled-time)
-  (let ((scheduled-time (or scheduled-time (org-read-date nil nil nil "Date:"))))
-    (setq org-journal--date-location-scheduled-time scheduled-time)
-    (org-journal-new-entry t (org-time-string-to-time scheduled-time))
-    (unless (eq org-journal-file-type 'daily)
-      (org-narrow-to-subtree))
-    (goto-char (point-max))))
-
-
-
-
-;; LaTeX ---------------------------------------------------------------------
-
-;; My default LaTeX class
-
-(with-eval-after-load 'ox-latex
-  (add-to-list 'org-latex-classes
-               '("scrartcl"
-                 "\\documentclass{scrartcl}"
-                 ("\\section{%s}" . "\\section*{%s}")
-                 ("\\subsection{%s}" . "\\subsection*{%s}")
-                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-  (add-to-list 'org-latex-classes
-             '("org-plain-latex"
-               "\\documentclass{article}
-           [NO-DEFAULT-PACKAGES]
-           [PACKAGES]
-           [EXTRA]"
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-               ("\\paragraph{%s}" . "\\paragraph*{%s}")
-               ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
-
-(setq org-latex-caption-above nil)
-(setq org-latex-pdf-process
-       (quote
-          ("xelatex -interaction nonstopmode  %f" "xelatex -interaction nonstopmode %f")))
-
-(setq TeX-source-correlate-mode t)
-(setq TeX-source-correlate-start-server t)
-(setq TeX-source-correlate-method 'synctex)
-
-;; /LaTeX --------------------------------------------------------------------
-
-(add-hook 'markdown-mode-hook 'pandoc-mode)
-(setq pandoc-data-dir "~/.pandoc/pandoc-mode/")
+(setq bookmark-default-file "~/Sync/emacs/bookmarks")
 
 (setq yas-snippet-dirs
       '("~/Sync/emacs/yasnippets"))                 ;; personal snippets
 
 (yas-global-mode 1) ;; or M-x yas-reload-all if you've started YASnippet already.
 
+;; looky-feely
+
+(global-visual-line-mode)
 (setq +zen-text-scale 0.8)  ;; Not quite so large, there Doom
 
-(setq bookmark-default-file "~/Sync/emacs/bookmarks")
-
-(use-package! org-roam
-  :after org
-  :commands
-  (org-roam-buffer
-   org-roam-setup
-   org-roam-capture
-   org-roam-node-find)
-  :config
-  (setq org-roam-directory "~/org/org-roam")
-  (setq org-roam-mode-sections
-        (list #'org-roam-backlinks-insert-section
-              #'org-roam-reflinks-insert-section
-              #'org-roam-unlinked-references-insert-section))
-  (org-roam-setup))
-
-
-(defun jab/insert-weather ()
-  "Use wttr to insert the current weather at point"
-  (interactive)
-  (let ((w (shell-command-to-string "curl -s 'wttr.in/49301?0q&format=%c+%C+%t' | head -n6")))
-  (insert (concat w "\n"))))
 
 
 
+(load! "orgmode")
+(load! "orgroam")
+(load! "latex")
+(load! "mappings")
+(load! "myfunctions")
 
-(map!
- "\C-cl" 'org-store-link
- "\C-cc" 'org-capture
- "\C-cj" 'org-journal-new-entry)
 
-(map!
- "\C-c n f" 'org-roam-node-find
- "\C-c n n" 'org-roam-node-insert
- "\C-c n d" 'org-roam-dailies-find-today
- "\C-c n r" 'org-roam-buffer-toggle)
+
+(add-hook 'markdown-mode-hook 'pandoc-mode)
+(setq pandoc-data-dir "~/.pandoc/pandoc-mode/")
+
