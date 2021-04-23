@@ -157,6 +157,7 @@
         +dragndrop
         +pretty
         +noter
+        +hugo
         +pandoc)
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
