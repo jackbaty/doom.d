@@ -27,7 +27,7 @@
   (setq org-capture-templates
         `(("t" "Todo to Inbox" entry
            (file+headline ,(concat org-directory "tasks.org") "Inbox")
-           "* TODO %?\nSCHEDULED: %t\n\n%i\n"
+           "* TODO %?\n"
            :empty-lines 1)
           ("T" "Todo to Inbox with Clipboard" entry
            (file+headline ,(concat org-directory "tasks.org") "Inbox")
