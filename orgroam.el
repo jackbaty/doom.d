@@ -9,3 +9,10 @@
   :config
   (setq org-roam-directory "~/org/roam")
   (org-roam-setup))
+
+
+
+(setq org-roam-dailies-capture-templates
+      '(("d" "default" entry "* %?" :if-new
+         (file+head "%(concat org-roam-dailies-directory \"/%<%Y-%m-%d>.org\")"
+                    "#+title: %<%Y-%m-%d>"))))

@@ -24,7 +24,7 @@
        org-agenda-window-setup (quote current-window))
   (setq org-attach-id-dir  "attach/")
   (setq org-attach-auto-tag nil)
-    (setq org-capture-templates
+  (setq org-capture-templates
         `(("t" "Todo to Inbox" entry
            (file+headline ,(concat org-directory "tasks.org") "Inbox")
            "* TODO %?\nSCHEDULED: %t\n\n%i\n"
@@ -36,7 +36,7 @@
           ("l" "Current file log entry" entry
            (file+olp+datetree buffer-file-name)
            "* %? \n")
-          ("d" "Daybook" entry
+          ("b" "Daybook" entry
            (file+olp+datetree ,(concat org-directory "daybook.org"))
            "* %?\n%t\n" :time-prompt t)
           ("n" "Take a note" entry
