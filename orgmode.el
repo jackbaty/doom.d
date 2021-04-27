@@ -1,6 +1,6 @@
 
 (setq org-agenda-files (list
-                   (concat org-directory "tasks.org")
+                   (concat org-directory "jab.org")
                    (concat org-directory "notes.org")
                    (concat org-directory "daybook.org")))
 
@@ -26,11 +26,11 @@
   (setq org-attach-auto-tag nil)
   (setq org-capture-templates
         `(("t" "Todo to Inbox" entry
-           (file+headline ,(concat org-directory "tasks.org") "Inbox")
+           (file+headline ,(concat org-directory "jab.org") "Inbox")
            "* TODO %?\n"
            :empty-lines 1)
           ("T" "Todo to Inbox with Clipboard" entry
-           (file+headline ,(concat org-directory "tasks.org") "Inbox")
+           (file+headline ,(concat org-directory "jab.org") "Inbox")
            "* TODO %?\nSCHEDULED: %t\n%c\n\n%i\n"
            :empty-lines 1)
           ("l" "Current file log entry" entry
@@ -64,6 +64,7 @@
 (add-hook 'org-journal-mode-hook #'+zen/toggle)
 
 
+;; What is this?
 (defvar org-journal--date-location-scheduled-time nil)
 
 (defun org-journal-date-location (&optional scheduled-time)
