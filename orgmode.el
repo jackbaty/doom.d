@@ -2,6 +2,7 @@
 (setq org-agenda-files (list
                    (concat org-directory "jab.org")
                    (concat org-directory "notes.org")
+                   (concat org-directory "events.org")
                    (concat org-directory "daybook.org")))
 
 (after! org
@@ -39,7 +40,10 @@
            "* %? \n")
           ("d" "Daybook" entry
            (file+olp+datetree ,(concat org-directory "daybook.org"))
-           "* %?\n%t\n")
+           "* %?\n%t\n" :time-prompt t)
+          ("e" "Event" entry
+           (file+olp+datetree ,(concat org-directory "events.org"))
+           "* %?\n%T\n" :time-prompt t)
           ("n" "Take a note" entry
            (file+headline ,(concat org-directory "notes.org") "Notes")
            "* %?\n%U" :prepend t))))
