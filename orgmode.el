@@ -9,6 +9,7 @@
    (setq org-agenda-include-diary t
        org-agenda-start-on-weekday nil
        org-agenda-start-day nil
+       org-agenda-span 3
        org-agenda-log-mode-items (quote (closed))
        org-agenda-persistent-filter t
        org-agenda-skip-scheduled-if-deadline-is-shown (quote not-today)
@@ -36,9 +37,9 @@
           ("l" "Current file log entry" entry
            (file+olp+datetree buffer-file-name)
            "* %? \n")
-          ("b" "Daybook" entry
+          ("d" "Daybook" entry
            (file+olp+datetree ,(concat org-directory "daybook.org"))
-           "* %?\n%t\n" :time-prompt t)
+           "* %?\n%t\n")
           ("n" "Take a note" entry
            (file+headline ,(concat org-directory "notes.org") "Notes")
            "* %?\n%U" :prepend t))))
