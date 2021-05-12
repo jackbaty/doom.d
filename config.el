@@ -78,6 +78,7 @@
 (load! "orgmode")
 (load! "orgroam")
 (load! "latex")
+(load! "mail")
 (load! "mappings")
 (load! "myfunctions")
 

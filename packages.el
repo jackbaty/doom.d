@@ -53,4 +53,4 @@
   :recipe (:host github :repo "org-roam/org-roam" :branch "v2"))
 
 (package! modus-operandi-theme)
-
+(package! org-msg :disable t)
