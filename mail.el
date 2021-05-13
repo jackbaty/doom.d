@@ -19,12 +19,20 @@
    smtpmail-smtp-server  "smtp.fastmail.com"
    smtpmail-stream-type  'ssl
    smtpmail-smtp-service 465
+   mu4e-split-view 'horizontal
  mu4e-headers-fields
         '((:human-date . 12)
           (:flags . 4)
           (:from . 25)
-          (:subject))))
+          (:subject)))
 
+(setq mu4e-maildir-shortcuts
+  '( (:maildir "/Baty.net/INBOX"       :key  ?i)
+     (:maildir "/Baty.net/Archive"     :key  ?a)
+     (:maildir "/Baty.net/Set Aside"   :key  ?t)
+     (:maildir "/Baty.net/Reply Later" :key  ?l)
+     (:maildir "/Baty.net/Screened"    :key  ?r)
+     (:maildir "/Baty.net/Sent Items"  :key  ?s))))
 
 ;; override Doom's default, which uses macOS keychain
 ;; I get errors about that being unsupported
