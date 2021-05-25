@@ -69,6 +69,9 @@
 (add-hook 'org-journal-mode-hook #'+zen/toggle)
 
 
+(after! ox-hugo
+  (setq org-hugo-section "post"))
+
 ;; What is this?
 (defvar org-journal--date-location-scheduled-time nil)
 

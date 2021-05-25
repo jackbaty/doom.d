@@ -57,6 +57,7 @@
 
 
 (add-load-path! "~/Sync/emacs/lisp")
+(add-load-path! "~/Sync/emacs/nano-emacs")
 (add-to-list 'default-frame-alist '(height . 60))
 (add-to-list 'default-frame-alist '(width . 120))
 
@@ -73,7 +74,7 @@
 (setq +zen-text-scale 0.8)  ;; Not quite so large, there Doom
 
 
-
+;;(require 'nano-faces)
 
 (load! "orgmode")
 (load! "orgroam")
@@ -83,6 +84,7 @@
 (load! "myfunctions")
 
 
+;;(require 'nano-mu4e)
 
 (add-hook 'markdown-mode-hook 'pandoc-mode)
 (setq pandoc-data-dir "~/.pandoc/pandoc-mode/")
