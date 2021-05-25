@@ -84,6 +84,5 @@
 
 
 
-(add-hook 'markdown-mode-hook 'pandoc-mode)
-(setq pandoc-data-dir "~/.pandoc/pandoc-mode/")
-
+;;(add-hook 'markdown-mode-hook 'pandoc-mode)
+;;(setq pandoc-data-dir "~/.pandoc/pandoc-mode/")
