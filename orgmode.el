@@ -2,6 +2,7 @@
 (setq org-agenda-files (list
                    (concat org-directory "jab.org")
                    (concat org-directory "notes.org")
+                   "~/baty.net-v6/content-org/posts.org"
                    (concat org-directory "events.org")
                    (concat org-directory "daybook.org")))
 
@@ -68,9 +69,6 @@
 (add-hook 'org-journal-mode-hook 'turn-on-auto-fill)
 (add-hook 'org-journal-mode-hook #'+zen/toggle)
 
-
-(after! ox-hugo
-  (setq org-hugo-section "post"))
 
 ;; What is this?
 (defvar org-journal--date-location-scheduled-time nil)
