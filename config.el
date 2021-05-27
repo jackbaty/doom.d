@@ -74,6 +74,9 @@
 (setq +zen-text-scale 0.8)  ;; Not quite so large, there Doom
 
 
+(setq warning-suppress-types `(yasnippet backquote-change))
+
+
 ;;(require 'nano-faces)
 
 (load! "orgmode")
