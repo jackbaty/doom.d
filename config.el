@@ -19,7 +19,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 15)
+(setq doom-font (font-spec :family "Source Code Pro" :size 15)
       doom-variable-pitch-font (font-spec :family "Helvetica Neue" :size 15))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -53,6 +53,9 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+
+
+(setq fancy-splash-image (concat doom-private-dir "splash.png"))
 (add-load-path! "~/Sync/emacs/lisp")
 
 (add-to-list 'default-frame-alist '(height . 60))
@@ -61,6 +64,7 @@
 (setq bookmark-default-file "~/Sync/emacs/bookmarks")
 
 (global-visual-line-mode)
+(setq +zen-text-scale 0.8)  ;; Not quite so large, there Doom
 
 (load! "orgmode")
 (load! "orgroam")

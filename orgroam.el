@@ -18,7 +18,7 @@
  "\C-c n i" 'org-roam-node-insert
  "\C-c n d" 'org-roam-dailies-goto-today
  "\C-c n c" 'org-roam-dailies-capture-today
- "\C-c n r" 'org-roam-buffer-toggle)
+ "\C-c n l" 'org-roam-buffer-toggle)
 
 
 ;; Use a window on the right
