@@ -152,6 +152,7 @@
         +dragndrop
         +hugo
         +gnuplot
+        +roam2
         +pandoc)
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more

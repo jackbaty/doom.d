@@ -1,16 +1,16 @@
 
-(use-package! org-roam
-  :after org
-  :commands
-  (org-roam-buffer
-   org-roam-setup
-   org-roam-capture
-   org-roam-node-find)
-  :init
-  (setq org-roam-v2-ack t)
-  :config
-  (setq org-roam-directory "~/org/roam")
-  (org-roam-setup))
+;; (use-package! org-roam
+;;   :after org
+;;   :commands
+;;   (org-roam-buffer
+;;    org-roam-setup
+;;    org-roam-capture
+;;    org-roam-node-find)
+;;   :init
+;;   (setq org-roam-v2-ack t)
+;;   :config
+;;   (setq org-roam-directory "~/org/roam")
+;;   (org-roam-setup))
 
 (map!
  "\C-c n f" 'org-roam-node-find
@@ -21,18 +21,17 @@
  "\C-c n l" 'org-roam-buffer-toggle)
 
 
-;; Use a window on the right
-(add-to-list 'display-buffer-alist
-             '("\\*org-roam\\*"
-               (display-buffer-in-direction)
-               (direction . right)
-               (window-width . 0.33)
-               (window-height . fit-window-to-buffer)))
+;; ;; Use a window on the right
+;; (add-to-list 'display-buffer-alist
+;;              '("\\*org-roam\\*"
+;;                (display-buffer-in-direction)
+;;                (direction . right)
+;;                (window-width . 0.33)
+;;                (window-height . fit-window-to-buffer)))
 
-(setq org-roam-dailies-capture-templates
-  '(("d" "default" entry "* %?" :if-new
-    (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d> - Daily Notes\n"))))
+(setq org-roam-directory "~/org/roam")
 
 
-
-
+;; (setq org-roam-dailies-capture-templates
+;;   '(("d" "default" entry "* %?" :if-new
+;;     (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d> - Daily Notes\n"))))

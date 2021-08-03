@@ -15,6 +15,7 @@
 ;;(after! auth-source
 ;;(setq auth-sources '("~/.authinfo")))
 
+
 ;; this setting allows to re-sync and re-index mail
 ;; by pressing U
 (setq mu4e-get-mail-command  "mbsync -a")
