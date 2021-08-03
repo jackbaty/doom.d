@@ -10,10 +10,36 @@
   t)
 
 
+(after! mu4e
+(setq
+ mu4e-attachment-dir "~/tmp"
+   message-send-mail-function   'smtpmail-send-it
+   smtpmail-default-smtp-server "smtp.fastmail.com"
+   smtpmail-smtp-server         "smtp.fastmail.com"
+   send-mail-function    'smtpmail-send-it
+   smtpmail-smtp-server  "smtp.fastmail.com"
+   smtpmail-stream-type  'ssl
+   smtpmail-smtp-service 465
+   mu4e-split-view 'horizontal
+ mu4e-headers-fields
+        '((:human-date . 12)
+          (:flags . 4)
+          (:from . 25)
+          (:subject)))
+
+(setq mu4e-maildir-shortcuts
+  '( (:maildir "/Baty.net/INBOX"       :key  ?i)
+     (:maildir "/Baty.net/Archive"     :key  ?a)
+     (:maildir "/Baty.net/Set Aside"   :key  ?t)
+     (:maildir "/Baty.net/Reply Later" :key  ?l)
+     (:maildir "/Baty.net/Screened"    :key  ?r)
+     (:maildir "/Baty.net/Sent Items"  :key  ?s))))
+
+
 ;; override Doom's default, which uses macOS keychain
 ;; I get errors about that being unsupported
-;;(after! auth-source
-;;(setq auth-sources '("~/.authinfo")))
+(after! auth-source
+ (setq auth-sources '("~/.authinfo")))
 
 
 ;; this setting allows to re-sync and re-index mail
