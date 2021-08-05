@@ -32,6 +32,6 @@
 (setq org-roam-directory "~/org/roam")
 
 
-;; (setq org-roam-dailies-capture-templates
-;;   '(("d" "default" entry "* %?" :if-new
-;;     (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d> - Daily Notes\n"))))
+(setq org-roam-dailies-capture-templates
+  '(("d" "default" entry "* %?" :if-new
+    (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d> - Daily Notes\n"))))
