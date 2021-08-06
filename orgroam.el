@@ -17,7 +17,7 @@
  "s-u" 'org-roam-node-find
  "\C-c n i" 'org-roam-node-insert
  "\C-c n d" 'org-roam-dailies-goto-today
- "\C-c n c" 'org-roam-dailies-capture-today
+ "\C-c n c" 'org-roam-capture
  "\C-c n l" 'org-roam-buffer-toggle)
 
 
