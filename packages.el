@@ -51,3 +51,5 @@
 
 
 (package! mu4e-alert :disable t)
+
+(package! modus-themes)
