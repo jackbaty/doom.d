@@ -20,16 +20,12 @@
  "\C-c n c" 'org-roam-capture
  "\C-c n l" 'org-roam-buffer-toggle)
 
-
-;; ;; Use a window on the right
-;; (add-to-list 'display-buffer-alist
-;;              '("\\*org-roam\\*"
-;;                (display-buffer-in-direction)
-;;                (direction . right)
-;;                (window-width . 0.33)
-;;                (window-height . fit-window-to-buffer)))
+(after! org-roam
+  (org-link-set-parameters "id"
+                         :face '(:foreground "orange" :underline t)))
 
 (setq org-roam-directory "~/org/roam")
+
 
 
 (setq org-roam-dailies-capture-templates
