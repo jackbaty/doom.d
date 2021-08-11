@@ -1,6 +1,6 @@
 
 (setq org-agenda-files (list
-                   (concat org-directory "jab.org")
+                   (concat org-directory "todo.org")
                    (concat org-directory "notes.org")
                    "~/baty.blog/content-org/posts.org"
                    (concat org-directory "events.org")
@@ -38,11 +38,11 @@
 
   (setq org-capture-templates
         `(("t" "Todo to Inbox" entry
-           (file+headline ,(concat org-directory "jab.org") "Inbox")
+           (file+headline ,(concat org-directory "todo.org") "Inbox")
            "* TODO %?\n"
            :empty-lines 1)
           ("T" "Todo to Inbox with Clipboard" entry
-           (file+headline ,(concat org-directory "jab.org") "Inbox")
+           (file+headline ,(concat org-directory "todo.org") "Inbox")
            "* TODO %?\nSCHEDULED: %t\n%c\n\n%i\n"
            :empty-lines 1)
           ("l" "Current file log entry" entry
