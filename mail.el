@@ -21,6 +21,7 @@
    smtpmail-stream-type  'ssl
    smtpmail-smtp-service 465
    mu4e-split-view 'horizontal
+   +org-capture-emails-file "~/org/todo.org"
  mu4e-headers-fields
         '((:human-date . 12)
           (:flags . 4)
