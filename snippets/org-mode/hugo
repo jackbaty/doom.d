@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: Hugo
+# key: hugo
+# uuid: hugo
+# --
+** TODO ${1:title}
+:PROPERTIES:
+:EXPORT_HUGO_BUNDLE: ${1:$(replace-regexp-in-string " " "-" (downcase yas-text))}
+:EXPORT_FILE_NAME: index
+:EXPORT_FILE_NAME: ${1:$(replace-regexp-in-string " " "-" (downcase yas-text))}
+:EXPORT_DESCRIPTION:
+:EXPORT_DATE:
+:END:
+
+$0

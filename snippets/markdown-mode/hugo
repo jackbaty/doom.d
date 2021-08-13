@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: Hugo
+# key: hugo
+# uuid: hugo
+# --
+---
+title: ${1:title}
+subtitle: ${2:subtitle}
+date:  `(format-time-string "%Y-%m-%d")`
+tags:
+- untagged
+categories:
+- ${3:Misc}
+summary:
+resources:
+- name: featured-image
+  src: featured-image.jpg
+- name: featured-image-preview
+  src: preview.jpg
+slug: ${1:$(replace-regexp-in-string " " "-" (downcase yas-text))}
+---
+$0

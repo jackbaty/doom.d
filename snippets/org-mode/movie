@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Movie
+# key: Movie
+# --
+
+*** $1                                                    :Movie:
+:PROPERTIES:
+:Rating:  $2
+:END:
+<`(format-time-string "%Y-%m-%d")`$0> 

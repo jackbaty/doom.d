@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Org Metadata
+# key: orgmeta
+# --
+#+TITLE: $0
+#+AUTHOR: Jack Baty
+#+DATE: `(format-time-string "%Y-%m-%d")`
+#+OPTIONS: toc:nil num:nil <:nil ':t
+#+STARTUP: overview
+#+SETUPFILE: ~/org/_SETUP/DEFAULT

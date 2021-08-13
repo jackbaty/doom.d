@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Project Template
+# key: project
+# --
+** $0 :project:
+*** TODO Set up project

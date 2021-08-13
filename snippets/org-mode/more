@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: more
+# key: more
+# condition: t
+# --
+
+#+hugo: more
