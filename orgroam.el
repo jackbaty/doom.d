@@ -26,7 +26,15 @@
 
 (setq org-roam-directory "~/org/roam")
 
-
+(setq org-roam-capture-templates
+   '(("d" "default" plain
+      "%?"
+      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+      :unnarrowed t)
+   ("p" "person" plain
+      (file "~/org/roam/templates/PersonTemplate.org")
+      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: Person")
+      :unnarrowed t)))
 
 (setq org-roam-dailies-capture-templates
   '(("d" "default" entry "* %?" :if-new
