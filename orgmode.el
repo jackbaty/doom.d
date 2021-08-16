@@ -77,6 +77,8 @@
     org-journal-enable-encryption nil
     org-journal-date-format "%A, %B %d %Y")
 
+;; Load appointments
+(org-agenda-to-appt)
 
 (add-hook 'org-journal-mode-hook 'turn-on-auto-fill)
 (add-hook 'org-journal-mode-hook #'+zen/toggle)
