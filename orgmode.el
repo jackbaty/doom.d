@@ -77,6 +77,10 @@
     org-journal-enable-encryption nil
     org-journal-date-format "%A, %B %d %Y")
 
+
+;;(setq org-id-ts-format "%Y%m%d%H%M")
+;;(setq org-id-method 'ts)
+
 ;; Load appointments
 (org-agenda-to-appt)
 
