@@ -1,17 +1,3 @@
-
-;; (use-package! org-roam
-;;   :after org
-;;   :commands
-;;   (org-roam-buffer
-;;    org-roam-setup
-;;    org-roam-capture
-;;    org-roam-node-find)
-;;   :init
-;;   (setq org-roam-v2-ack t)
-;;   :config
-;;   (setq org-roam-directory "~/org/roam")
-;;   (org-roam-setup))
-
 (map!
  "\C-c n f" 'org-roam-node-find
  "s-u" 'org-roam-node-find
@@ -31,9 +17,17 @@
       "%?"
       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
       :unnarrowed t)
+   ("l" "log entry" entry
+      "* %u %?"
+      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+      :unnarrowed t)
    ("p" "person" plain
       (file "~/org/roam/templates/PersonTemplate.org")
       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: Person")
+      :unnarrowed t)
+   ("P" "project" plain
+      (file "~/org/roam/templates/ProjectTemplate.org")
+      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: Project")
       :unnarrowed t)))
 
 (setq org-roam-dailies-capture-templates
