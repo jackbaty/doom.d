@@ -54,3 +54,6 @@
 
 (package! modus-themes)
 (unpin! org-roam)
+
+(package! orderless
+  :recipe (:host github :repo "oantolin/orderless"))

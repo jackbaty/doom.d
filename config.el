@@ -77,6 +77,9 @@
 (global-visual-line-mode)
 (setq +zen-text-scale 0.8)  ;; Not quite so large, there Doom
 
+(use-package! orderless
+  :custom (completion-styles '(orderless)))
+
 (load! "orgmode")
 (load! "orgroam")
 (load! "latex")
