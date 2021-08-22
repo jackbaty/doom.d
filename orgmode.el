@@ -86,3 +86,18 @@
 
 (add-hook 'org-journal-mode-hook 'turn-on-auto-fill)
 (add-hook 'org-journal-mode-hook #'+zen/toggle)
+
+;; Category icons
+;; Odd that regexp doesn't seem to work for (Breakfast|Lunch|Dinner)
+(setq org-agenda-category-icon-alist
+        `(("Personal" ,(list (all-the-icons-material "home" :height 1.0)) nil nil :ascent center)
+          ("Repeat" ,(list (all-the-icons-material "repeat" :height 1.0)) nil nil :ascent center)
+          ("Events" ,(list (all-the-icons-material "event" :height 1.0)) nil nil :ascent center)
+          ("Anniv" ,(list (all-the-icons-material "perm_contact_calendar" :height 1.0)) nil nil :ascent center)
+          ("Birthday" ,(list (all-the-icons-material "cake" :height 1.0)) nil nil :ascent center)
+          ("Breakfast" ,(list (all-the-icons-material "restaurant_menu" :height 1.0)) nil nil :ascent center)
+          ("Lunch" ,(list (all-the-icons-material "restaurant_menu" :height 1.0)) nil nil :ascent center)
+          ("Dinner" ,(list (all-the-icons-material "restaurant_menu" :height 1.0)) nil nil :ascent center)
+          ("Daybook" ,(list (all-the-icons-material "info_outline" :height 1.0)) nil nil :ascent center)
+          ("Task" ,(list (all-the-icons-material "check_box_outline_blank" :height 1.0)) nil nil :ascent center)
+          ("Unfiled" ,(list (all-the-icons-material "move_to_inbox" :height 1.0)) nil nil :ascent center)))
