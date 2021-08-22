@@ -31,6 +31,9 @@
   (setq org-attach-id-dir  "attach/")
   (setq org-attach-auto-tag nil)
   (add-to-list 'org-tags-exclude-from-inheritance "project")
+  (setq org-stuck-projects
+      '("+project/-MAYBE-DONE" ("NEXT" "TODO")))
+
   (setq org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "STRT(s)" "WAIT(w)" "HOLD(h)" "IDEA(i)" "|" "DONE(d)" "CANC(k)")
  (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)")
  (sequence "|" "OKAY(o)" "YES(y)" "NO(n)")))
@@ -89,6 +92,7 @@
 
 ;; Category icons
 ;; Odd that regexp doesn't seem to work for (Breakfast|Lunch|Dinner)
+;;
 (setq org-agenda-category-icon-alist
         `(("Personal" ,(list (all-the-icons-material "home" :height 1.0)) nil nil :ascent center)
           ("Repeat" ,(list (all-the-icons-material "repeat" :height 1.0)) nil nil :ascent center)
@@ -98,6 +102,7 @@
           ("Breakfast" ,(list (all-the-icons-material "restaurant_menu" :height 1.0)) nil nil :ascent center)
           ("Lunch" ,(list (all-the-icons-material "restaurant_menu" :height 1.0)) nil nil :ascent center)
           ("Dinner" ,(list (all-the-icons-material "restaurant_menu" :height 1.0)) nil nil :ascent center)
+          ("Email" ,(list (all-the-icons-material "mail_outline" :height 1.0)) nil nil :ascent center)
           ("Daybook" ,(list (all-the-icons-material "info_outline" :height 1.0)) nil nil :ascent center)
           ("Task" ,(list (all-the-icons-material "check_box_outline_blank" :height 1.0)) nil nil :ascent center)
           ("Unfiled" ,(list (all-the-icons-material "move_to_inbox" :height 1.0)) nil nil :ascent center)))
