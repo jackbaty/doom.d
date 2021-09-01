@@ -60,9 +60,10 @@
           ("F" "Food Log" entry
            (file+datetree+prompt "~/org/food.org")
             "* %?\n%t\n%^{category}p%^{Type}p")
-          ("c" "Add a Commonplace entry" entry
-           (file+headline ,(concat org-directory "commonplace.org") "Notes")
-           "* %?\n%U" :prepend t))))
+          ("n" "Add a Note" entry
+           (file+headline ,(concat org-directory "notes.org") "Notes")
+           "* %?\n%U" :prepend t)))
+  (load "org-devonthink"))
 
 
   (setq org-download-method 'attach
