@@ -34,7 +34,14 @@
      (:maildir "/Baty.net/Set Aside"   :key  ?t)
      (:maildir "/Baty.net/Reply Later" :key  ?l)
      (:maildir "/Baty.net/Screened"    :key  ?r)
-     (:maildir "/Baty.net/Sent Items"  :key  ?s))))
+     (:maildir "/Baty.net/Sent Items"  :key  ?s)))
+
+(add-to-list 'mu4e-bookmarks
+  ;; add bookmark for showing inbox without "trashed" messages
+  '( :name "Inbox clean"
+     :key  ?i
+     :query "maildir:/Baty.net/INBOX NOT flag:trashed")))
+
 
 
 ;; override Doom's default, which uses macOS keychain
