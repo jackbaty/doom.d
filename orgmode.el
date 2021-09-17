@@ -63,7 +63,8 @@
           ("n" "Add a Note" entry
            (file+headline ,(concat org-directory "notes.org") "Notes")
            "* %?\n%U" :prepend t)))
-  (load "org-devonthink"))
+  (load "org-devonthink")
+  (load "org-maillink"))
 
 
   (setq org-download-method 'attach
