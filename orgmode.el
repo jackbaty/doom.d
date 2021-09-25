@@ -107,4 +107,8 @@
           ("Email" ,(list (all-the-icons-material "mail_outline" :height 1.0)) nil nil :ascent center)
           ("Daybook" ,(list (all-the-icons-material "info_outline" :height 1.0)) nil nil :ascent center)
           ("Task" ,(list (all-the-icons-material "check_box_outline_blank" :height 1.0)) nil nil :ascent center)
-          ("Unfiled" ,(list (all-the-icons-material "move_to_inbox" :height 1.0)) nil nil :ascent center)))
+          ("Unfiled" ,(list (all-the-icons-material "move_to_inbox" :height 1.0)) nil nil :ascent center)
+          ("." '(space . (:width (16)))))
+        )
+
+(setq org-agenda-category-icon-alist nil)
