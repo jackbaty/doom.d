@@ -32,4 +32,4 @@
 
 (setq org-roam-dailies-capture-templates
   '(("d" "default" entry "* %?" :if-new
-    (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d> - Daily Notes\n"))))
+    (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d> - Lab Notebook\n"))))
