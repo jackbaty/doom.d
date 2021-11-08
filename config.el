@@ -82,9 +82,12 @@
 (use-package! orderless
   :custom (completion-styles '(orderless)))
 
-;(load! "orgmode")
-;(load! "orgroam")
+(load! "orgmode")
+(load! "orgroam")
 (load! "latex")
 (load! "mail")
 (load! "mappings")
 (load! "myfunctions")
+
+;; Temporary
+(defun native-comp-available-p () nil)

@@ -61,6 +61,9 @@
           ("F" "Food Log" entry
            (file+datetree+prompt "~/org/food.org")
             "* %?\n%t\n%^{category}p%^{Type}p")
+          ("s" "Add to Spark File" entry
+           (file+headline ,(concat org-directory "sparkfile.org") "Sparks")
+           "* %?\n%U" :prepend t)
           ("n" "Add a Note" entry
            (file+headline ,(concat org-directory "notes.org") "Notes")
            "* %?\n%U" :prepend t)))
@@ -88,7 +91,7 @@
 ;;(setq org-id-method 'ts)
 
 ;; Load appointments
-(org-agenda-to-appt)
+;;(org-agenda-to-appt)
 
 (add-hook 'org-journal-mode-hook 'turn-on-auto-fill)
 (add-hook 'org-journal-mode-hook #'+zen/toggle)
