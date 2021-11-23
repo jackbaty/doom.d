@@ -22,7 +22,7 @@ this can take a second or two to execute."
 
 (defun jab/dired-finder-path ()
   (interactive)
-  (let (($path (ct/finder-path)))
+  (let (($path (jab/finder-path)))
     (if (string-equal "" $path)
         (message "No Finder window found.")
       (dired $path))))
