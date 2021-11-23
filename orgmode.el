@@ -5,9 +5,9 @@
                    "~/baty.blog/content-org/posts.org"
                    (concat org-directory "events.org")
                    (concat org-directory "food.org")
+                   (concat org-directory "doing.org")
                    (concat org-directory "daybook.org")))
 
-(setq jab/org-agenda-files org-agenda-files)
 
 (after! org
   (setq org-return-follows-link t)
@@ -119,3 +119,5 @@
         )
 
 (setq org-agenda-category-icon-alist nil)
+
+
