@@ -26,8 +26,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-;;(setq doom-theme 'modus-operandi)
-(setq doom-theme 'modus-vivendi)
+(setq doom-theme 'modus-operandi)
+;;(setq doom-theme 'modus-vivendi)
 ;;(setq doom-theme 'doom-tomorrow-day)
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -65,9 +65,11 @@
   ;; Add all your customizations prior to loading the themes
   (setq modus-themes-italic-constructs t
         modus-themes-bold-constructs nil
+        modus-themes-intense-markup t
+        modus-themes-mixed-fonts t
         modus-themes-region '(bg-only no-extend)))
 
-
+(setq modus-themes-intense-markup t)
 
 (add-load-path! "~/icloud-drive/emacs/lisp")
 
