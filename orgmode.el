@@ -12,9 +12,8 @@
 (after! org
   (setq org-return-follows-link t)
    (setq org-agenda-include-diary t
-       org-agenda-start-on-weekday nil
-       org-agenda-start-day "-2d"
-       org-agenda-span 5
+       ;;org-agenda-start-on-weekday nil
+       ;;org-agenda-span 'day
        org-agenda-log-mode-items (quote (closed))
        org-agenda-persistent-filter t
        org-agenda-skip-scheduled-if-deadline-is-shown (quote not-today)
@@ -26,6 +25,7 @@
        org-log-done 'time
        org-log-into-drawer t
        org-log-redeadline 'note
+       org-habit-show-all-today t
        org-agenda-text-search-extra-files (quote (agenda-archives))
        org-agenda-window-setup (quote current-window))
   (setq org-attach-id-dir  "attach/")
@@ -52,7 +52,7 @@
           ("l" "Current file log entry" entry
            (file+olp+datetree buffer-file-name)
            "* %? \n")
-          ("d" "Daybook" entry
+          ("D" "Daybook" entry
            (file+olp+datetree ,(concat org-directory "daybook.org"))
            "* %?\n%t\n" :time-prompt t)
           ("e" "Event" entry
@@ -62,8 +62,11 @@
            (file+datetree+prompt "~/org/food.org")
             "* %?\n%t\n%^{category}p%^{Type}p")
           ("s" "Add to Spark File" entry
-           (file+headline ,(concat org-directory "sparkfile.org") "Sparks")
+           (file+headline ,(concat org-directory "sparkfile.org") "2021")
            "* %?\n%U" :prepend t)
+          ("d" "Doing now" entry
+           (file+headline ,(concat org-directory "doing.org") "Currently")
+           "* %U %?")
           ("n" "Add a Note" entry
            (file+headline ,(concat org-directory "notes.org") "Notes")
            "* %?\n%U" :prepend t)))
