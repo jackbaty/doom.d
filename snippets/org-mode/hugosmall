@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Hugo small image
+# key: hugosmall
+# condition: t
+# --
+
+#+attr_html: :class imgRightMargin
