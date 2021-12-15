@@ -21,6 +21,9 @@
        org-agenda-skip-scheduled-if-done t
        org-agenda-skip-deadline-if-done t
        org-deadline-warning-days 7
+       org-agenda-start-with-clockreport-mode t
+       org-agenda-clockreport-parameter-plist '(:link t :maxlevel 6 :fileskip0 t :compact t :narrow 80 :score 0)
+       org-clock-idle-time 15
        org-tags-column 0
        org-log-done 'time
        org-log-into-drawer t
