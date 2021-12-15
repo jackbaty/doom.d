@@ -6,6 +6,12 @@
   (let ((w (shell-command-to-string "curl -s 'wttr.in/49301?0q&format=%c+%C+%t' | head -n6")))
   (insert (concat w "\n"))))
 
+(defun jab/deploy-daily-blog ()
+  "Deploy website to daily.baty.net"
+  (interactive)
+  (shell-command "~/Library/Scripts/Applications/Emacs/Deploy-daily.baty.net.sh"))
+
+
 
 ;; From https://christiantietze.de/posts/2021/07/open-finder-window-in-dired/
 (defun jab/finder-path ()
