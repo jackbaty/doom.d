@@ -18,7 +18,7 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       company           ; the ultimate code completion backend
+       ;;company           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ivy               ; a search engine for love and life
        (vertico +icons)          ; the search engine of the future
