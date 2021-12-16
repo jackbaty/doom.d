@@ -1,6 +1,7 @@
 
 (setq org-agenda-files (list
                    (concat org-directory "todo.org")
+                   (concat org-directory "projects.org")
                    (concat org-directory "notes.org")
                    "~/baty.blog/content-org/posts.org"
                    (concat org-directory "events.org")
@@ -23,6 +24,7 @@
        org-deadline-warning-days 7
        org-agenda-start-with-clockreport-mode t
        org-agenda-clockreport-parameter-plist '(:link t :maxlevel 6 :fileskip0 t :compact t :narrow 80 :score 0)
+       org-pretty-entities t
        org-clock-idle-time 15
        org-tags-column 0
        org-log-done 'time
