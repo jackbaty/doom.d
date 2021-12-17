@@ -26,7 +26,8 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'modus-operandi)
+(setq doom-theme 'doom-palenight)
+;;(setq doom-theme 'modus-operandi)
 ;;(setq doom-theme 'modus-vivendi)
 ;;(setq doom-theme 'doom-tomorrow-day)
 
@@ -80,6 +81,10 @@
 
 (global-visual-line-mode)
 (setq +zen-text-scale 0.8)  ;; Not quite so large, there Doom
+
+(setq tab-bar-show t)
+(setq tab-bar-mode t)
+(setq tab-bar-new-tab-choice "*scratch*") ;; new tabs open scratch buffer
 
 (use-package! orderless
   :custom (completion-styles '(orderless)))

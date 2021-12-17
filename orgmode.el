@@ -1,4 +1,8 @@
 
+(setq
+ org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
+
+
 (setq org-agenda-files (list
                    (concat org-directory "todo.org")
                    (concat org-directory "projects.org")

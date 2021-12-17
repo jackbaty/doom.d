@@ -145,6 +145,7 @@
        (org               ; organize your plain life in plain text
         +journal
         +dragndrop
+        +pretty
         +hugo
         +gnuplot
         +roam2
