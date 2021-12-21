@@ -96,5 +96,7 @@
 (load! "mappings")
 (load! "myfunctions")
 
+(desktop-save-mode 1)
+
 ;; Temporary
 (defun native-comp-available-p () nil)
