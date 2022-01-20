@@ -1,4 +1,5 @@
-(add-to-list 'load-path "/opt/homebrew/share/emacs/site-lisp/mu/mu4e/")
+(if IS-MAC (add-to-list 'load-path "/opt/homebrew/share/emacs/site-lisp/mu/mu4e/")
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/"))
 
 ;; Each path is relative to `+mu4e-mu4e-mail-path', which is ~/.mail by default
 (set-email-account! "Baty.net"
