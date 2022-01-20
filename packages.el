@@ -53,7 +53,7 @@
 ;;(package! mu4e-alert :disable t)
 
 (package! modus-themes)
-(unpin! org-roam)
+(unpin! org-roam ox-hugo)
 
 (package! orderless
   :recipe (:host github :repo "oantolin/orderless"))
