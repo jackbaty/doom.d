@@ -10,6 +10,7 @@
 :EXPORT_FILE_NAME: `(format-time-string "%Y-%m-%d-%A")`
 :EXPORT_HUGO_SLUG: `(format-time-string "%Y-%m-%d")`
 :EXPORT_DESCRIPTION:
+:EXPORT_HUGO_WEIGHT: 1
 :EXPORT_DATE:
 :END:
 
