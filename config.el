@@ -27,8 +27,8 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;;(setq doom-theme 'doom-palenight)
-(setq doom-theme 'modus-operandi)
-;;(setq doom-theme 'modus-vivendi)
+;;(setq doom-theme 'modus-operandi)
+(setq doom-theme 'modus-vivendi)
 ;;(setq doom-theme 'doom-tomorrow-day)
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -77,7 +77,7 @@
 (add-to-list 'default-frame-alist '(height . 60))
 (add-to-list 'default-frame-alist '(width . 150))
 
-(setq bookmark-default-file "~/icloud-drive/emacs/bookmarks")
+;;(setq bookmark-default-file "~/icloud-drive/emacs/bookmarks")
 
 (global-visual-line-mode)
 (setq +zen-text-scale 0.8)  ;; Not quite so large, there Doom
