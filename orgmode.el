@@ -17,7 +17,7 @@
 (after! org
   (setq org-return-follows-link t)
    (setq org-agenda-include-diary t
-       org-agenda-start-on-weekday 1
+       ;;org-agenda-start-on-weekday 1
        org-agenda-span 'week
        org-agenda-log-mode-items (quote (closed))
        org-agenda-persistent-filter t
