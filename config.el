@@ -86,6 +86,8 @@
 (setq tab-bar-mode t)
 (setq tab-bar-new-tab-choice "*scratch*") ;; new tabs open scratch buffer
 
+(cua-mode 1) ;; familiar system copy/paste I hope
+
 (use-package! orderless
   :custom (completion-styles '(orderless)))
 
