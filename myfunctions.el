@@ -11,6 +11,16 @@
   (interactive)
   (shell-command "~/Library/Scripts/Applications/Emacs/Deploy-daily.baty.net.sh"))
 
+(defun jab/markregion ()
+  "Add a 'mark' macro to the current region (for Hugo)"
+  (interactive)
+  (if (region-active-p)
+      (progn
+        (goto-char (region-end))
+        (insert ")}}}")
+        (goto-char (region-beginning))
+        (insert "{{{mark("))))
+
 
 
 ;; From https://christiantietze.de/posts/2021/07/open-finder-window-in-dired/
