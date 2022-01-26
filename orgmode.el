@@ -129,4 +129,5 @@
 
 (setq org-agenda-category-icon-alist nil)
 
-
+;; Possible fix for ox-hugo hanging on save
+(setq org-element-use-cache nil)
