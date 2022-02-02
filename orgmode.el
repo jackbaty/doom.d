@@ -83,6 +83,11 @@
  ;; (load "org-maillink")
 
 
+(setq org-agenda-custom-commands
+      '(("%" "Appointments" agenda* "Today's appointments"
+         ((org-agenda-span 1)
+          (org-agenda-max-entries 3)))))
+
   (setq org-download-method 'attach
     org-download-image-dir "attach/"
     org-download-image-org-width 600
