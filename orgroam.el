@@ -2,7 +2,8 @@
  "\C-c n f" 'org-roam-node-find
  "s-u" 'org-roam-node-find
  "\C-c n i" 'org-roam-node-insert
- "\C-c n d" 'org-roam-dailies-goto-today
+ "\C-c n t" 'org-roam-dailies-goto-today
+ "\C-c n d" 'org-roam-dailies-capture-today
  "\C-c n c" 'org-roam-capture
  "\C-c n l" 'org-roam-buffer-toggle)
 
@@ -30,7 +31,11 @@
       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: Project")
       :unnarrowed t)))
 
-(setq org-roam-dailies-capture-templates
-  '(("d" "default" entry "* %?" :if-new
-    (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d> - Lab Notebook\n"))))
+;; (setq org-roam-dailies-capture-templates
+;;   '(("d" "default" entry "* %?" :if-new
+;;     (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d> - Lab Notebook\n"))))
 
+(setq org-roam-dailies-capture-templates
+      '(("d" "default" entry
+         "* %?"
+         :target (file+datetree "journal.org" day))))

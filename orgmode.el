@@ -17,8 +17,8 @@
 (after! org
   (setq org-return-follows-link t)
    (setq org-agenda-include-diary t
-       ;;org-agenda-start-on-weekday 1
-       org-agenda-span 'week
+       ;;org-agenda-start-on-weekday nil
+       ;;org-agenda-span 'week
        org-agenda-log-mode-items (quote (closed))
        org-agenda-persistent-filter t
        org-agenda-skip-scheduled-if-deadline-is-shown (quote not-today)
@@ -29,18 +29,17 @@
        org-agenda-start-with-clockreport-mode nil
        org-agenda-clockreport-parameter-plist '(:link t :maxlevel 6 :fileskip0 t :compact t :narrow 80 :score 0)
        org-pretty-entities t
-       org-clock-idle-time 15
        org-tags-column 0
        org-log-done 'time
        org-log-into-drawer t
        org-log-redeadline 'note
-       org-habit-show-all-today t
+      ;; org-habit-show-all-today t
        org-agenda-text-search-extra-files (quote (agenda-archives))
        org-agenda-window-setup (quote current-window))
   (setq org-attach-id-dir  "attach/")
   (setq org-attach-auto-tag nil)
   (add-to-list 'org-tags-exclude-from-inheritance "project")
-  (add-to-list 'org-modules 'org-habit)
+  ;;(add-to-list 'org-modules 'org-habit)
   (setq org-stuck-projects
       '("+project/-MAYBE-DONE" ("NEXT" "TODO")))
 
