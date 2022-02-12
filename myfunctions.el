@@ -11,6 +11,11 @@
   (interactive)
   (shell-command "~/Library/Scripts/Applications/Emacs/Deploy-daily.baty.net.sh"))
 
+(defun jab/deploy-blog ()
+  "Deploy website to baty.blog"
+  (interactive)
+  (shell-command "cd ~/sites/baty.blog & make deploy"))
+
 (defun jab/markregion ()
   "Add a 'mark' macro to the current region (for Hugo)"
   (interactive)
