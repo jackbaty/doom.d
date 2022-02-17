@@ -38,7 +38,7 @@
        org-agenda-window-setup (quote current-window))
   (setq org-attach-id-dir  "attach/")
   (setq org-attach-auto-tag nil)
-  (add-to-list 'org-tags-exclude-from-inheritance "project")
+  ;;(add-to-list 'org-tags-exclude-from-inheritance "project")
   ;;(add-to-list 'org-modules 'org-habit)
   (setq org-stuck-projects
       '("+project/-MAYBE-DONE" ("NEXT" "TODO")))
