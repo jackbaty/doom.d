@@ -2,7 +2,6 @@
 (setq
  org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
 
-
 (setq org-agenda-files (list
                    (concat org-directory "todo.org")
                    (concat org-directory "projects.org")
@@ -74,11 +73,11 @@
            "* %?\n%U" :prepend t)
           ("d" "Doing now" entry
            (file+headline ,(concat org-directory "doing.org") "Currently")
-           "* %U %?")
+           "* %U %?" :prepend t)
           ("n" "Add a Note" entry
            (file+headline ,(concat org-directory "notes.org") "Notes")
            "* %?\n%U" :prepend t))))
- ;; (load "org-devonthink")
+ (load "org-devonthink")
  ;; (load "org-maillink")
 
 
@@ -135,3 +134,5 @@
 
 ;; Possible fix for ox-hugo hanging on save
 (setq org-element-use-cache nil)
+
+(setq org-export-with-broken-links t)
