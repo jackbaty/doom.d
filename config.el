@@ -30,6 +30,8 @@
 ;;(setq doom-theme 'modus-operandi)
 (setq doom-theme 'modus-vivendi)
 ;;(setq doom-theme 'doom-tomorrow-day)
+;;
+(setq modus-themes-completions '((t background intense accented)))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -39,6 +41,8 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type nil)
 
+
+(setq gc-cons-threshold 100000000)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -57,7 +61,7 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-
+(add-load-path! "~/Sync/emacs/lisp")
 
 (setq fancy-splash-image (concat doom-private-dir "splash.png"))
 
