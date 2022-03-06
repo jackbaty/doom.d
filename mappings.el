@@ -7,3 +7,6 @@
 
 (map!
  "\C-c w m" 'copy-as-format-markdown)
+
+(map!
+ "s-t" 'tab-new)
