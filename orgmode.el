@@ -12,6 +12,9 @@
                    (concat org-directory "doing.org")
                    (concat org-directory "daybook.org")))
 
+(setq org-refile-targets '((nil :maxlevel . 2)
+                                (org-agenda-files :maxlevel . 2)))
+
 
 (after! org
   (setq org-return-follows-link t)
