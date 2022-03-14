@@ -24,7 +24,7 @@
        org-agenda-log-mode-items (quote (closed))
        org-agenda-persistent-filter t
        org-agenda-skip-scheduled-if-deadline-is-shown (quote not-today)
-       org-agenda-skip-deadline-prewarning-if-scheduled t
+       org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled
        org-agenda-skip-scheduled-if-done t
        org-agenda-skip-deadline-if-done t
        org-deadline-warning-days 7
