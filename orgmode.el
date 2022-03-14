@@ -139,3 +139,37 @@
 (setq org-element-use-cache nil)
 
 (setq org-export-with-broken-links t)
+
+;; Create ICS calendar
+
+;; Setting variables for the ics file path
+(setq org-agenda-private-local-path "~/tmp/agenda.ics")
+(setq org-agenda-private-remote-path "/sshx:jbaty@server01.baty.net:apps/daily.baty.net/public_html/agenda.ics")
+
+;; Define a custom command to save the org agenda to a file
+(setq org-agenda-custom-commands
+      `(("X" agenda "" nil ,(list org-agenda-private-local-path))))
+
+(defun org-agenda-export-to-ics ()
+    (interactive)
+  ;;(set-org-agenda-files)
+  ;; Run all custom agenda commands that have a file argument.
+  (org-batch-store-agenda-views)
+
+  ;; Org mode correctly exports TODO keywords as VTODO events in ICS.
+  ;; However, some proprietary calendars do not really work with
+  ;; standards (looking at you Google), so VTODO is ignored and only
+  ;; VEVENT is read.
+  (with-current-buffer (find-file-noselect org-agenda-private-local-path)
+    (goto-char (point-min))
+    (while (re-search-forward "VTODO" nil t)
+      (replace-match "VEVENT"))
+    (save-buffer))
+
+;; Copy the ICS file to a remote server (Tramp paths work).
+  (copy-file org-agenda-private-local-path org-agenda-private-remote-path t))
+
+
+;; Set a better default filter for Elfeed
+(after! elfeed
+  (setq elfeed-search-filter "@1-month-ago +unread"))
