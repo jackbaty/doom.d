@@ -86,9 +86,9 @@
 (global-visual-line-mode)
 (setq +zen-text-scale 0.8)  ;; Not quite so large, there Doom
 
-(setq tab-bar-show t)
 (setq tab-bar-mode t)
 (setq tab-bar-new-tab-choice "*scratch*") ;; new tabs open scratch buffer
+(setq tab-bar-show t)
 
 (cua-mode 1) ;; familiar system copy/paste I hope
 
