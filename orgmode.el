@@ -10,7 +10,9 @@
                    (concat org-directory "events.org")
                    (concat org-directory "food.org")
                    (concat org-directory "doing.org")
-                   (concat org-directory "daybook.org")))
+
+                   (concat org-directory "daybook.org")
+                   "~/Library/Mobile Documents/iCloud~is~workflow~my~workflows/Documents/voicenotes.org"))
 
 (setq org-refile-targets '((nil :maxlevel . 2)
                                 (org-agenda-files :maxlevel . 2)))
@@ -27,7 +29,8 @@
        org-agenda-skip-deadline-prewarning-if-scheduled 'pre-scheduled
        org-agenda-skip-scheduled-if-done t
        org-agenda-skip-deadline-if-done t
-       org-deadline-warning-days 7
+       org-agenda-todo-ignore-scheduled 'future
+       org-deadline-warning-days 3
        org-agenda-start-with-clockreport-mode nil
        org-agenda-clockreport-parameter-plist '(:link t :maxlevel 6 :fileskip0 t :compact t :narrow 80 :score 0)
        org-pretty-entities t
@@ -45,9 +48,9 @@
   (setq org-stuck-projects
       '("+project/-MAYBE-DONE" ("NEXT" "TODO")))
 
-  (setq org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "STRT(s)" "WAIT(w)" "HOLD(h)" "IDEA(i)" "|" "DONE(d)" "CANC(k)")
+ (setq org-todo-keywords '((sequence "TODO(t)" "STRT(s)" "WAIT(w)" "HOLD(h)" "IDEA(i)" "|" "DONE(d)" "CANC(k)")
  (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)")
- (sequence "|" "OKAY(o)" "YES(y)" "NO(n)")))
+ (type "PROJ(p)" "PROJ_DONE(D)")))
 
 
   (setq org-capture-templates
@@ -81,13 +84,26 @@
            (file+headline ,(concat org-directory "notes.org") "Notes")
            "* %?\n%U" :prepend t))))
  (load "org-devonthink")
- ;; (load "org-maillink")
+ (load "org-maillink")
 
 
 (setq org-agenda-custom-commands
       '(("%" "Appointments" agenda* "Today's appointments"
          ((org-agenda-span 1)
-          (org-agenda-max-entries 3)))))
+          (org-agenda-max-entries 3)))
+        ("D" "Daily Action List" agenda ""
+                  ((org-agenda-span 1)
+                   (org-agenda-sorting-strategy
+                    (quote
+                     ((agenda time-up category-up tag-up))))
+                   (org-deadline-warning-days 7))
+                  nil)
+        ("n" "Agenda / STRT / NEXT"
+          ((agenda "" nil)
+           (todo "STRT" nil)
+           (todo "NEXT" nil))
+          nil)))
+
 
   (setq org-download-method 'attach
     org-download-image-dir "attach/"
@@ -142,13 +158,14 @@
 
 ;; Create ICS calendar
 
+
 ;; Setting variables for the ics file path
 (setq org-agenda-private-local-path "~/tmp/agenda.ics")
 (setq org-agenda-private-remote-path "/sshx:jbaty@server01.baty.net:apps/daily.baty.net/public_html/agenda.ics")
 
 ;; Define a custom command to save the org agenda to a file
-(setq org-agenda-custom-commands
-      `(("X" agenda "" nil ,(list org-agenda-private-local-path))))
+(add-to-list 'org-agenda-custom-commands
+     '("X" agenda "" nil ,(list org-agenda-private-local-path)))
 
 (defun org-agenda-export-to-ics ()
     (interactive)
@@ -173,3 +190,4 @@
 ;; Set a better default filter for Elfeed
 (after! elfeed
   (setq elfeed-search-filter "@1-month-ago +unread"))
+
