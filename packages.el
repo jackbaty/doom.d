@@ -57,3 +57,5 @@
 
 (package! orderless
   :recipe (:host github :repo "oantolin/orderless"))
+
+(package! dirvish)
