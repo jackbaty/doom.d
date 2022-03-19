@@ -31,37 +31,25 @@
       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: Project")
       :unnarrowed t)))
 
-;; (setq org-roam-dailies-capture-templates
-;;   '(("d" "default" entry "* %?" :if-new
-;;     (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d> - Lab Notebook\n"))))
-
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry
          "* %?"
          :target (file+datetree "journal.org" day))))
 
-(defun roam-sitemap (title list)
-  (concat "#+OPTIONS: ^:nil author:nil html-postamble:nil\n"
-          "#+SETUPFILE: ./simple_inline.theme\n"
-          "#+TITLE: " title "\n\n"
-          (org-list-to-org list) "\nfile:sitemap.svg"))
-
 ;; Publishing
+(defun roam-sitemap (title list)
+  (concat "#+OPTIONS: ^:nil author:nil html-postamble:t\n"
+          "#+TITLE: " title "\n\n"
+          (org-list-to-org list)))
 
-(setq my-publish-time 0)   ; see the next section for context
-(defun roam-publication-wrapper (plist filename pubdir)
-  (org-roam-graph)
-  (org-html-publish-to-html plist filename pubdir)
-  (setq my-publish-time (cadr (current-time))))
 
 (setq org-publish-project-alist
   '(("roam"
      :base-directory "~/org/roam/public"
+     :html-html5-fancy t
      :auto-sitemap t
-     :sitemap-function roam-sitemap
      :sitemap-title "Roam notes"
-     :publishing-function roam-publication-wrapper
-     :publishing-directory "~/roam-export"
+     :publishing-function org-html-publish-to-html
+     :publishing-directory "~/sites/roam/public_html"
      :section-number nil
-     :table-of-contents nil
-     :style "<link rel=\"stylesheet\" href=\"../other/mystyle.cs\" type=\"text/css\">")))
+     :table-of-contents nil)))

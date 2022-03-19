@@ -187,6 +187,12 @@
 (after! org-download
   (setq org-download-method 'directory))
 
+(setq org-html-postamble t)
+(setq org-html-postamble-format
+        '(("en" "<hr>\n<p>Author: <strong><a href=\"https://baty.net\">Jack Baty</a></strong> <a href='mailto:%e' rel='author'>💌</a> | Last updated: %C</p>")))
+
+
+
 ;; Set a better default filter for Elfeed
 (after! elfeed
   (setq elfeed-search-filter "@1-month-ago +unread"))
