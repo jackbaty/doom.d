@@ -96,9 +96,9 @@
   :custom (completion-styles '(orderless)))
 
 (load! "orgmode")
-(load! "orgroam")
-(load! "latex")
-(load! "mail")
+(load! "+orgroam")
+(load! "+latex")
+(load! "+mail")
 (load! "mappings")
 (load! "myfunctions")
 (load! "+blog")

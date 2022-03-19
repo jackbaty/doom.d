@@ -49,6 +49,9 @@
   '(org-attach-id-ts-folder-format
     org-attach-id-uuid-folder-format))
 
+  (setq org-download-image-dir (concat "img/"  (format-time-string "%Y") "/")
+        org-download-image-org-width 600
+        org-download-heading-lvl 1)
 
   (add-to-list 'org-tags-exclude-from-inheritance "project")
   ;;(add-to-list 'org-modules 'org-habit)
@@ -107,11 +110,6 @@
         ("X" agenda "" nil ,"~/tmp/agenda.ics")))
 
 
-  (setq org-download-method 'directory
-    org-download-image-dir (concat "img/"  (format-time-string "%Y") "/")
-    org-download-image-org-width 600
-    org-download-heading-lvl 1)
-
   (setq org-journal-dir "~/org/journal"
     org-journal-file-type 'monthly
     org-journal-file-format "%Y-%m.org"
@@ -125,6 +123,7 @@
 
 ;;(setq org-id-ts-format "%Y%m%d%H%M")
 ;;(setq org-id-method 'ts)
+
 
 ;; Load appointments
 ;;(org-agenda-to-appt)
@@ -185,6 +184,8 @@
 ;; Copy the ICS file to a remote server (Tramp paths work).
   (copy-file org-agenda-private-local-path org-agenda-private-remote-path t))
 
+(after! org-download
+  (setq org-download-method 'directory))
 
 ;; Set a better default filter for Elfeed
 (after! elfeed

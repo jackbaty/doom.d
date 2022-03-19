@@ -39,3 +39,29 @@
       '(("d" "default" entry
          "* %?"
          :target (file+datetree "journal.org" day))))
+
+(defun roam-sitemap (title list)
+  (concat "#+OPTIONS: ^:nil author:nil html-postamble:nil\n"
+          "#+SETUPFILE: ./simple_inline.theme\n"
+          "#+TITLE: " title "\n\n"
+          (org-list-to-org list) "\nfile:sitemap.svg"))
+
+;; Publishing
+
+(setq my-publish-time 0)   ; see the next section for context
+(defun roam-publication-wrapper (plist filename pubdir)
+  (org-roam-graph)
+  (org-html-publish-to-html plist filename pubdir)
+  (setq my-publish-time (cadr (current-time))))
+
+(setq org-publish-project-alist
+  '(("roam"
+     :base-directory "~/org/roam/public"
+     :auto-sitemap t
+     :sitemap-function roam-sitemap
+     :sitemap-title "Roam notes"
+     :publishing-function roam-publication-wrapper
+     :publishing-directory "~/roam-export"
+     :section-number nil
+     :table-of-contents nil
+     :style "<link rel=\"stylesheet\" href=\"../other/mystyle.cs\" type=\"text/css\">")))
