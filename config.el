@@ -28,10 +28,10 @@
 ;; `load-theme' function. This is the default:
 ;;(setq doom-theme 'doom-palenight)
 ;;(setq doom-theme 'modus-operandi)
-(setq doom-theme 'modus-vivendi)
-;;(setq doom-theme 'doom-tomorrow-day)
+;;(setq doom-theme 'modus-vivendi)
+(setq doom-theme 'doom-one-light)
 ;;
-(setq modus-themes-completions '((t background intense accented)))
+;;(setq modus-themes-completions '((t background intense accented)))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -101,6 +101,7 @@
 (load! "mail")
 (load! "mappings")
 (load! "myfunctions")
+(load! "+blog")
 
 ;;(desktop-save-mode 1)
 

@@ -55,3 +55,17 @@ this can take a second or two to execute."
     (if (string-equal "" $path)
         (message "No Finder window found.")
       (dired $path))))
+
+(defun jab/generate-agenda-weekly-review ()
+  "Generate the agenda for the weekly review"
+  (interactive)
+  (let ((span-days 24)
+        (offset-past-days 10))
+    (message "Generating agenda for %s days starting %s days ago"
+             span-days offset-past-days)
+    (org-agenda-list nil (- (time-to-days (date-to-time
+                                           (current-time-string)))
+                            offset-past-days)
+                     span-days)
+    (org-agenda-log-mode)
+    (goto-char (point-min))))

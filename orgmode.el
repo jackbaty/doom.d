@@ -43,14 +43,20 @@
        org-agenda-window-setup (quote current-window))
   (setq org-attach-id-dir  "attach/")
   (setq org-attach-auto-tag nil)
-  ;;(add-to-list 'org-tags-exclude-from-inheritance "project")
+  (setq org-id-method 'ts)
+  ;; for sane attachment paths/names
+  (setq org-attach-id-to-path-function-list
+  '(org-attach-id-ts-folder-format
+    org-attach-id-uuid-folder-format))
+
+
+  (add-to-list 'org-tags-exclude-from-inheritance "project")
   ;;(add-to-list 'org-modules 'org-habit)
   (setq org-stuck-projects
       '("+project/-MAYBE-DONE" ("NEXT" "TODO")))
 
- (setq org-todo-keywords '((sequence "TODO(t)" "STRT(s)" "WAIT(w)" "HOLD(h)" "IDEA(i)" "|" "DONE(d)" "CANC(k)")
- (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)")
- (type "PROJ(p)" "PROJ_DONE(D)")))
+ (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "STRT(s)" "WAIT(w)" "HOLD(h)" "IDEA(i)" "|" "DONE(d)" "CANC(k)")
+ (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)")))
 
 
   (setq org-capture-templates
@@ -98,17 +104,13 @@
                      ((agenda time-up category-up tag-up))))
                    (org-deadline-warning-days 7))
                   nil)
-        ("n" "Agenda / STRT / NEXT"
-          ((agenda "" nil)
-           (todo "STRT" nil)
-           (todo "NEXT" nil))
-          nil)))
+        ("X" agenda "" nil ,"~/tmp/agenda.ics")))
 
 
-  (setq org-download-method 'attach
-    org-download-image-dir "attach/"
+  (setq org-download-method 'directory
+    org-download-image-dir (concat "img/"  (format-time-string "%Y") "/")
     org-download-image-org-width 600
-    org-download-heading-lvl nil)
+    org-download-heading-lvl 1)
 
   (setq org-journal-dir "~/org/journal"
     org-journal-file-type 'monthly
@@ -163,9 +165,6 @@
 (setq org-agenda-private-local-path "~/tmp/agenda.ics")
 (setq org-agenda-private-remote-path "/sshx:jbaty@server01.baty.net:apps/daily.baty.net/public_html/agenda.ics")
 
-;; Define a custom command to save the org agenda to a file
-(add-to-list 'org-agenda-custom-commands
-     '("X" agenda "" nil ,(list org-agenda-private-local-path)))
 
 (defun org-agenda-export-to-ics ()
     (interactive)
