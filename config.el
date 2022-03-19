@@ -95,7 +95,7 @@
 (use-package! orderless
   :custom (completion-styles '(orderless)))
 
-(load! "orgmode")
+(load! "+orgmode")
 (load! "+orgroam")
 (load! "+latex")
 (load! "+mail")
