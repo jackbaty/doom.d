@@ -78,8 +78,8 @@
 
 (add-load-path! "~/icloud-drive/emacs/lisp")
 
-(add-to-list 'default-frame-alist '(height . 60))
-(add-to-list 'default-frame-alist '(width . 150))
+(setq initial-frame-alist '((top . 30) (left . 600) (width . 212) (height . 81)))
+
 
 ;;(setq bookmark-default-file "~/icloud-drive/emacs/bookmarks")
 
@@ -90,7 +90,7 @@
 (setq tab-bar-new-tab-choice "*scratch*") ;; new tabs open scratch buffer
 (setq tab-bar-show t)
 
-(cua-mode 1) ;; familiar system copy/paste I hope
+;;(cua-mode 1) ;; familiar system copy/paste I hope
 
 (use-package! orderless
   :custom (completion-styles '(orderless)))
