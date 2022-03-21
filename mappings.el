@@ -10,3 +10,6 @@
 
 (map!
  "s-t" 'tab-new)
+
+
+(map! :leader :desc "Open Elfeed" :n "o r" #'=rss)
