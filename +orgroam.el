@@ -13,23 +13,18 @@
 
 (setq org-roam-directory "~/org/roam")
 
+;; (setq org-roam-capture-templates
+;;    '(("d" "default" plain
+;;       "%?"
+;;       :if-new (file+head "<%Y%m%d>-${slug}.org" "#+title: ${title}\n")
+;;       :unnarrowed t)
+;;       :unnarrowed t))
+
 (setq org-roam-capture-templates
-   '(("d" "default" plain
-      "%?"
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
-      :unnarrowed t)
-   ("l" "log entry" entry
-      "* %u %?"
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
-      :unnarrowed t)
-   ("p" "person" plain
-      (file "~/org/roam/templates/PersonTemplate.org")
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: Person")
-      :unnarrowed t)
-   ("P" "project" plain
-      (file "~/org/roam/templates/ProjectTemplate.org")
-      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: Project")
-      :unnarrowed t)))
+  '(("d" "default" plain "%?"
+    :target (file+head "%<%Y%m%d>-${slug}.org"
+                       "#+title: ${title}\n#+index: \n#+setupfile: ~/org/_SETUP/org-roam-publish-fancy.setup")
+    :unnarrowed t)))
 
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry
@@ -43,13 +38,3 @@
           (org-list-to-org list)))
 
 
-(setq org-publish-project-alist
-  '(("roam"
-     :base-directory "~/org/roam/public"
-     :html-html5-fancy t
-     :auto-sitemap t
-     :sitemap-title "Roam notes"
-     :publishing-function org-html-publish-to-html
-     :publishing-directory "~/sites/roam/public_html"
-     :section-number nil
-     :table-of-contents nil)))

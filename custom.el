@@ -10,7 +10,10 @@
  '(jdee-db-spec-breakpoint-face-colors (cons "#f2f2f2" "#8e908c"))
  '(objed-cursor-color "#c82829")
  '(rustic-ansi-faces
-   ["#ffffff" "#c82829" "#718c00" "#eab700" "#4271ae" "#c678dd" "#8abeb7" "#4d4d4c"]))
+   ["#ffffff" "#c82829" "#718c00" "#eab700" "#4271ae" "#c678dd" "#8abeb7" "#4d4d4c"])
+ '(safe-local-variable-values
+   '((org-attach-id-directory . img/)
+     (org-attach-directory . img/))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

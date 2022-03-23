@@ -41,17 +41,18 @@
       ;; org-habit-show-all-today t
        org-agenda-text-search-extra-files (quote (agenda-archives))
        org-agenda-window-setup (quote current-window))
-  (setq org-attach-id-dir  "attach/")
-  (setq org-attach-auto-tag nil)
-  (setq org-id-method 'ts)
-  ;; for sane attachment paths/names
-  (setq org-attach-id-to-path-function-list
-  '(org-attach-id-ts-folder-format
-    org-attach-id-uuid-folder-format))
 
-  (setq org-download-image-dir (concat "img/"  (format-time-string "%Y") "/")
-        org-download-image-org-width 600
-        org-download-heading-lvl 1)
+      (setq org-attach-preferred-new-method 'dir)
+      (setq org-attach-id-dir  "files/")
+      (setq org-attach-dir-relative t)
+      ;;   (setq org-attach-auto-tag nil)
+      (setq org-attach-store-link-p t)
+      (setq org-id-method 'ts)
+      ;; for sane attachment paths/names
+      (setq org-attach-id-to-path-function-list
+           '(org-attach-id-ts-folder-format
+             org-attach-id-uuid-folder-format))
+
 
   (add-to-list 'org-tags-exclude-from-inheritance "project")
   ;;(add-to-list 'org-modules 'org-habit)
@@ -184,16 +185,49 @@
 ;; Copy the ICS file to a remote server (Tramp paths work).
   (copy-file org-agenda-private-local-path org-agenda-private-remote-path t))
 
+;; Org Download and Attachments
+(setq org-download-image-dir  "files/")
 (after! org-download
-  (setq org-download-method 'directory))
+   (setq org-download-image-org-width 800)
+   (setq org-download-image-html-width 800)
+   (setq org-download-heading-lvl 1)
+   (setq org-download-timestamp "%Y%m%d-")
+   (setq org-download-method 'attach))
 
 (setq org-html-postamble t)
 (setq org-html-postamble-format
         '(("en" "<hr>\n<p>Author: <strong><a href=\"https://baty.net\">Jack Baty</a></strong> <a href='mailto:%e' rel='author'>💌</a> | Last updated: %C</p>")))
 
+(setq org-publish-project-alist
+  '(("roam"
+     :base-directory "~/org/roam/public"
+     :html-html5-fancy t
+     :auto-sitemap t
+     :org-publish-sitemap-sort-files "anti-chronologically" ;; or "alphabetically"
+     :base-extension "org"
+     :sitemap-title ""
+     :html-home/up-format "<div class=\"top-nav\"><a href=\"/index.html\">Home</a></div>"
+     :makeindex t
+     :recursive t
+     :publishing-function org-html-publish-to-html
+     :publishing-directory "~/sites/roam/public_html"
+     :section-number nil
+     :table-of-contents nil)
+    ("roam-static"
+     :base-directory "~/org/roam/public"
+     :base-extension "css\\|js\\|png\\|jpg\\|jpeg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+     :publishing-directory "~/sites/roam/public_html"
+     :recursive t
+     :publishing-function org-publish-attachment)
+    ("notes.baty.net" :components ("roam" "roam-static"))))
 
 
-;; Set a better default filter for Elfeed
+;; Elfeed
+(add-hook! 'elfeed-search-mode-hook 'elfeed-update)
 (after! elfeed
-  (setq elfeed-search-filter "@1-month-ago +unread"))
+  (setq elfeed-search-filter "@1-month-ago +unread")
+  (setq elfeed-search-remain-on-entry t)
+  (setq elfeed-goodies/entry-pane-position 'bottom))
 
+;; See https://github.com/hlissner/doom-emacs/issues/5714
+(defalias '+org--restart-mode-h #'ignore)
