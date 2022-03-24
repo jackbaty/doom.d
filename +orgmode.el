@@ -74,7 +74,7 @@
            :empty-lines 1)
           ("l" "Current file log entry" entry
            (file+olp+datetree buffer-file-name)
-           "* %? \n")
+           "* %u %? \n" :tree-type month)
           ("D" "Daybook" entry
            (file+olp+datetree ,(concat org-directory "daybook.org"))
            "* %?\n%t\n" :time-prompt t)
