@@ -29,7 +29,7 @@
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry
          "* %?"
-         :target (file+datetree "journal.org" day))))
+         :target (file+datetree "journal.org" month))))
 
 ;; Publishing
 (defun roam-sitemap (title list)
