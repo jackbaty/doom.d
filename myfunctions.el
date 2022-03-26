@@ -69,3 +69,12 @@ this can take a second or two to execute."
                      span-days)
     (org-agenda-log-mode)
     (goto-char (point-min))))
+
+;; Align comments in marked region
+;; Via https://stackoverflow.com/a/20278032
+(defun jab/align-comments (beginning end)
+  "Align comments within marked region."
+  (interactive "*r")
+  (let (indent-tabs-mode align-to-tab-stop)
+    (align-regexp beginning end (concat "\\(\\s-*\\)"
+                                        (regexp-quote comment-start)))))
