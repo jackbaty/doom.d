@@ -13,23 +13,24 @@
 
 (setq org-roam-directory "~/org/roam")
 
-;; (setq org-roam-capture-templates
-;;    '(("d" "default" plain
-;;       "%?"
-;;       :if-new (file+head "<%Y%m%d>-${slug}.org" "#+title: ${title}\n")
-;;       :unnarrowed t)
-;;       :unnarrowed t))
-
 (setq org-roam-capture-templates
   '(("d" "default" plain "%?"
     :target (file+head "%<%Y%m%d>-${slug}.org"
-                       "#+title: ${title}\n#+index: \n#+setupfile: ~/org/_SETUP/org-roam-publish-fancy.setup")
+                       "#+title: ${title}\n#+index: \n#+setupfile: ~/org/_SETUP/EXPORT\n#+setupfile: ~/org/_SETUP/org-roam-publish-fancy.setup")
+    :unnarrowed t)
+    ("p"                                               ;; Key
+     "project"                                         ;; Description
+     plain                                             ;; Type
+     (file "~/org/roam/templates/ProjectTemplate.org") ;; Template
+    :target (file "projects/%<%Y%m%d>-${slug}.org")             ;; Target
     :unnarrowed t)))
+
+
 
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry
          "* %?"
-         :target (file+datetree "journal.org" month))))
+         :target (file+datetree "journal.org" day))))
 
 ;; Publishing
 (defun roam-sitemap (title list)
