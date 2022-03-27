@@ -199,7 +199,7 @@
         '(("en" "<hr>\n<p>Author: <strong><a href=\"https://baty.net\">Jack Baty</a></strong> <a href='mailto:%e' rel='author'>💌</a> | Last updated: %C</p>")))
 
 (setq org-publish-project-alist
-  '(("roam"
+  '(("roam-notes"
      :base-directory "~/org/roam/public"
      :html-html5-fancy t
      :auto-sitemap t
@@ -219,7 +219,7 @@
      :publishing-directory "~/sites/roam/public_html"
      :recursive t
      :publishing-function org-publish-attachment)
-    ("notes.baty.net" :components ("roam" "roam-static"))))
+    ("notes.baty.net" :components ("roam-notes" "roam-static"))))
 
 
 ;; Elfeed
