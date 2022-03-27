@@ -18,11 +18,17 @@
     :target (file+head "%<%Y%m%d>-${slug}.org"
                        "#+title: ${title}\n#+index: \n#+setupfile: ~/org/_SETUP/EXPORT\n#+setupfile: ~/org/_SETUP/org-roam-publish-fancy.setup")
     :unnarrowed t)
+    ("P"                                               ;; Key
+     "Public (published in /public)"                   ;; Description
+     plain                                             ;; Type
+     (file "~/org/roam/templates/PublicTemplate.org")  ;; Template
+    :target (file "public/${slug}.org")                ;; Target
+    :unnarrowed t)
     ("p"                                               ;; Key
      "project"                                         ;; Description
      plain                                             ;; Type
      (file "~/org/roam/templates/ProjectTemplate.org") ;; Template
-    :target (file "projects/%<%Y%m%d>-${slug}.org")             ;; Target
+    :target (file "projects/%<%Y%m%d>-${slug}.org")    ;; Target
     :unnarrowed t)))
 
 
