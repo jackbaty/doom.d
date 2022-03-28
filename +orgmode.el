@@ -90,6 +90,11 @@
           ("d" "Doing now" entry
            (file+headline ,(concat org-directory "doing.org") "Currently")
            "* %U %?" :prepend t)
+         ("m" "Email Workflow")
+           ("mf" "Follow Up" entry (file+olp "~/org/todo.org" "Inbox")
+            "* TODO Follow up with %:fromname on %a\nSCHEDULED:%t\n\n%i")
+           ("mr" "Read Later" entry (file+olp "~/org/todo.org" "Read Later")
+            "* TODO Read %:subject\nSCHEDULED:%t\n%a\n\n%i")
           ("n" "Add a Note" entry
            (file+headline ,(concat org-directory "notes.org") "Notes")
            "* %?\n%U" :prepend t))))

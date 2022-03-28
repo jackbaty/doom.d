@@ -78,3 +78,4 @@ this can take a second or two to execute."
   (let (indent-tabs-mode align-to-tab-stop)
     (align-regexp beginning end (concat "\\(\\s-*\\)"
                                         (regexp-quote comment-start)))))
+
