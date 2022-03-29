@@ -98,8 +98,7 @@
           ("n" "Add a Note" entry
            (file+headline ,(concat org-directory "notes.org") "Notes")
            "* %?\n%U" :prepend t))))
- (load "org-devonthink")
- (load "org-maillink")
+
 
 
 (setq org-agenda-custom-commands
@@ -226,6 +225,16 @@
      :publishing-function org-publish-attachment)
     ("notes.baty.net" :components ("roam-notes" "roam-static"))))
 
+(after! org
+;; custom link types
+(org-link-set-parameters "brain"
+  :follow (lambda (path) (shell-command (concat "open brain:" path))))
+(org-link-set-parameters "x-devonthink-item"
+  :follow (lambda (path) (shell-command (concat "open x-devonthink-item:" path))))
+(org-link-set-parameters "message"
+  :follow (lambda (path) (shell-command (concat "open \"message:" path "\"")))))
+
+;;(load "org-maillink")
 
 ;; Elfeed
 (add-hook! 'elfeed-search-mode-hook 'elfeed-update)
