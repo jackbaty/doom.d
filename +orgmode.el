@@ -85,7 +85,7 @@
            (file+datetree+prompt "~/org/food.org")
             "* %?\n%t\n%^{category}p%^{Type}p")
           ("s" "Add to Spark File" entry
-           (file+headline ,(concat org-directory "sparkfile.org") "2021")
+           (file+headline ,(concat org-directory "sparkfile.org") "2022")
            "* %?\n%U" :prepend t)
           ("d" "Doing now" entry
            (file+headline ,(concat org-directory "doing.org") "Currently")
