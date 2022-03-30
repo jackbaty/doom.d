@@ -29,7 +29,7 @@
 ;;(setq doom-theme 'doom-palenight)
 ;;(setq doom-theme 'modus-operandi)
 ;;(setq doom-theme 'modus-vivendi)
-(setq doom-theme 'doom-one-light)
+;;(setq doom-theme 'doom-one-light)
 ;;
 ;;(setq modus-themes-completions '((t background intense accented)))
 
