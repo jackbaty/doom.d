@@ -55,3 +55,14 @@
 ;; this setting allows to re-sync and re-index mail
 ;; by pressing U
 (setq mu4e-get-mail-command  "mbsync -a")
+
+(defun jab/mu4e-copy-message-at-point (&optional dir)
+  "Copy message at point to somewhere else as <date>_<subject>.eml."
+  (interactive)
+  (let* ((msg (mu4e-message-at-point))
+         (target (format "%s_%s.eml"
+                         (format-time-string "%F" (mu4e-message-field msg :date))
+                         (or (mu4e-message-field msg :subject) "No subject"))))
+    (copy-file
+     (mu4e-message-field msg :path)
+     (format "%s/%s" (or dir (read-directory-name "Copy message to: ")) target) 1)))
