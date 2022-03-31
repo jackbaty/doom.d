@@ -91,7 +91,7 @@
            (file+headline ,(concat org-directory "doing.org") "Currently")
            "* %U %?" :prepend t)
          ("m" "Email Workflow")
-           ("mf" "Follow Up" entry (file+olp "~/org/todo.org" "Inbox")
+           ("mf" "Follow Up" entry (file+olp "~/org/todo.org" "Follow Up")
             "* TODO Follow up with %:fromname on %a\nSCHEDULED:%t\n\n%i")
            ("mr" "Read Later" entry (file+olp "~/org/todo.org" "Read Later")
             "* TODO Read %:subject\nSCHEDULED:%t\n%a\n\n%i")
@@ -191,12 +191,11 @@
 
 ;; Org Download and Attachments
 (setq org-download-image-dir  "files/")
-(after! org-download
-   (setq org-download-image-org-width 800)
-   (setq org-download-image-html-width 800)
-   (setq org-download-heading-lvl 1)
-   (setq org-download-timestamp "%Y%m%d-")
-   (setq org-download-method 'attach))
+(setq org-download-image-org-width 800)
+(setq org-download-image-html-width 800)
+(setq org-download-heading-lvl 1)
+(setq org-download-timestamp "%Y%m%d-")
+(setq org-download-method 'attach)
 
 (setq org-html-postamble t)
 (setq org-html-postamble-format
