@@ -25,3 +25,14 @@
 ;;                  :password ,password
 ;;                  :default-categories ("Misc"))))
 ;;   (setq org2blog/wp-blog-alist config))
+;;
+
+
+
+
+;; Possible fix for ox-hugo hanging on save
+(setq org-element-use-cache nil)
+
+;; For ox-hugo shortcode
+(with-eval-after-load 'ox-hugo
+  (add-to-list 'org-hugo-special-block-type-properties '("sidenote" . (:trim-pre t :trim-post t))))

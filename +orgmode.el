@@ -157,8 +157,6 @@
 
 (setq org-agenda-category-icon-alist nil)
 
-;; Possible fix for ox-hugo hanging on save
-(setq org-element-use-cache nil)
 
 (setq org-export-with-broken-links t)
 
@@ -244,3 +242,10 @@
 
 ;; See https://github.com/hlissner/doom-emacs/issues/5714
 (defalias '+org--restart-mode-h #'ignore)
+
+(with-eval-after-load 'ox-hugo
+  (add-to-list 'org-hugo-special-block-type-properties '("sidenote" . (:trim-pre t :trim-post t))))
+
+;; Temporary fix. See https://notes.baty.net/notes/possible-workaround-for-ox-hugo-error-during-exports/
+(with-eval-after-load 'ox-hugo
+  (setq org-hugo--preprocess-buffer nil))
