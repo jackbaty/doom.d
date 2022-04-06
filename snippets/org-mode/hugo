@@ -1,17 +1,15 @@
 # -*- mode: snippet -*-
-# name: Hugo
-# key: hugo
-# uuid: hugo
+# name: Hugo Daily
+# key: daily
+# uuid: daily
 # --
-** TODO ${1:title}
+*** TODO ${1:title}
 :PROPERTIES:
 :EXPORT_HUGO_BUNDLE: ${1:$(replace-regexp-in-string " " "-" (downcase yas-text))}
 :EXPORT_FILE_NAME: index
 :EXPORT_FILE_NAME: `(format-time-string "%Y-%m-%d-%A")`
 :EXPORT_HUGO_SLUG: `(format-time-string "%Y-%m-%d")`
-:EXPORT_DESCRIPTION:
 :EXPORT_HUGO_WEIGHT: 1
-:EXPORT_DATE:
 :END:
 
 $0
