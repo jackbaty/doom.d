@@ -43,6 +43,7 @@
 
 
 (setq gc-cons-threshold 100000000)
+(setq confirm-kill-emacs nil) ;; When I say quit, you quit.
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
