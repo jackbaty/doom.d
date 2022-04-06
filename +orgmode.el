@@ -247,5 +247,7 @@
   (add-to-list 'org-hugo-special-block-type-properties '("sidenote" . (:trim-pre t :trim-post t))))
 
 ;; Temporary fix. See https://notes.baty.net/notes/possible-workaround-for-ox-hugo-error-during-exports/
-(with-eval-after-load 'ox-hugo
-  (setq org-hugo--preprocess-buffer nil))
+;;(with-eval-after-load 'ox-hugo
+;;  (setq org-hugo--preprocess-buffer nil))
+
+(setq org-id-extra-files (directory-files-recursively org-roam-directory "\.org$"))
