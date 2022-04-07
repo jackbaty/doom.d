@@ -1,6 +1,24 @@
 
-(setq
- org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
+(setq org-attach-preferred-new-method 'dir)
+(setq org-attach-id-dir  "img/")
+(setq org-attach-dir-relative t)
+;;   (setq org-attach-auto-tag nil)
+(setq org-attach-store-link-p t)
+(setq org-id-method 'ts)
+;; for sane attachment paths/names
+(setq org-attach-id-to-path-function-list
+        '(org-attach-id-ts-folder-format
+        org-attach-id-uuid-folder-format))
+
+;; Org Download and Attachments
+(setq org-download-image-dir  "img/")
+(setq org-download-image-org-width 800)
+(setq org-download-image-html-width 800)
+(setq org-download-heading-lvl 0)
+(setq org-download-timestamp "%Y%m%d-")
+(setq org-download-method 'attach)
+
+(setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
 
 (setq org-agenda-files (list
                    (concat org-directory "todo.org")
@@ -41,17 +59,6 @@
       ;; org-habit-show-all-today t
        org-agenda-text-search-extra-files (quote (agenda-archives))
        org-agenda-window-setup (quote current-window))
-
-      (setq org-attach-preferred-new-method 'dir)
-      (setq org-attach-id-dir  "files/")
-      (setq org-attach-dir-relative t)
-      ;;   (setq org-attach-auto-tag nil)
-      (setq org-attach-store-link-p t)
-      (setq org-id-method 'ts)
-      ;; for sane attachment paths/names
-      (setq org-attach-id-to-path-function-list
-           '(org-attach-id-ts-folder-format
-             org-attach-id-uuid-folder-format))
 
 
   (add-to-list 'org-tags-exclude-from-inheritance "project")
@@ -187,13 +194,6 @@
 ;; Copy the ICS file to a remote server (Tramp paths work).
   (copy-file org-agenda-private-local-path org-agenda-private-remote-path t))
 
-;; Org Download and Attachments
-(setq org-download-image-dir  "files/")
-(setq org-download-image-org-width 800)
-(setq org-download-image-html-width 800)
-(setq org-download-heading-lvl 1)
-(setq org-download-timestamp "%Y%m%d-")
-(setq org-download-method 'attach)
 
 (setq org-html-postamble t)
 (setq org-html-postamble-format
