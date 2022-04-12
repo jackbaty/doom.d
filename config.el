@@ -28,10 +28,10 @@
 ;; `load-theme' function. This is the default:
 ;;(setq doom-theme 'doom-palenight)
 ;;(setq doom-theme 'modus-operandi)
-;;(setq doom-theme 'modus-vivendi)
+(setq doom-theme 'modus-vivendi)
 ;;(setq doom-theme 'doom-one-light)
 ;;
-;;(setq modus-themes-completions '((t background intense accented)))
+(setq modus-themes-completions '((t background intense accented)))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -82,7 +82,7 @@
 (setq initial-frame-alist '((top . 30) (left . 600) (width . 212) (height . 81)))
 
 
-;;(setq bookmark-default-file "~/icloud-drive/emacs/bookmarks")
+(setq bookmark-default-file "~/Sync/emacs/bookmarks")
 
 (global-visual-line-mode)
 (setq +zen-text-scale 0.8)  ;; Not quite so large, there Doom
@@ -105,6 +105,8 @@
 (load! "+blog")
 
 ;;(desktop-save-mode 1)
+
+(setq warning-suppress-types '((yasnippet backquote-change)))
 
 ;; Temporary
 (defun native-comp-available-p () nil)
