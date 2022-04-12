@@ -33,8 +33,7 @@
     (progn
       (browse-url "https://alexjj.com/")
       (browse-url "https://youneedastereo.com/#")
-      (browse-url "https://nice-marmot.net/")
-      (browse-url "https://baty.blog")))
+      (browse-url "https://nice-marmot.net/")))
 
 ;; From https://christiantietze.de/posts/2021/07/open-finder-window-in-dired/
 (defun jab/finder-path ()
