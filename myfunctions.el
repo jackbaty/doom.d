@@ -12,9 +12,9 @@
   (shell-command "~/Library/Scripts/Applications/Emacs/Deploy-daily.baty.net.sh"))
 
 (defun jab/deploy-blog ()
-  "Deploy website to baty.blog"
+  "Deploy website to baty.net"
   (interactive)
-  (shell-command "cd ~/sites/baty.blog & make deploy"))
+  (shell-command "cd ~/sites/blog & make deploy"))
 
 (defun jab/markregion ()
   "Add a 'mark' macro to the current region (for Hugo)"
@@ -49,6 +49,7 @@ this can take a second or two to execute."
       (string-trim (buffer-string)))))
 
 (defun jab/dired-finder-path ()
+  "Open the frontmost finder window's path in dired"
   (interactive)
   (let (($path (jab/finder-path)))
     (if (string-equal "" $path)
