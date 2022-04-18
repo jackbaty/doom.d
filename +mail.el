@@ -51,6 +51,9 @@
 (after! auth-source
  (setq auth-sources '("~/.authinfo")))
 
+;; For when I want plain-text only
+(after! org-msg
+  (setq +mu4e-compose-org-msg-toggle-next nil))
 
 ;; this setting allows to re-sync and re-index mail
 ;; by pressing U
