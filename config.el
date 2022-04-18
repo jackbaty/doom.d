@@ -27,8 +27,8 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;;(setq doom-theme 'doom-palenight)
-;;(setq doom-theme 'modus-operandi)
-(setq doom-theme 'modus-vivendi)
+(setq doom-theme 'modus-operandi)
+;;(setq doom-theme 'modus-vivendi)
 ;;(setq doom-theme 'doom-one-light)
 ;;
 (setq modus-themes-completions '((t background intense accented)))
@@ -79,7 +79,7 @@
 
 (add-load-path! "~/icloud-drive/emacs/lisp")
 
-(setq initial-frame-alist '((top . 30) (left . 600) (width . 212) (height . 81)))
+(setq initial-frame-alist '((top . 30) (left . 100) (width . 120) (height . 81)))
 
 
 (setq bookmark-default-file "~/Sync/emacs/bookmarks")
