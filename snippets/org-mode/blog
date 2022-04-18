@@ -3,7 +3,7 @@
 # key: blog
 # uuid: blog
 # --
-*** TODO ${1:title}
+**** TODO ${1:title}
 :PROPERTIES:
 :EXPORT_FILE_NAME: `(format-time-string "%Y%m%d-")`${1:$(replace-regexp-in-string " " "-" (downcase yas-text))}
 :EXPORT_HUGO_SLUG: ${1:$(replace-regexp-in-string " " "-" (downcase yas-text))}
