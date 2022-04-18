@@ -119,7 +119,9 @@
                      ((agenda time-up category-up tag-up))))
                    (org-deadline-warning-days 7))
                   nil)
-        ("X" agenda "" nil ,"~/tmp/agenda.ics")))
+        ("X" agenda "" nil "~/tmp/agenda.ics")))
+
+
 
 
   (setq org-journal-dir "~/org/journal"
@@ -175,7 +177,7 @@
 (setq org-agenda-private-remote-path "/sshx:jbaty@server01.baty.net:apps/daily.baty.net/public_html/agenda.ics")
 
 
-(defun org-agenda-export-to-ics ()
+(defun jab/org-agenda-export-to-ics ()
     (interactive)
   ;;(set-org-agenda-files)
   ;; Run all custom agenda commands that have a file argument.
