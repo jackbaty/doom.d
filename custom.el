@@ -10,11 +10,12 @@
  '(jdee-db-spec-breakpoint-face-colors (cons "#f2f2f2" "#8e908c"))
  '(objed-cursor-color "#c82829")
  '(org-agenda-files
-   '("~/org/roam/20220302123550-220_grandville_tenent_search_2022.org" "/Users/jbaty/org/todo.org" "/Users/jbaty/org/projects.org" "/Users/jbaty/org/notes.org" "/Users/jbaty/org/events.org" "/Users/jbaty/org/food.org" "/Users/jbaty/org/doing.org" "/Users/jbaty/org/daybook.org" "/Users/jbaty/Library/Mobile Documents/iCloud~is~workflow~my~workflows/Documents/voicenotes.org"))
+   '("~/org/roam/projects/20220302123550-220_grandville_tenent_search_2022.org" "/Users/jbaty/org/roam/projects/20220406-kitchen_remodel_2022.org" "/Users/jbaty/org/todo.org" "/Users/jbaty/org/projects.org" "/Users/jbaty/org/notes.org" "/Users/jbaty/org/events.org" "/Users/jbaty/org/food.org" "/Users/jbaty/org/doing.org" "/Users/jbaty/org/daybook.org" "/Users/jbaty/Library/Mobile Documents/iCloud~is~workflow~my~workflows/Documents/voicenotes.org"))
  '(rustic-ansi-faces
    ["#ffffff" "#c82829" "#718c00" "#eab700" "#4271ae" "#c678dd" "#8abeb7" "#4d4d4c"])
  '(safe-local-variable-values
-   '((org-hugo-base-dir . ~/sites/org-roam/)
+   '((org-download-image-dir . "img/2022/")
+     (org-hugo-base-dir . ~/sites/org-roam/)
      (org-hugo-section . post)
      (org-attach-id-directory . img/)
      (org-attach-directory . img/))))
