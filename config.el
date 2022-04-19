@@ -1,8 +1,6 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
-
+;; My private Doom configuration
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
@@ -77,10 +75,7 @@
 
 (setq modus-themes-intense-markup t)
 
-(add-load-path! "~/icloud-drive/emacs/lisp")
-
 (setq initial-frame-alist '((top . 30) (left . 100) (width . 120) (height . 81)))
-
 
 (setq bookmark-default-file "~/Sync/emacs/bookmarks")
 
@@ -91,11 +86,11 @@
 (setq tab-bar-new-tab-choice "*scratch*") ;; new tabs open scratch buffer
 (setq tab-bar-show t)
 
-;;(cua-mode 1) ;; familiar system copy/paste I hope
-
+;; More clever completion
 (use-package! orderless
   :custom (completion-styles '(orderless)))
 
+;; Load my "modules"
 (load! "lisp/orgmode")
 (load! "lisp/orgroam")
 (load! "lisp/latex")
@@ -104,9 +99,8 @@
 (load! "lisp/myfunctions")
 (load! "lisp/blog")
 
-;;(desktop-save-mode 1)
-
+;; My daily snippet evaluates a backquoted shell call. This stops it from warning me.
 (setq warning-suppress-types '((yasnippet backquote-change)))
 
-;; Temporary
+;; Temporary?
 (defun native-comp-available-p () nil)
