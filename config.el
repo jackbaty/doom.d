@@ -96,13 +96,13 @@
 (use-package! orderless
   :custom (completion-styles '(orderless)))
 
-(load! "+orgmode")
-(load! "+orgroam")
-(load! "+latex")
-(load! "+mail")
-(load! "mappings")
-(load! "myfunctions")
-(load! "+blog")
+(load! "lisp/orgmode")
+(load! "lisp/orgroam")
+(load! "lisp/latex")
+(load! "lisp/mail")
+(load! "lisp/mappings")
+(load! "lisp/myfunctions")
+(load! "lisp/blog")
 
 ;;(desktop-save-mode 1)
 
