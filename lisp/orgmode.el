@@ -66,8 +66,7 @@
   (setq org-stuck-projects
       '("+project/-MAYBE-DONE" ("NEXT" "TODO")))
 
- (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "STRT(s)" "WAIT(w)" "HOLD(h)" "IDEA(i)" "|" "DONE(d)" "CANC(k)")
- (sequence "[ ](T)" "[-](S)" "[?](W)" "|" "[X](D)")))
+ (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "HOLD(h)" "|" "DONE(d)" "CANC(c)")))
 
 
   (setq org-capture-templates
