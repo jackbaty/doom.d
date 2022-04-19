@@ -42,7 +42,10 @@
   ;; add bookmark for showing inbox without "trashed" messages
   '( :name "Inbox clean"
      :key  ?i
-     :query "maildir:/Baty.net/INBOX NOT flag:trashed")))
+     :query "maildir:/Baty.net/INBOX NOT flag:trashed"))
+
+(add-to-list 'mu4e-bookmarks
+             '(:name "Yesterday's messages" :query "date:2d..1d" :key ?y) t))
 
 
 
