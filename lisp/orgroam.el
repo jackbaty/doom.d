@@ -5,6 +5,7 @@
  "\C-c n t" 'org-roam-dailies-goto-today
  "\C-c n d" 'org-roam-dailies-capture-today
  "\C-c n c" 'org-roam-capture
+ "\C-c n s" 'jab/search-roam
  "\C-c n l" 'org-roam-buffer-toggle)
 
 (after! org-roam
