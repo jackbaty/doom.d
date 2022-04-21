@@ -81,6 +81,6 @@ this can take a second or two to execute."
                                         (regexp-quote comment-start)))))
 
 (defun jab/search-roam ()
- "Do consult-ripgrep on the org roam directory"
+ "Run consult-ripgrep on the org roam directory"
  (interactive)
  (consult-ripgrep org-roam-directory nil))
