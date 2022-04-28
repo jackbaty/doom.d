@@ -25,6 +25,12 @@
      (file "~/org/roam/templates/PublicTemplate.org")  ;; Template
     :target (file "public/${slug}.org")                ;; Target
     :unnarrowed t)
+    ("m"                                               ;; Key
+     "Movie"                                           ;; Description
+     plain                                             ;; Type
+     (file "~/org/roam/templates/MovieTemplate.org")   ;; Template
+    :target (file "public/${slug}.org")                ;; Target
+    :unnarrowed t)
     ("p"                                               ;; Key
      "project"                                         ;; Description
      plain                                             ;; Type

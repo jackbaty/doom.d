@@ -76,6 +76,7 @@
 (setq modus-themes-intense-markup t)
 
 (setq initial-frame-alist '((top . 30) (left . 100) (width . 120) (height . 81)))
+(add-to-list 'after-make-frame-functions #'jab/frame-center)
 
 (setq bookmark-default-file "~/Sync/emacs/bookmarks")
 

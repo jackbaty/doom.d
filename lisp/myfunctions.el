@@ -86,7 +86,7 @@ this can take a second or two to execute."
  (consult-ripgrep org-roam-directory nil))
 
 ;; recenter frame
-(defun jab/frame-recenter (&optional frame)
+(defun jab/frame-center (&optional frame)
   "Center FRAME on the screen.
 FRAME can be a frame name, a terminal name, or a frame.
 If FRAME is omitted or nil, use currently selected frame."
