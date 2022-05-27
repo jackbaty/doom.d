@@ -1,6 +1,6 @@
 (map!
  "\C-c n f" 'org-roam-node-find
- "s-u" 'org-roam-node-find
+ "s-k" 'org-roam-node-find
  "\C-c n i" 'org-roam-node-insert
  "\C-c n t" 'org-roam-dailies-goto-today
  "\C-c n d" 'org-roam-dailies-capture-today
@@ -51,6 +51,12 @@
           "#+TITLE: " title "\n\n"
           (org-list-to-org list)))
 
+(use-package! zetteldesk
+  :after org-roam
+  :config
+  (setq zetteldesk-kb-hydra-prefix (kbd "C-c z"))
+  (zetteldesk-mode)
+  (require 'zetteldesk-kb))
 
 
 ;; Handle org-roam links when exported for Hugo
