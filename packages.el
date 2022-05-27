@@ -58,7 +58,9 @@
 (package! orderless
   :recipe (:host github :repo "oantolin/orderless"))
 
-(package! dirvish)
 
 (package! org2blog)
 
+(package! pretty-hydra)
+(package! zetteldesk
+  :recipe (:host github :repo "Vidianos-Giannitsis/zetteldesk.el"))
