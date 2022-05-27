@@ -208,7 +208,7 @@
      :org-publish-sitemap-sort-files "anti-chronologically" ;; or "alphabetically"
      :base-extension "org"
      :sitemap-title ""
-     :html-home/up-format "<div class=\"top-nav\"><a href=\"/index.html\">Home</a></div>"
+     ;; :org-html-home/up-format "<div class=\"top-nav\"><a href=\"/index.html\">Home</a></div>"
      :makeindex t
      :recursive t
      :publishing-function org-html-publish-to-html
