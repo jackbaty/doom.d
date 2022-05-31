@@ -21,14 +21,13 @@
 (setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
 
 (setq org-agenda-files (list
-                   (concat org-directory "todo.org")
+                   (concat org-directory "tasks.org")
                    (concat org-directory "projects.org")
                    (concat org-directory "notes.org")
                    "~/baty.blog/content-org/posts.org"
                    (concat org-directory "events.org")
                    (concat org-directory "food.org")
                    (concat org-directory "doing.org")
-
                    (concat org-directory "daybook.org")
                    "~/Library/Mobile Documents/iCloud~is~workflow~my~workflows/Documents/voicenotes.org"))
 
@@ -55,6 +54,8 @@
        org-tags-column 0
        org-log-done 'time
        org-log-into-drawer t
+       org-image-actual-width nil
+       org-startup-with-inline-images "inlineimages"
        org-log-redeadline 'note
       ;; org-habit-show-all-today t
        org-agenda-text-search-extra-files (quote (agenda-archives))
