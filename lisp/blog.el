@@ -36,3 +36,5 @@
 ;; For ox-hugo shortcode
 (with-eval-after-load 'ox-hugo
   (add-to-list 'org-hugo-special-block-type-properties '("sidenote" . (:trim-pre t :trim-post t))))
+
+

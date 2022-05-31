@@ -51,12 +51,6 @@
           "#+TITLE: " title "\n\n"
           (org-list-to-org list)))
 
-(use-package! zetteldesk
-  :after org-roam
-  :config
-  (setq zetteldesk-kb-hydra-prefix (kbd "C-c z"))
-  (zetteldesk-mode)
-  (require 'zetteldesk-kb))
 
 
 ;; Handle org-roam links when exported for Hugo

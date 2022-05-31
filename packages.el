@@ -62,5 +62,3 @@
 (package! org2blog)
 
 (package! pretty-hydra)
-(package! zetteldesk
-  :recipe (:host github :repo "Vidianos-Giannitsis/zetteldesk.el"))
