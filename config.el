@@ -75,11 +75,12 @@
 
 (setq modus-themes-intense-markup t)
 
-(setq initial-frame-alist '((top . 30) (left . 100) (width . 120) (height . 81)))
+;;(setq initial-frame-alist '((top . 30) (left . 100) (width . 120) (height . 61)))
+(setq initial-frame-alist '((width . 120) (height . 61)))
 (add-to-list 'after-make-frame-functions #'jab/frame-center)
 
 (setq bookmark-default-file "~/Sync/emacs/bookmarks")
-
+(setq bookmark-set-fringe-mark nil)
 (global-visual-line-mode)
 (setq +zen-text-scale 0.8)  ;; Not quite so large, there Doom
 
