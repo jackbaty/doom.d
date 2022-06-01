@@ -62,3 +62,5 @@
 (package! org2blog)
 
 (package! pretty-hydra)
+
+(package! org-wild-notifier)

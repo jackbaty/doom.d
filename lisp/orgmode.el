@@ -55,7 +55,7 @@
        org-log-done 'time
        org-log-into-drawer t
        org-image-actual-width nil
-       org-startup-with-inline-images "inlineimages"
+       ;;org-startup-with-inline-images "inlineimages"
        org-log-redeadline 'note
       ;; org-habit-show-all-today t
        org-agenda-text-search-extra-files (quote (agenda-archives))
@@ -72,11 +72,11 @@
 
   (setq org-capture-templates
         `(("t" "Todo to Inbox" entry
-           (file+headline ,(concat org-directory "todo.org") "Inbox")
+           (file+headline ,(concat org-directory "tasks.org") "Inbox")
            "* TODO %?\n"
            :empty-lines 1)
           ("T" "Todo to Inbox with Clipboard" entry
-           (file+headline ,(concat org-directory "todo.org") "Inbox")
+           (file+headline ,(concat org-directory "tasks.org") "Inbox")
            "* TODO %?\nSCHEDULED: %t\n%c\n\n%i\n"
            :empty-lines 1)
           ("l" "Current file log entry" entry
@@ -98,9 +98,9 @@
            (file+headline ,(concat org-directory "doing.org") "Currently")
            "* %U %?" :prepend t)
          ("m" "Email Workflow")
-           ("mf" "Follow Up" entry (file+olp "~/org/todo.org" "Follow Up")
+           ("mf" "Follow Up" entry (file+olp "~/org/tasks.org" "Follow Up")
             "* TODO Follow up with %:fromname on %a\nSCHEDULED:%t\n\n%i")
-           ("mr" "Read Later" entry (file+olp "~/org/todo.org" "Read Later")
+           ("mr" "Read Later" entry (file+olp "~/org/tasks.org" "Read Later")
             "* TODO Read %:subject\nSCHEDULED:%t\n%a\n\n%i")
           ("n" "Add a Note" entry
            (file+headline ,(concat org-directory "notes.org") "Notes")
@@ -255,3 +255,9 @@
 ;;  (setq org-hugo--preprocess-buffer nil))
 
 (setq org-id-extra-files (directory-files-recursively org-roam-directory "\.org$"))
+
+(after! org
+  (setq org-wild-notifier-alert-time '(5 10 15 30 60))
+  (setq org-wild-notifier-keyword-whitelist nil)
+  (setq org-wild-notifier-notification-title "*reminder*")
+  (org-wild-notifier-mode 1))
