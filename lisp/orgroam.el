@@ -40,10 +40,10 @@
 
 
 
+
 (setq org-roam-dailies-capture-templates
-      '(("d" "default" entry
-         "* %?"
-         :target (file+datetree "journal.org" day))))
+      '(("d" "default" entry "* %?\n%U" :target
+         (file+head "%<%Y-%m>.org" "#+title: Lab Notebook %<%Y-%m>\n"))))
 
 ;; Publishing
 (defun roam-sitemap (title list)
