@@ -21,14 +21,14 @@
 (setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
 
 (setq org-agenda-files (list
-                   (concat org-directory "tasks.org")
                    (concat org-directory "projects.org")
+                   (concat org-directory "tasks.org")
                    (concat org-directory "notes.org")
-                   "~/baty.blog/content-org/posts.org"
                    (concat org-directory "events.org")
                    (concat org-directory "food.org")
                    (concat org-directory "doing.org")
                    (concat org-directory "daybook.org")
+                   (concat org-directory "roam/daily/")
                    "~/Library/Mobile Documents/iCloud~is~workflow~my~workflows/Documents/voicenotes.org"))
 
 (setq org-refile-targets '((nil :maxlevel . 2)
@@ -84,7 +84,7 @@
            "* %u %? \n" :tree-type month)
           ("D" "Daybook" entry
            (file+olp+datetree ,(concat org-directory "daybook.org"))
-           "* %?\n%t\n" :time-prompt t)
+           "* %?\n%t\n" :time-prompt nil)
           ("e" "Event" entry
            (file+olp+datetree ,(concat org-directory "events.org"))
            "* %?\n%T\n" :time-prompt t)
