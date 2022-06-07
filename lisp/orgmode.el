@@ -29,6 +29,7 @@
                    (concat org-directory "doing.org")
                    (concat org-directory "daybook.org")
                    (concat org-directory "roam/daily/")
+                   (concat org-directory "roam/projects/")
                    "~/Library/Mobile Documents/iCloud~is~workflow~my~workflows/Documents/voicenotes.org"))
 
 (setq org-refile-targets '((nil :maxlevel . 2)
