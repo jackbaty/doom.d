@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
 # name: Hugo Daily Post
-# key: daily
-# uuid: daily
+# key: ddaily
+# uuid: ddaily
 # --
 *** TODO `(format-time-string "%A, %B %d, %Y")`
 :PROPERTIES:
