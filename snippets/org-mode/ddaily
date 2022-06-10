@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: Hugo Daily Post
+# key: daily
+# uuid: daily
+# --
+*** TODO `(format-time-string "%A, %B %d, %Y")`
+:PROPERTIES:
+:EXPORT_FILE_NAME: `(format-time-string "%Y-%m-%d-%A")`
+:EXPORT_HUGO_SLUG: `(format-time-string "%Y-%m-%d")`
+:END:
+
+$0

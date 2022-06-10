@@ -1,6 +1,7 @@
 (if IS-MAC (add-to-list 'load-path "/opt/homebrew/share/emacs/site-lisp/mu/mu4e/")
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/"))
 
+
 ;; Each path is relative to `+mu4e-mu4e-mail-path', which is ~/.mail by default
 (set-email-account! "Baty.net"
   '((mu4e-sent-folder       . "/Baty.net/Sent Items")
@@ -9,6 +10,7 @@
     (mu4e-refile-folder     . "/Baty.net/Archive")
     (smtpmail-smtp-user     . "mrjackbaty@fastmail.fm"))
   t)
+
 
 
 (after! mu4e
@@ -20,6 +22,7 @@
    send-mail-function    'smtpmail-send-it
    smtpmail-smtp-server  "smtp.fastmail.com"
    smtpmail-stream-type  'ssl
+   mu4e-compose-format-flowed t
    smtpmail-smtp-service 465
    mu4e-split-view 'horizontal
    +org-capture-emails-file "~/org/todo.org"
