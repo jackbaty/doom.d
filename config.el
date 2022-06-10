@@ -62,6 +62,8 @@
 ;; they are implemented.
 
 (add-load-path! "~/Sync/emacs/lisp")
+(add-to-list 'load-path "~/Sync/emacs/lisp/denote")
+
 
 (setq fancy-splash-image (concat doom-private-dir "splash.png"))
 
@@ -104,6 +106,61 @@
 
 ;; My daily snippet evaluates a backquoted shell call. This stops it from warning me.
 (setq warning-suppress-types '((yasnippet backquote-change)))
+
+
+(require 'denote)
+(setq denote-directory (expand-file-name "~/Documents/notes/"))
+(setq denote-known-keywords
+      '("emacs" "philosophy" "politics" "economics"))
+(setq denote-infer-keywords t)
+(setq denote-sort-keywords t)
+
+;;(after! dired
+(require 'denote-link)
+(require 'denote-dired)
+(add-hook 'dired-mode-hook #'denote-dired-mode)
+
+
+(require 'denote)
+
+;; Remember to check the doc strings of those variables.
+(setq denote-directory (expand-file-name "~/Documents/notes/"))
+(setq denote-known-keywords
+      '("emacs" "software" "writing" "notetaking"))
+(setq denote-infer-keywords t)
+(setq denote-sort-keywords t)
+(setq denote-front-matter-date-format 'org-timestamp)
+
+(require 'denote-link)
+(require 'denote-dired)
+
+
+;; We use different ways to specify a path for demo purposes.
+(setq denote-dired-directories
+      (list denote-directory
+            (expand-file-name "~/Desktop/Beyond the Infinite")))
+
+
+;; OR better:
+(add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
+
+;; You can bind `denote' to a global key if you prefer not to use
+;; `org-capture'.  For example:
+(define-key global-map (kbd "C-c N") #'denote)
+
+(with-eval-after-load 'org-capture
+  (require 'denote-org-capture)
+  (setq denote-org-capture-specifiers "%l\n%i\n%?")
+  (add-to-list 'org-capture-templates
+               '("n" "New note (with denote.el)" plain
+                 (file denote-last-path)
+                 #'denote-org-capture
+                 :no-save t
+                 :immediate-finish nil
+                 :kill-buffer t
+                 :jump-to-captured t)))
+
+
 
 ;; Temporary?
 (defun native-comp-available-p () nil)
