@@ -53,14 +53,12 @@
 ;;(package! mu4e-alert :disable t)
 
 (package! modus-themes)
-(unpin! org-roam ox-hugo)
-
 (package! orderless
   :recipe (:host github :repo "oantolin/orderless"))
 
-
 (package! org2blog)
-
 (package! pretty-hydra)
-
 (package! org-wild-notifier)
+(package! dired-narrow)
+
+(unpin! org-roam ox-hugo)
