@@ -135,17 +135,13 @@
 (require 'denote-dired)
 
 
-;; We use different ways to specify a path for demo purposes.
 (setq denote-dired-directories
       (list denote-directory
             (expand-file-name "~/Desktop/Beyond the Infinite")))
 
 
-;; OR better:
 (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
 
-;; You can bind `denote' to a global key if you prefer not to use
-;; `org-capture'.  For example:
 (define-key global-map (kbd "C-c N") #'denote)
 
 (with-eval-after-load 'org-capture
