@@ -226,10 +226,30 @@
      :publishing-directory "~/sites/roam/public_html"
      :section-number nil
      :table-of-contents nil)
+    ("notes"
+     :base-directory "~/Documents/notes"
+     :html-html5-fancy t
+     :auto-sitemap t
+     :org-publish-sitemap-sort-files "anti-chronologically" ;; or "alphabetically"
+     :base-extension "org"
+     :sitemap-title ""
+     ;; :org-html-home/up-format "<div class=\"top-nav\"><a href=\"/index.html\">Home</a></div>"
+     :makeindex t
+     :recursive t
+     :publishing-function org-html-publish-to-html
+     :publishing-directory "~/sites/notes/public_html"
+     :section-number nil
+     :table-of-contents nil)
     ("roam-static"
      :base-directory "~/org/roam/public"
      :base-extension "css\\|js\\|png\\|jpg\\|jpeg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
      :publishing-directory "~/sites/roam/public_html"
+     :recursive t
+     :publishing-function org-publish-attachment)
+    ("notes-static"
+     :base-directory "~/Documents/notes"
+     :base-extension "css\\|js\\|png\\|jpg\\|jpeg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+     :publishing-directory "~/sites/notes/public_html"
      :recursive t
      :publishing-function org-publish-attachment)
     ("notes.baty.net" :components ("roam-notes" "roam-static"))))
