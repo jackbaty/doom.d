@@ -26,11 +26,23 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;;(setq doom-theme 'doom-palenight)
-(setq doom-theme 'modus-operandi)
-;;(setq doom-theme 'modus-vivendi)
+
+(use-package! modus-themes
+  :init
+  ;; Add all your customizations prior to loading the themes
+  (setq modus-themes-italic-constructs t
+        modus-themes-bold-constructs nil
+        modus-themes-mixed-fonts t
+        modus-themes-mode-line '(borderless)
+        modus-themes-region '(bg-only no-extend)))
+
+(setq modus-themes-completions '((t background intense accented)))
+
+
+;;(setq doom-theme 'modus-operandi)
+(setq doom-theme 'modus-vivendi)
 ;;(setq doom-theme 'doom-one-light)
 ;;
-(setq modus-themes-completions '((t background intense accented)))
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -67,16 +79,7 @@
 
 (setq fancy-splash-image (concat doom-private-dir "splash.png"))
 
-(use-package! modus-themes
-  :init
-  ;; Add all your customizations prior to loading the themes
-  (setq modus-themes-italic-constructs t
-        modus-themes-bold-constructs nil
-        modus-themes-intense-markup t
-        modus-themes-mixed-fonts t
-        modus-themes-region '(bg-only no-extend)))
 
-(setq modus-themes-intense-markup t)
 
 ;;(setq initial-frame-alist '((top . 30) (left . 100) (width . 120) (height . 61)))
 (setq initial-frame-alist '((width . 120) (height . 61)))
@@ -108,18 +111,6 @@
 (setq warning-suppress-types '((yasnippet backquote-change)))
 
 
-(require 'denote)
-(setq denote-directory (expand-file-name "~/Documents/notes/"))
-(setq denote-known-keywords
-      '("emacs" "philosophy" "politics" "economics"))
-(setq denote-infer-keywords t)
-(setq denote-sort-keywords t)
-
-;;(after! dired
-(require 'denote-link)
-(require 'denote-dired)
-(add-hook 'dired-mode-hook #'denote-dired-mode)
-
 
 (require 'denote)
 
@@ -139,8 +130,8 @@
       (list denote-directory
             (expand-file-name "~/Desktop/Beyond the Infinite")))
 
-
-(add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
+(add-hook 'dired-mode-hook #'denote-dired-mode)
+;;(add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
 
 (define-key global-map (kbd "C-c N") #'denote)
 
