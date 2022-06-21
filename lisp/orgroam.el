@@ -1,9 +1,12 @@
 (map!
  "\C-c n f" 'org-roam-node-find
  "s-k" 'org-roam-node-find
+ "s-l" 'org-roam-buffer-toggle
  "\C-c n i" 'org-roam-node-insert
  "\C-c n t" 'org-roam-dailies-goto-today
- "\C-c n d" 'org-roam-dailies-capture-today
+ "\C-c n ["    ' org-roam-dailies-goto-previous-note
+ "\C-c n ]"    ' org-roam-dailies-goto-next-note
+ "\C-c n j" 'org-roam-dailies-capture-today
  "\C-c n c" 'org-roam-capture
  "\C-c n s" 'jab/search-roam
  "\C-c n l" 'org-roam-buffer-toggle)
@@ -41,16 +44,16 @@
 
 
 
-(setq org-roam-dailies-capture-templates
-      '(("d" "default" entry "* %?\n%U" :target
-         (file+head "%<%Y-%m>.org" "#+title: Lab Notebook %<%Y-%m>\n"))))
+;; (setq org-roam-dailies-capture-templates
+;;       '(("d" "default" entry "* %?\n%U" :target
+;;          (file+head "%<%Y-%m>.org" "#+title: Lab Notebook %<%Y-%m>\n"))))
 
 
 (defun jab/search-roam ()
  "Run consult-ripgrep on the org roam directory"
  (interactive)
- (consult-ripgrep denote-directory nil))
-;; (consult-ripgrep org-roam-directory nil))
+(consult-ripgrep org-roam-directory nil))
+;; (consult-ripgrep denote-directory nil))
 
 
 ;; Publishing
