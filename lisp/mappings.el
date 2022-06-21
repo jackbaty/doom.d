@@ -13,3 +13,5 @@
 
 
 (map! :leader :desc "Open Elfeed" :n "o r" #'=rss)
+
+(map! :map dired-mode-map "\C-c \C-n" #'dired-narrow)
