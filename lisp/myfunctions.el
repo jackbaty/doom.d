@@ -80,10 +80,6 @@ this can take a second or two to execute."
     (align-regexp beginning end (concat "\\(\\s-*\\)"
                                         (regexp-quote comment-start)))))
 
-(defun jab/search-roam ()
- "Run consult-ripgrep on the org roam directory"
- (interactive)
- (consult-ripgrep org-roam-directory nil))
 
 ;; recenter frame
 (defun jab/frame-center (&optional frame)

@@ -45,11 +45,20 @@
       '(("d" "default" entry "* %?\n%U" :target
          (file+head "%<%Y-%m>.org" "#+title: Lab Notebook %<%Y-%m>\n"))))
 
+
+(defun jab/search-roam ()
+ "Run consult-ripgrep on the org roam directory"
+ (interactive)
+ (consult-ripgrep denote-directory nil))
+;; (consult-ripgrep org-roam-directory nil))
+
+
 ;; Publishing
 (defun roam-sitemap (title list)
   (concat "#+OPTIONS: ^:nil author:nil html-postamble:t\n"
           "#+TITLE: " title "\n\n"
           (org-list-to-org list)))
+
 
 
 
