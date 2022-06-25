@@ -113,6 +113,8 @@
 
 
 (require 'denote)
+(require 'denote-link)
+(require 'denote-dired)
 
 ;; Remember to check the doc strings of those variables.
 (setq denote-directory (expand-file-name "~/Documents/notes/"))
@@ -121,9 +123,8 @@
 (setq denote-infer-keywords t)
 (setq denote-sort-keywords t)
 (setq denote-front-matter-date-format 'org-timestamp)
+(setq denote-link-use-org-id t)
 
-(require 'denote-link)
-(require 'denote-dired)
 
 
 (setq denote-dired-directories
