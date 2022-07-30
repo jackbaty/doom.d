@@ -23,6 +23,7 @@
 (setq org-agenda-files (list
                    (concat org-directory "projects.org")
                    (concat org-directory "tasks.org")
+                   (concat org-directory "inbox.org")
                    (concat org-directory "notes.org")
                    (concat org-directory "events.org")
                    (concat org-directory "food.org")
@@ -32,8 +33,9 @@
                    (concat org-directory "roam/projects/")
                    "~/Library/Mobile Documents/iCloud~is~workflow~my~workflows/Documents/voicenotes.org"))
 
-(setq org-refile-targets '((nil :maxlevel . 2)
-                                (org-agenda-files :maxlevel . 2)))
+(setq org-refile-targets '(("projects.org" :regexp . "\\(?:\\(?:Note\\|Task\\)s\\)")
+                           ("tasks.org" :maxlevel . 1)))
+
 
 
 (after! org
@@ -73,11 +75,11 @@
 
   (setq org-capture-templates
         `(("t" "Todo to Inbox" entry
-           (file+headline ,(concat org-directory "tasks.org") "Inbox")
+           (file+headline ,(concat org-directory "inbox.org") "Inbox")
            "* TODO %?\n"
            :empty-lines 1)
           ("T" "Todo to Inbox with Clipboard" entry
-           (file+headline ,(concat org-directory "tasks.org") "Inbox")
+           (file+headline ,(concat org-directory "inbox.org") "Inbox")
            "* TODO %?\nSCHEDULED: %t\n%c\n\n%i\n"
            :empty-lines 1)
           ("l" "Current file log entry" entry
@@ -99,10 +101,10 @@
            (file+headline ,(concat org-directory "doing.org") "Currently")
            "* %U %?" :prepend t)
          ("m" "Email Workflow")
-           ("mf" "Follow Up" entry (file+olp "~/org/tasks.org" "Follow Up")
+           ("mf" "Follow Up" entry (file+olp "~/org/inbox.org" "Follow Up")
             "* TODO Follow up with %:fromname on %a\nSCHEDULED:%t\n\n%i")
-           ("mr" "Read Later" entry (file+olp "~/org/tasks.org" "Read Later")
-            "* TODO Read %:subject\nSCHEDULED:%t\n%a\n\n%i")
+           ("mr" "Read Later" entry (file+olp "~/org/inbox.org" "Read Later")
+            "* TODO Process %:subject\nSCHEDULED:%t\n%a\n\n%i")
           ("n" "Add a Note" entry
            (file+headline ,(concat org-directory "notes.org") "Notes")
            "* %?\n%U" :prepend t))))
@@ -130,6 +132,40 @@
                    (org-deadline-warning-days 7))
                   nil)
         ("X" agenda "" nil "~/tmp/agenda.ics")))
+(setq org-agenda-custom-commands
+      '(("%" "Appointments" agenda* "Today's appointments"
+         ((org-agenda-span 1)
+          (org-agenda-max-entries 3)))
+        ("D" "Daily Action List" agenda ""
+                  ((org-agenda-span 1)
+                   (org-agenda-sorting-strategy
+                    (quote
+                     ((agenda time-up category-up tag-up))))
+                   (org-deadline-warning-days 7))
+                  nil)
+        ("g" "Get Things Done (GTD)"
+         ((agenda ""
+                  ((org-agenda-skip-function
+                    '(org-agenda-skip-entry-if 'deadline))
+                   (org-deadline-warning-days 0)))
+          (todo "NEXT"
+                ((org-agenda-skip-function
+                  '(org-agenda-skip-entry-if 'deadline))
+                 (org-agenda-prefix-format "  %i %-12:c [%e] ")
+                 (org-agenda-overriding-header "\nTasks\n")))
+          (agenda nil
+                  ((org-agenda-entry-types '(:deadline))
+                   (org-agenda-format-date "")
+                   (org-deadline-warning-days 7)
+                   (org-agenda-skip-function
+                    '(org-agenda-skip-entry-if 'notregexp "\\* NEXT"))
+                   (org-agenda-overriding-header "\nDeadlines")))
+          (tags-todo "inbox"
+                     ((org-agenda-prefix-format "  %?-12t% s")
+                      (org-agenda-overriding-header "\nInbox\n")))
+          (tags "CLOSED>=\"<today>\""
+                ((org-agenda-overriding-header "\nCompleted today\n")))))))
+
 
 
 
