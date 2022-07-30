@@ -2,5 +2,16 @@
 # name: Project Template
 # key: project
 # --
-** $0 :project:
-*** TODO Set up project
+** $0 [/]
+:PROPERTIES:
+:CATEGORY: Project
+:VISIBILITY: folded
+:COOKIE_DATA: recursive todo
+:END:
+*** Information
+*** Notes
+*** Tasks
+:PROPERTIES:
+:VISIBILITY: content
+:END:
+*** Log

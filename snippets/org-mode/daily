@@ -3,12 +3,11 @@
 # key: daily
 # uuid: daily
 # --
-**** TODO ${1:title}
+**** TODO `(format-time-string "%A, %B %d, %Y")`
 :PROPERTIES:
-:EXPORT_HUGO_BUNDLE: `(format-time-string "%Y-%m-%d-%A")`
 :EXPORT_FILE_NAME: index
+:EXPORT_HUGO_BUNDLE: `(format-time-string "%Y-%m-%d-%A")`
 :EXPORT_HUGO_SLUG: `(format-time-string "%Y-%m-%d")`
-:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :weather "`(jab/insert-weather)`"
 :END:
 
 $0
