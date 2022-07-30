@@ -8,7 +8,7 @@
  "\C-c n ]"    ' org-roam-dailies-goto-next-note
  "\C-c n j" 'org-roam-dailies-capture-today
  "\C-c n c" 'org-roam-capture
- "\C-c n s" 'jab/search-roam
+;; "\C-c n s" 'jab/search-roam
  "\C-c n l" 'org-roam-buffer-toggle)
 
 (after! org-roam
@@ -20,7 +20,7 @@
 (setq org-roam-capture-templates
   '(("d" "default" plain "%?"
     :target (file+head "%<%Y%m%d>-${slug}.org"
-                       "#+title: ${title}\n#+index: \n#+setupfile: ~/org/_SETUP/EXPORT\n#+setupfile: ~/org/_SETUP/org-roam-publish-fancy.setup")
+                       "#+title: ${title}\n#+filetags: \n#+setupfile: ~/org/_SETUP/EXPORT\n#+setupfile: ~/org/_SETUP/org-roam-publish-fancy.setup")
     :unnarrowed t)
     ("P"                                               ;; Key
      "Public (published in /public)"                   ;; Description
