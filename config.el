@@ -134,10 +134,6 @@
 
 (setq denote-date-format nil) ; read doc string
 
-;; You will not need to `require' all those individually once the
-;; package is available.
-(require 'denote-retrieve)
-(require 'denote-link)
 
 ;; By default, we fontify backlinks in their bespoke buffer.
 (setq denote-link-fontify-backlinks t)
@@ -152,7 +148,6 @@
 ;; Hide file permissions by default
 (add-hook 'dired-mode-hook 'dired-hide-details-mode)
 
-(require 'denote-dired)
 (setq denote-dired-rename-expert nil)
 
 ;; We use different ways to specify a path for demo purposes.
@@ -211,7 +206,6 @@
   (define-key map (kbd "C-c n r") #'denote-dired-rename-file))
 
 (with-eval-after-load 'org-capture
-  (require 'denote-org-capture)
   (setq denote-org-capture-specifiers "%l\n%i\n%?")
   (add-to-list 'org-capture-templates
                '("n" "New note (with denote.el)" plain
