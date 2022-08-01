@@ -40,8 +40,8 @@
 
 
 ;;(setq doom-theme 'modus-operandi)
-(setq doom-theme 'modus-vivendi)
-;;(setq doom-theme 'doom-one-light)
+;;(setq doom-theme 'modus-vivendi)
+(setq doom-theme 'doom-one)
 ;;
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -102,7 +102,7 @@
 (load! "lisp/orgmode")
 ;;(load! "lisp/orgroam")
 (load! "lisp/latex")
-(load! "lisp/mail")
+(load! "lisp/notmuch")
 (load! "lisp/mappings")
 (load! "lisp/myfunctions")
 (load! "lisp/blog")
