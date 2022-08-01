@@ -6,6 +6,6 @@
 #+title:     ${1:untitled document}
 #+author:    ${2:`user-full-name`}
 #+email:     ${3:`user-mail-address`}
-#+setupfile: ~/Dropbox/notes/org/_SETUP/EXPORT
-#+setupfile: ~/Dropbox/notes/org/_SETUP/DEFAULT
+#+setupfile: ~/org/_SETUP/jack-latex-standard.setup
+#+setupfile: ~/org/_SETUP/HTML_FANCY
 #+startup: overview
