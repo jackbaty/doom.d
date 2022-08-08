@@ -1,22 +1,20 @@
-
 (setq org-attach-preferred-new-method 'dir)
-(setq org-attach-id-dir  "img/")
+(setq org-attach-id-dir  "files/")
 (setq org-attach-dir-relative t)
-;;   (setq org-attach-auto-tag nil)
+(setq org-attach-auto-tag "attach")
 (setq org-attach-store-link-p t)
 (setq org-id-method 'ts)
-;; for sane attachment paths/names
 (setq org-attach-id-to-path-function-list
-        '(org-attach-id-ts-folder-format
-        org-attach-id-uuid-folder-format))
+  '(org-attach-id-ts-folder-format
+    org-attach-id-uuid-folder-format))
 
 ;; Org Download and Attachments
-(setq org-download-image-dir  "img/")
-(setq org-download-image-org-width 800)
-(setq org-download-image-html-width 800)
-(setq org-download-heading-lvl 0)
-(setq org-download-timestamp "%Y%m%d-")
-(setq org-download-method 'attach)
+;; (setq org-download-image-dir  "img/")
+;; (setq org-download-image-org-width 800)
+;; (setq org-download-image-html-width 800)
+;; (setq org-download-heading-lvl 0)
+;; (setq org-download-timestamp "%Y%m%d-")
+;; (setq org-download-method 'attach)
 
 (setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
 
@@ -29,7 +27,6 @@
                    (concat org-directory "food.org")
                    (concat org-directory "doing.org")
                    (concat org-directory "daybook.org")
-                   (concat org-directory "roam/daily/")
                    (concat org-directory "roam/projects/")
                    "~/Library/Mobile Documents/iCloud~is~workflow~my~workflows/Documents/voicenotes.org"))
 
@@ -312,8 +309,10 @@
 
 (setq org-id-extra-files (directory-files-recursively org-roam-directory "\.org$"))
 
-(after! org
-  (setq org-wild-notifier-alert-time '(5 10 15 30 60))
-  (setq org-wild-notifier-keyword-whitelist nil)
-  (setq org-wild-notifier-notification-title "*reminder*")
-  (org-wild-notifier-mode 1))
+(setq org-fold-core-style "overlays")
+
+;; (after! org
+;;   (setq org-wild-notifier-alert-time '(5 10 15 30 60))
+;;   (setq org-wild-notifier-keyword-whitelist nil)
+;;   (setq org-wild-notifier-notification-title "*reminder*")
+;;   (org-wild-notifier-mode 1))
