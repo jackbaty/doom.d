@@ -309,6 +309,7 @@
 
 (setq org-id-extra-files (directory-files-recursively org-roam-directory "\.org$"))
 
+;; prevents link display issues in org-roam buffers
 (setq org-fold-core-style "overlays")
 
 ;; (after! org
