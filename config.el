@@ -108,14 +108,6 @@
 ;; My daily snippet evaluates a backquoted shell call. This stops it from warning me.
 (setq warning-suppress-types '((yasnippet backquote-change)))
 
-
-
-
-
-
-
-
-
 ;; Temporary?
 (defun native-comp-available-p () nil)
 

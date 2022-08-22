@@ -1,3 +1,5 @@
+;;(setq org-startup-folded t)
+;;(setq org-cycle-hide-block-startup t)
 (setq org-attach-preferred-new-method 'dir)
 (setq org-attach-id-dir  "files/")
 (setq org-attach-dir-relative t)
@@ -16,7 +18,7 @@
 ;; (setq org-download-timestamp "%Y%m%d-")
 ;; (setq org-download-method 'attach)
 
-(setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
+;;(setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
 
 (setq org-agenda-files (list
                    (concat org-directory "projects.org")
@@ -36,7 +38,7 @@
 
 
 (after! org
-  (setq org-return-follows-link t)
+ ;; (setq org-return-follows-link t)
    (setq org-agenda-include-diary t
        ;;org-agenda-start-on-weekday nil
        ;;org-agenda-span 'week
@@ -178,28 +180,6 @@
 (add-hook 'org-journal-mode-hook 'turn-on-auto-fill)
 (add-hook 'org-journal-mode-hook #'+zen/toggle)
 
-;; Category icons
-;; Odd that regexp doesn't seem to work for (Breakfast|Lunch|Dinner)
-;;
-(setq org-agenda-category-icon-alist
-        `(("Personal" ,(list (all-the-icons-material "home" :height 1.0)) nil nil :ascent center)
-          ("Repeat" ,(list (all-the-icons-material "repeat" :height 1.0)) nil nil :ascent center)
-          ("Events" ,(list (all-the-icons-material "event" :height 1.0)) nil nil :ascent center)
-          ("Anniv" ,(list (all-the-icons-material "perm_contact_calendar" :height 1.0)) nil nil :ascent center)
-          ("Birthday" ,(list (all-the-icons-material "cake" :height 1.0)) nil nil :ascent center)
-          ("Breakfast" ,(list (all-the-icons-material "restaurant_menu" :height 1.0)) nil nil :ascent center)
-          ("Lunch" ,(list (all-the-icons-material "restaurant_menu" :height 1.0)) nil nil :ascent center)
-          ("Dinner" ,(list (all-the-icons-material "restaurant_menu" :height 1.0)) nil nil :ascent center)
-          ("Email" ,(list (all-the-icons-material "mail_outline" :height 1.0)) nil nil :ascent center)
-          ("Daybook" ,(list (all-the-icons-material "info_outline" :height 1.0)) nil nil :ascent center)
-          ("Task" ,(list (all-the-icons-material "check_box_outline_blank" :height 1.0)) nil nil :ascent center)
-          ("Unfiled" ,(list (all-the-icons-material "move_to_inbox" :height 1.0)) nil nil :ascent center)
-          ("." '(space . (:width (16)))))
-        )
-
-(setq org-agenda-category-icon-alist nil)
-
-
 (setq org-export-with-broken-links t)
 
 ;; Create ICS calendar
@@ -310,7 +290,7 @@
 (setq org-id-extra-files (directory-files-recursively org-roam-directory "\.org$"))
 
 ;; prevents link display issues in org-roam buffers
-(setq org-fold-core-style "overlays")
+;;(setq org-fold-core-style "overlays")
 
 ;; (after! org
 ;;   (setq org-wild-notifier-alert-time '(5 10 15 30 60))
