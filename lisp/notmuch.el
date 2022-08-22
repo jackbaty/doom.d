@@ -5,13 +5,14 @@
 ;; UI
 (setq notmuch-hello-auto-refresh t)
 (setq notmuch-show-all-tags-list t)
+(setq notmuch-show-logo nil)
 (setq notmuch-search-oldest-first nil)
 (setq notmuch-show-empty-saved-searches t)
 (setq notmuch-hello-thousands-separator ",")
 (setq notmuch-search-result-format
         '(("date" . "%12s  ")
           ("count" . "%-7s  ")
-          ("authors" . "%-30s  ")
+          ("authors" . "%-15s  ")
           ("subject" . "%-50s ")
           ("tags" . "(%s)")))
 
