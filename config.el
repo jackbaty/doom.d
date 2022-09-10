@@ -19,7 +19,7 @@
 ;; font string. You generally only need these two:
 ;;(setq doom-font (font-spec :family "IBM Plex Mono" :size 15)
 (setq doom-font (font-spec :family "iosevka Comfy" :size 16)
-      doom-variable-pitch-font (font-spec :family "ETBembo" :size 15))
+      doom-variable-pitch-font (font-spec :family "iA Writer Quattro V" :size 12))
 
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -36,8 +36,8 @@
 (setq modus-themes-completions '((t background intense accented)))
 
 
-;;(setq doom-theme 'modus-operandi)
-(setq doom-theme 'modus-vivendi)
+(setq doom-theme 'modus-operandi)
+;;(setq doom-theme 'modus-vivendi)
 ;;(setq doom-theme 'doom-one)
 ;;
 
@@ -74,7 +74,7 @@
 ;;(add-to-list 'load-path "~/Sync/emacs/lisp/denote")
 
 
-(setq fancy-splash-image (concat doom-private-dir "splash.png"))
+;;(setq fancy-splash-image (concat doom-private-dir "splash.png"))
 
 
 
@@ -86,6 +86,7 @@
 (setq bookmark-set-fringe-mark nil)
 (global-visual-line-mode)
 (setq +zen-text-scale 0.8)  ;; Not quite so large, there Doom
+(add-hook 'writeroom-mode-hook (lambda () (setq line-spacing 0.5)))
 
 (setq tab-bar-mode t)
 (setq tab-bar-new-tab-choice "*scratch*") ;; new tabs open scratch buffer
@@ -97,13 +98,13 @@
 
 ;; Load my "modules"
 (load! "lisp/orgmode")
-;;(load! "lisp/orgroam")
+(load! "lisp/orgroam")
 (load! "lisp/latex")
 (load! "lisp/mappings")
 (load! "lisp/myfunctions")
 (load! "lisp/blog")
 (load! "lisp/notmuch")
-(load! "lisp/denote")
+;;(load! "lisp/denote")
 
 ;; My daily snippet evaluates a backquoted shell call. This stops it from warning me.
 (setq warning-suppress-types '((yasnippet backquote-change)))
