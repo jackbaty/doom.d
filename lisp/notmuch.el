@@ -60,11 +60,11 @@
 (setq notmuch-saved-searches
         `(( :name "inbox"
             :query "tag:inbox"
-            :sort-order newest-first
+            :sort-order oldest-first
             :key ,(kbd "i"))
           ( :name "unread (inbox)"
             :query "tag:unread and tag:inbox"
-            :sort-order newest-first
+            :sort-order oldest-first
             :key ,(kbd "u"))
           ( :name "unread all"
             :query "tag:unread not tag:archived"
