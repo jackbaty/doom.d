@@ -71,7 +71,7 @@
 ;; they are implemented.
 
 (add-load-path! "~/Sync/emacs/lisp")
-;;(add-to-list 'load-path "~/Sync/emacs/lisp/denote")
+(add-to-list 'load-path "~/Sync/emacs/lisp/denote")
 
 
 ;;(setq fancy-splash-image (concat doom-private-dir "splash.png"))
@@ -84,8 +84,9 @@
 
 (setq bookmark-default-file "~/Sync/emacs/bookmarks")
 (setq bookmark-set-fringe-mark nil)
+;;(add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode)
 (global-visual-line-mode)
-(setq +zen-text-scale 0.8)  ;; Not quite so large, there Doom
+(setq +zen-text-scale 0.5)  ;; Not quite so large, there Doom
 (add-hook 'writeroom-mode-hook (lambda () (setq line-spacing 0.5)))
 
 (setq tab-bar-mode t)
@@ -98,13 +99,13 @@
 
 ;; Load my "modules"
 (load! "lisp/orgmode")
-(load! "lisp/orgroam")
+;;(load! "lisp/orgroam")
 (load! "lisp/latex")
 (load! "lisp/mappings")
 (load! "lisp/myfunctions")
 (load! "lisp/blog")
 (load! "lisp/notmuch")
-;;(load! "lisp/denote")
+(load! "lisp/denote")
 
 ;; My daily snippet evaluates a backquoted shell call. This stops it from warning me.
 (setq warning-suppress-types '((yasnippet backquote-change)))

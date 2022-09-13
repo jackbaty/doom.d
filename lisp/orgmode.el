@@ -79,7 +79,7 @@
            :empty-lines 1)
           ("T" "Todo to Inbox with Clipboard" entry
            (file+headline ,(concat org-directory "inbox.org") "Inbox")
-           "* TODO %?\nSCHEDULED: %t\n%c\n\n%i\n"
+           "* TODO %?\n%c\n\n%i\n"
            :empty-lines 1)
           ("l" "Current file log entry" entry
            (file+olp+datetree buffer-file-name)
@@ -177,8 +177,8 @@
 ;; Load appointments
 ;;(org-agenda-to-appt)
 
-(add-hook 'org-journal-mode-hook 'turn-on-auto-fill)
-(add-hook 'org-journal-mode-hook #'+zen/toggle)
+;;(add-hook 'org-journal-mode-hook 'turn-on-auto-fill)
+;;(add-hook 'org-journal-mode-hook #'+zen/toggle)
 
 (setq org-export-with-broken-links t)
 

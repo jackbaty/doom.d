@@ -90,3 +90,23 @@ If FRAME is omitted or nil, use currently selected frame."
   (unless (eq 'maximised (frame-parameter nil 'fullscreen))
     (modify-frame-parameters
      frame '((user-position . t) (top . 0.5) (left . 0.5)))))
+
+(defun jab/delete-capture-frame (&rest _)
+  "Delete frame with its name frame-parameter set to \"capture\"."
+  (if (equal "capture" (frame-parameter nil 'name))
+      (delete-frame)))
+(advice-add 'org-capture-finalize :after #'jab/delete-capture-frame)
+
+(defun jab/org-capture-frame ()
+  "Run org-capture in its own frame."
+  (interactive)
+  (require 'cl-lib)
+  (select-frame-by-name "capture")
+  (delete-other-windows)
+  (cl-letf (((symbol-function 'switch-to-buffer-other-window) #'switch-to-buffer))
+    (condition-case err
+        (org-capture)
+      ;; "q" signals (error "Abort") in `org-capture'
+      ;; delete the newly created frame in this scenario.
+      (user-error (when (string= (cadr err) "Abort")
+                    (delete-frame))))))
