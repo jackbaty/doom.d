@@ -74,26 +74,20 @@
 (add-to-list 'load-path "~/Sync/emacs/lisp/denote")
 
 
-;;(setq fancy-splash-image (concat doom-private-dir "splash.png"))
-
-
-
-;;(setq initial-frame-alist '((top . 30) (left . 100) (width . 120) (height . 61)))
 (setq initial-frame-alist '((width . 120) (height . 61)))
 (add-to-list 'after-make-frame-functions #'jab/frame-center)
 
 (setq bookmark-default-file "~/Sync/emacs/bookmarks")
 (setq bookmark-set-fringe-mark nil)
-;;(add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode)
 (global-visual-line-mode)
 (setq +zen-text-scale 0.5)  ;; Not quite so large, there Doom
-(add-hook 'writeroom-mode-hook (lambda () (setq line-spacing 0.5)))
+(add-hook 'writeroom-mode-hook (lambda () (setq line-spacing 0.4)))
 
 (setq tab-bar-mode t)
 (setq tab-bar-new-tab-choice "*scratch*") ;; new tabs open scratch buffer
 (setq tab-bar-show t)
 
-;; More clever completion
+;; Some clever completion
 (use-package! orderless
   :custom (completion-styles '(orderless)))
 
@@ -103,9 +97,9 @@
 (load! "lisp/latex")
 (load! "lisp/mappings")
 (load! "lisp/myfunctions")
-(load! "lisp/blog")
-(load! "lisp/notmuch")
+;;(load! "lisp/blog")
 (load! "lisp/denote")
+(load! "lisp/notmuch")
 
 ;; My daily snippet evaluates a backquoted shell call. This stops it from warning me.
 (setq warning-suppress-types '((yasnippet backquote-change)))
