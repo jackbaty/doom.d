@@ -60,7 +60,9 @@
 (package! pretty-hydra)
 ;;(package! org-wild-notifier)
 ;;(package! dired-narrow)
-(package! denote)
+;;(package! denote)
+
+(package! olivetti)
 
 (unpin! org-roam ox-hugo)
 

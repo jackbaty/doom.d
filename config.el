@@ -19,7 +19,7 @@
 ;; font string. You generally only need these two:
 ;;(setq doom-font (font-spec :family "IBM Plex Mono" :size 15)
 (setq doom-font (font-spec :family "iosevka Comfy" :size 16)
-      doom-variable-pitch-font (font-spec :family "iA Writer Quattro V" :size 12))
+      doom-variable-pitch-font (font-spec :family "iA Writer Quattro V" :size 16))
 
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -33,13 +33,13 @@
         modus-themes-mode-line '(borderless)
         modus-themes-region '(bg-only no-extend))
 
-(setq modus-themes-completions '((t background intense accented)))
+(setq modus-themes-completions 'opinionated)
+;;(setq modus-themes-completions '((t background intense accented)))
 
 
 (setq doom-theme 'modus-operandi)
 ;;(setq doom-theme 'modus-vivendi)
 ;;(setq doom-theme 'doom-one)
-;;
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -80,8 +80,14 @@
 (setq bookmark-default-file "~/Sync/emacs/bookmarks")
 (setq bookmark-set-fringe-mark nil)
 (global-visual-line-mode)
-(setq +zen-text-scale 0.5)  ;; Not quite so large, there Doom
-(add-hook 'writeroom-mode-hook (lambda () (setq line-spacing 0.4)))
+;;(setq +zen-text-scale 0.5)  ;; Not quite so large, there Doom
+;;(add-hook 'writeroom-mode-hook (lambda () (setq line-spacing 0.4)))
+(add-hook 'olivetti-mode-on-hook (lambda () (setq line-spacing 0.4)))
+;;(add-hook 'olivetti-mode-on-hook (lambda () (olivetti-set-width 100)))
+(setq markdown-hide-urls t)
+(map! :leader "t z" #'olivetti-mode)
+
+
 
 (setq tab-bar-mode t)
 (setq tab-bar-new-tab-choice "*scratch*") ;; new tabs open scratch buffer
