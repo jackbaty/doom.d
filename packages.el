@@ -63,6 +63,7 @@
 ;;(package! denote)
 
 (package! olivetti)
+(package! consult-notes)
 
 (unpin! org-roam ox-hugo)
 

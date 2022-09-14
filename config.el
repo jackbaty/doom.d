@@ -93,6 +93,10 @@
 (setq tab-bar-new-tab-choice "*scratch*") ;; new tabs open scratch buffer
 (setq tab-bar-show t)
 
+(setq consult-notes-sources
+      `(("Org"         ?o "~/org")
+        ("Denote"      ?d ,denote-directory)))
+
 ;; Some clever completion
 (use-package! orderless
   :custom (completion-styles '(orderless)))

@@ -44,34 +44,37 @@
 ;; OR if only want it in `denote-dired-directories':
 ;;(add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
 
-;; Here is a custom, user-level command from one of the examples we
-;; showed in this manual.  We define it here and add it to a key binding
-;; below.
-(defun my-denote-journal ()
-  "Create an entry tagged 'journal', while prompting for a title."
+;; Journaling (stolen from Denote's manual)
+(defun jab/denote-journal ()
+  "Create an entry tagged 'journal' with the date as its title."
   (interactive)
   (denote
-   (denote--title-prompt)
-   '("journal")))
+   (format-time-string "%A %e %B %Y") ; format like Tuesday 14 June 2022
+   '("journal"))) ; multiple keywords are a list of strings: '("one" "two")
 
 (defun jab/search-denote ()
  "Run consult-ripgrep on the denote directory"
  (interactive)
  (consult-ripgrep denote-directory nil))
 
-(defun jab/find-denote-file ()
+(defun jab/find-denote-file-find ()
  "Run consult-find on the denote directory"
  (interactive)
  (consult-find denote-directory nil))
 
+(defun jab/find-denote-file ()
+ "Run consult-notes on the denote directory"
+ (interactive)
+ (consult-notes))
+
 ;; Denote does not define any key bindings.  This is for the user to
 ;; decide.  For example:
 (let ((map global-map))
-  (define-key map (kbd "C-c n j") #'my-denote-journal) ; our custom command
   (define-key map (kbd "C-c n n") #'denote)
   (define-key map (kbd "C-c n N") #'denote-type)
   (define-key map (kbd "C-c n d") #'denote-date)
   (define-key map (kbd "C-c n S") #'denote-subdirectory)
+  (define-key map (kbd "C-c n j") #'jab/denote-journal) ; our custom command
   (define-key map (kbd "C-c n s") #'jab/search-denote)
   (define-key map (kbd "C-c n f") #'jab/find-denote-file)
   (define-key map (kbd "s-k")     #'jab/find-denote-file)
