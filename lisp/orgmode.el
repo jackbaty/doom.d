@@ -90,9 +90,6 @@
           ("e" "Event" entry
            (file+olp+datetree ,(concat org-directory "events.org"))
            "* %?\n%T\n" :time-prompt t)
-          ("F" "Food Log" entry
-           (file+datetree+prompt "~/org/food.org")
-            "* %?\n%t\n%^{category}p%^{Type}p")
           ("s" "Add to Spark File" entry
            (file+headline ,(concat org-directory "sparkfile.org") "2022")
            "* %?\n%U" :prepend t)
@@ -107,6 +104,7 @@
           ("n" "Add a Note" entry
            (file+headline ,(concat org-directory "notes.org") "Notes")
            "* %?\n%U" :prepend t))))
+
 
 
 (setq org-agenda-custom-commands
@@ -297,3 +295,4 @@
 ;;   (setq org-wild-notifier-keyword-whitelist nil)
 ;;   (setq org-wild-notifier-notification-title "*reminder*")
 ;;   (org-wild-notifier-mode 1))
+
