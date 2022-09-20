@@ -84,8 +84,8 @@
 ;;(add-hook 'writeroom-mode-hook (lambda () (setq line-spacing 0.4)))
 (add-hook 'olivetti-mode-on-hook (lambda () (setq line-spacing 0.4)))
 ;;(add-hook 'olivetti-mode-on-hook (lambda () (olivetti-set-width 100)))
-(setq markdown-hide-urls t)
-(map! :leader "t z" #'olivetti-mode)
+(setq markdown-hide-urls t) ; prettier URL display
+(map! :leader "t z" #'olivetti-mode) ; Muscle memory from Doom's zen mode
 
 
 
@@ -93,9 +93,6 @@
 (setq tab-bar-new-tab-choice "*scratch*") ;; new tabs open scratch buffer
 (setq tab-bar-show t)
 
-(setq consult-notes-sources
-      `(("Org"         ?o "~/org")
-        ("Denote"      ?d ,denote-directory)))
 
 ;; Some clever completion
 (use-package! orderless
@@ -110,6 +107,11 @@
 ;;(load! "lisp/blog")
 (load! "lisp/denote")
 (load! "lisp/notmuch")
+
+;; Load after denote
+(setq consult-notes-sources
+      `(("Org"         ?o "~/org")
+        ("Denote"      ?d ,denote-directory)))
 
 ;; My daily snippet evaluates a backquoted shell call. This stops it from warning me.
 (setq warning-suppress-types '((yasnippet backquote-change)))

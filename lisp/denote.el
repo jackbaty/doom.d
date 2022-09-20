@@ -90,12 +90,12 @@
   ;; Note that `denote-dired-rename-file' can work from any context, not
   ;; just Dired bufffers.  That is why we bind it here to the
   ;; `global-map'.
-  (define-key map (kbd "C-c n r") #'denote-dired-rename-file))
+  (define-key map (kbd "C-c n r") #'denote-rename-file))
 
 (with-eval-after-load 'org-capture
   (setq denote-org-capture-specifiers "%l\n%i\n%?")
   (add-to-list 'org-capture-templates
-               '("n" "New note (with denote.el)" plain
+               '("N" "New note (with denote.el)" plain
                  (file denote-last-path)
                  #'denote-org-capture
                  :no-save t
