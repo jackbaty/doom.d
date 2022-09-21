@@ -100,18 +100,19 @@
 
 ;; Load my "modules"
 (load! "lisp/orgmode")
-;;(load! "lisp/orgroam")
+(load! "lisp/orgroam")
 (load! "lisp/latex")
 (load! "lisp/mappings")
 (load! "lisp/myfunctions")
 ;;(load! "lisp/blog")
-(load! "lisp/denote")
+;;(load! "lisp/denote")
 (load! "lisp/notmuch")
 
 ;; Load after denote
 (setq consult-notes-sources
       `(("Org"         ?o "~/org")
-        ("Denote"      ?d ,denote-directory)))
+        ("Roam"      ?r "~/org/roam")))
+;;         ("Denote"      ?d ,denote-directory)))
 
 ;; My daily snippet evaluates a backquoted shell call. This stops it from warning me.
 (setq warning-suppress-types '((yasnippet backquote-change)))
