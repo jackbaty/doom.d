@@ -21,6 +21,7 @@
 
 ;; Tagging
 (setq notmuch-archive-tags '("-inbox" "-unread" "+archived"))
+(setq notmuch-message-deleted-tags '("+deleted" "-inbox" "-unread"))
 (setq notmuch-message-replied-tags '("+replied"))
 (setq notmuch-message-forwarded-tags '("+forwarded"))
 (setq notmuch-show-mark-read-tags '("-unread"))
@@ -118,3 +119,22 @@
 
 (map! :map message-mode-map
       "C-w" #'jab/snip-region))
+
+;; My way of handling deletions
+;; See https://baty.net/2022/tagging-deleted-messages-in-notmuch
+
+(defun jab/notmuch-search-message-delete (go-next)
+  "Delete message and select GO-NEXT message."
+  (notmuch-search-tag notmuch-message-deleted-tags)
+  (if (eq 'up go-next)
+      (notmuch-search-previous-thread)
+    (notmuch-search-next-thread)))
+
+(defun jab/notmuch-search-message-delete-down ()
+  "Delete a message and select the next message."
+  (interactive)
+  (jab/notmuch-search-message-delete 'down))
+
+;; My own delete key
+(map! :map notmuch-search-mode-map
+        :n "D" #'jab/notmuch-search-message-delete-down)
