@@ -37,8 +37,8 @@
 ;;(setq modus-themes-completions '((t background intense accented)))
 
 
-(setq doom-theme 'modus-operandi)
-;;(setq doom-theme 'modus-vivendi)
+;;(setq doom-theme 'modus-operandi)
+(setq doom-theme 'modus-vivendi)
 ;;(setq doom-theme 'doom-one)
 
 ;; If you use `org' and don't want your org files in the default location below,
