@@ -64,6 +64,5 @@
 
 (package! olivetti)
 (package! consult-notes)
-
-(unpin! org-roam ox-hugo)
-
+(package! org-roam-ui)
+(unpin! org-roam ox-hugo org-roam-ui)
