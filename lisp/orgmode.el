@@ -29,7 +29,7 @@
                    (concat org-directory "food.org")
                    (concat org-directory "doing.org")
                    (concat org-directory "daybook.org")
-                   (concat org-directory "roam/projects/")
+                   (concat org-directory "projects/")
                    "~/Library/Mobile Documents/iCloud~is~workflow~my~workflows/Documents/voicenotes.org"))
 
 (setq org-refile-targets '(("projects.org" :regexp . "\\(?:\\(?:Note\\|Task\\)s\\)")
@@ -214,7 +214,7 @@
 
 (setq org-publish-project-alist
   '(("roam-notes"
-     :base-directory "~/org/roam/public"
+     :base-directory "~/org/public"
      :html-html5-fancy t
      :auto-sitemap t
      :org-publish-sitemap-sort-files "anti-chronologically" ;; or "alphabetically"
@@ -242,7 +242,7 @@
      :section-number nil
      :table-of-contents nil)
     ("roam-static"
-     :base-directory "~/org/roam/public"
+     :base-directory "~/org/public"
      :base-extension "css\\|js\\|png\\|jpg\\|jpeg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
      :publishing-directory "~/sites/roam/public_html"
      :recursive t
@@ -285,14 +285,11 @@
 ;;(with-eval-after-load 'ox-hugo
 ;;  (setq org-hugo--preprocess-buffer nil))
 
-(setq org-id-extra-files (directory-files-recursively org-roam-directory "\.org$"))
+;;(setq org-id-extra-files (directory-files-recursively org-roam-directory "\.org$"))
 
-;; prevents link display issues in org-roam buffers
+;; BUT, it also breaks org-cycle so I've disabled it
 ;;(setq org-fold-core-style "overlays")
 
-;; (after! org
-;;   (setq org-wild-notifier-alert-time '(5 10 15 30 60))
-;;   (setq org-wild-notifier-keyword-whitelist nil)
-;;   (setq org-wild-notifier-notification-title "*reminder*")
-;;   (org-wild-notifier-mode 1))
-
+;; prevents link display issues in org-roam buffers
+;;(after! org
+;;     (setq org-fold-core-style "overlays"))

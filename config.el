@@ -110,9 +110,7 @@
 
 ;; Load after denote
 (setq consult-notes-sources
-      `(("Org"         ?o "~/org")
-        ("Roam"      ?r "~/org/roam")))
-;;         ("Denote"      ?d ,denote-directory)))
+      `(("Org"         ?o "~/org")))
 
 ;; My daily snippet evaluates a backquoted shell call. This stops it from warning me.
 (setq warning-suppress-types '((yasnippet backquote-change)))

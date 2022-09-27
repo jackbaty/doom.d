@@ -15,37 +15,39 @@
   (org-link-set-parameters "id"
                          :face '(:foreground "orange" :underline t)))
 
-(setq org-roam-directory "~/org/roam")
+(setq org-roam-directory "~/org")
 
 (setq org-roam-capture-templates
-  '(("d" "default" plain "%?"
-    :target (file+head "%<%Y%m%d>-${slug}.org"
-                       "#+title: ${title}\n#+filetags: \n#+setupfile: ~/org/_SETUP/EXPORT\n#+setupfile: ~/org/_SETUP/org-roam-publish-fancy.setup")
+  '(("d"                                              ;; Key
+     "default"                                        ;; Description
+     plain                                            ;; Type
+     (file "~/org/templates/DefaultRoamTemplate.org") ;; Template
+    :target (file "kb/%<%Y%m%d%H%M%S>-${slug}.org")   ;; Target
     :unnarrowed t)
-    ("P"                                               ;; Key
-     "Public (published in /public)"                   ;; Description
-     plain                                             ;; Type
-     (file "~/org/roam/templates/PublicTemplate.org")  ;; Template
-    :target (file "public/${slug}.org")                ;; Target
+    ("P"                                              ;; Key
+     "Public (published in /public)"                  ;; Description
+     plain                                            ;; Type
+     (file "~/org/templates/PublicTemplate.org")      ;; Template
+    :target (file "public/${slug}.org")               ;; Target
     :unnarrowed t)
-    ("m"                                               ;; Key
-     "Movie"                                           ;; Description
-     plain                                             ;; Type
-     (file "~/org/roam/templates/MovieTemplate.org")   ;; Template
-    :target (file "public/${slug}.org")                ;; Target
+    ("m"                                              ;; Key
+     "Movie"                                          ;; Description
+     plain                                            ;; Type
+     (file "~/org/templates/MovieTemplate.org")       ;; Template
+    :target (file "public/${slug}.org")               ;; Target
     :unnarrowed t)
-    ("p"                                               ;; Key
-     "project"                                         ;; Description
-     plain                                             ;; Type
-     (file "~/org/roam/templates/ProjectTemplate.org") ;; Template
-    :target (file "projects/%<%Y%m%d>-${slug}.org")    ;; Target
+    ("p"                                              ;; Key
+     "project"                                        ;; Description
+     plain                                            ;; Type
+     (file "~/org/templates/ProjectTemplate.org")     ;; Template
+    :target (file "projects/%<%Y%m%d>-${slug}.org")   ;; Target
     :unnarrowed t)))
 
 (use-package! websocket
     :after org-roam)
 
 (use-package! org-roam-ui
-    :after org-roam ;; or :after org
+    :after org ;; or :after org
 ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
 ;;         a hookable mode anymore, you're advised to pick something yourself
 ;;         if you don't care about startup time, use

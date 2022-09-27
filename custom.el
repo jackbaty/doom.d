@@ -9,6 +9,8 @@
  '(jdee-db-requested-breakpoint-face-colors (cons "#f2f2f2" "#718c00"))
  '(jdee-db-spec-breakpoint-face-colors (cons "#f2f2f2" "#8e908c"))
  '(objed-cursor-color "#c82829")
+ '(org-safe-remote-resources
+   '("\\`https://fniessen\\.github\\.io/org-html-themes/org/theme-readtheorg\\.setup\\'"))
  '(rustic-ansi-faces
    ["#ffffff" "#c82829" "#718c00" "#eab700" "#4271ae" "#c678dd" "#8abeb7" "#4d4d4c"])
  '(safe-local-variable-values
@@ -17,7 +19,12 @@
      (org-hugo-base-dir . ~/sites/org-roam/)
      (org-hugo-section . post)
      (org-attach-id-directory . img/)
-     (org-attach-directory . img/))))
+     (org-attach-directory . img/)))
+ '(warning-suppress-types
+   '((org-element-cache)
+     (org-element-cache)
+     (org-element-cache)
+     (yasnippet backquote-change))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
