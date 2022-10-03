@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: Org-roam front-matter for publishing
+# key: orhugo
+# uuid: orhugo
+# --
+#+setupfile: ~/org/_SETUP/org-roam-publish-fancy.setup
+#+setupfile: ~/org/_SETUP/HTML_FANCY
+#+hugo_base_dir: ~/sites/org-roam/
+#+hugo_section: posts

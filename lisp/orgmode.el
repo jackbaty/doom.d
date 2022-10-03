@@ -74,11 +74,11 @@
 
   (setq org-capture-templates
         `(("t" "Todo to Inbox" entry
-           (file+headline ,(concat org-directory "inbox.org") "Inbox")
+           (file+headline ,(concat org-directory "tasks.org") "Inbox")
            "* TODO %?\n"
            :empty-lines 1)
           ("T" "Todo to Inbox with Clipboard" entry
-           (file+headline ,(concat org-directory "inbox.org") "Inbox")
+           (file+headline ,(concat org-directory "tasks.org") "Inbox")
            "* TODO %?\n%c\n\n%i\n"
            :empty-lines 1)
           ("l" "Current file log entry" entry
@@ -97,9 +97,9 @@
            (file+headline ,(concat org-directory "doing.org") "Currently")
            "* %U %?" :prepend t)
          ("m" "Email Workflow")
-           ("mf" "Follow Up" entry (file+olp "~/org/inbox.org" "Inbox")
+           ("mf" "Follow Up" entry (file+olp "~/org/tasks.org" "Inbox")
             "* TODO Follow up with %:from on %a\nSCHEDULED:%t\n\n%i")
-           ("mr" "Read Later" entry (file+olp "~/org/inbox.org" "Inbox")
+           ("mr" "Read Later" entry (file+olp "~/org/tasks.org" "Inbox")
             "* TODO Process %:subject\nSCHEDULED:%t\n%a\n\n%i")
           ("n" "Add a Note" entry
            (file+headline ,(concat org-directory "notes.org") "Notes")
@@ -175,7 +175,10 @@
 ;; Load appointments
 ;;(org-agenda-to-appt)
 
-;;(add-hook 'org-journal-mode-hook 'turn-on-auto-fill)
+(after! org-journal
+(add-hook 'org-journal-mode-hook (lambda () (adaptive-wrap-prefix-mode nil))))
+
+
 ;;(add-hook 'org-journal-mode-hook #'+zen/toggle)
 
 (setq org-export-with-broken-links t)
@@ -214,7 +217,7 @@
 
 (setq org-publish-project-alist
   '(("roam-notes"
-     :base-directory "~/org/public"
+     :base-directory "~/org/kb/public"
      :html-html5-fancy t
      :auto-sitemap t
      :org-publish-sitemap-sort-files "anti-chronologically" ;; or "alphabetically"
@@ -242,7 +245,7 @@
      :section-number nil
      :table-of-contents nil)
     ("roam-static"
-     :base-directory "~/org/public"
+     :base-directory "~/org/kb/public"
      :base-extension "css\\|js\\|png\\|jpg\\|jpeg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
      :publishing-directory "~/sites/roam/public_html"
      :recursive t

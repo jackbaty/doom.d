@@ -28,13 +28,13 @@
      "Public (published in /public)"                  ;; Description
      plain                                            ;; Type
      (file "~/org/templates/PublicTemplate.org")      ;; Template
-    :target (file "public/${slug}.org")               ;; Target
+    :target (file "kb/public/${slug}.org")               ;; Target
     :unnarrowed t)
     ("m"                                              ;; Key
      "Movie"                                          ;; Description
      plain                                            ;; Type
      (file "~/org/templates/MovieTemplate.org")       ;; Template
-    :target (file "public/${slug}.org")               ;; Target
+    :target (file "kb/public/${slug}.org")               ;; Target
     :unnarrowed t)
     ("p"                                              ;; Key
      "project"                                        ;; Description

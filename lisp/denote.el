@@ -4,12 +4,14 @@
 (require 'denote)
 
 ;; Remember to check the doc strings of those variables.
-(setq denote-directory (expand-file-name "~/Documents/notes/"))
+(setq denote-directory (expand-file-name "~/org/notes/"))
 (setq denote-known-keywords '("emacs" "photography" "software" "person"))
 (setq denote-infer-keywords t)
 (setq denote-sort-keywords t)
 (setq denote-file-type nil) ; Org is the default, set others here
 (setq denote-prompts '(title keywords))
+
+(setq denote-date-prompt-use-org-read-date t) ; fancy date picker
 
 ;; We allow multi-word keywords by default.  The author's personal
 ;; preference is for single-word keywords for a more rigid workflow.
@@ -26,7 +28,7 @@
 
 ;; If you use Markdown or plain text files (Org renders links as buttons
 ;; right away)
-(add-hook 'find-file-hook #'denote-link-buttonize-buffer)
+;;(add-hook 'find-file-hook #'denote-link-buttonize-buffer)
 
 ;; Hide file permissions by default
 (add-hook 'dired-mode-hook 'dired-hide-details-mode)
@@ -50,7 +52,9 @@
   (interactive)
   (denote
    (format-time-string "%A %e %B %Y") ; format like Tuesday 14 June 2022
-   '("journal"))) ; multiple keywords are a list of strings: '("one" "two")
+   '("journal")
+   nil
+   (concat denote-directory "journal"))) ; multiple keywords are a list of strings: '("one" "two")
 
 (defun jab/search-denote ()
  "Run consult-ripgrep on the denote directory"
@@ -102,3 +106,4 @@
                  :immediate-finish nil
                  :kill-buffer t
                  :jump-to-captured t)))
+
