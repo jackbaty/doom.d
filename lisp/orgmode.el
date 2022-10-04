@@ -176,7 +176,7 @@
 ;;(org-agenda-to-appt)
 
 (after! org-journal
-(add-hook 'org-journal-mode-hook (lambda () (adaptive-wrap-prefix-mode nil))))
+(add-hook 'org-journal-mode-hook (lambda () (setq adaptive-wrap-prefix-mode nil))))
 
 
 ;;(add-hook 'org-journal-mode-hook #'+zen/toggle)
