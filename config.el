@@ -101,7 +101,7 @@
 ;; Load my "modules"
 (load! "lisp/orgmode")
 (load! "lisp/denote")
-(load! "lisp/orgroam")
+;;(load! "lisp/orgroam")
 (load! "lisp/latex")
 (load! "lisp/mappings")
 (load! "lisp/myfunctions")
@@ -111,7 +111,7 @@
 ;; Load after denote and org-roam
 (setq consult-notes-sources
       `(("Denote"      ?d ,denote-directory)
-        ("Roam"        ?r ,org-roam-directory)))
+        ("Roam"        ?r "~/org/kb")))
 
 
 ;; My daily snippet evaluates a backquoted shell call. This stops it from warning me.
