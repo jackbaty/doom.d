@@ -89,8 +89,8 @@
   (define-key map (kbd "C-c n i") #'denote-link-or-create) ; "insert" mnemonic
   (define-key map (kbd "C-c n I") #'denote-link-add-links)
   (define-key map (kbd "C-c n l") #'denote-link-find-file) ; "list" links
-  (define-key map (kbd "C-c n b") #'denote-link-backlinks)
-  (define-key map (kbd "s-l") #'denote-link-backlinks)
+  (define-key map (kbd "C-c n b") #'denote-link-find-backlinks)
+  (define-key map (kbd "s-l") #'denote-link-find-backlinks)
   ;; Note that `denote-dired-rename-file' can work from any context, not
   ;; just Dired bufffers.  That is why we bind it here to the
   ;; `global-map'.
@@ -107,3 +107,10 @@
                  :kill-buffer t
                  :jump-to-captured t)))
 
+;; Should speed up backing buffer builds
+(setq xref-search-program 'ripgrep)
+
+;; Load after denote
+(after! denote
+(setq consult-notes-sources
+       `(("Denote"      ?d ,denote-directory))))
