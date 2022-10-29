@@ -30,6 +30,12 @@
      (file "~/org/templates/PublicTemplate.org")      ;; Template
     :target (file "kb/public/${slug}.org")               ;; Target
     :unnarrowed t)
+    ("c"                                         ;; Key
+     "Contact (Person)"                          ;; Description
+     plain                                       ;; Type
+     (file "~/org/templates/PersonTemplate.org") ;; Template
+     :target (file "kb/contacts/${slug}.org")        ;; Target
+     :unnarrowed t)
     ("m"                                              ;; Key
      "Movie"                                          ;; Description
      plain                                            ;; Type
@@ -112,3 +118,8 @@
   "Return first ROAM_REFS property in the FILEPATH."
   (with-current-buffer (find-file-noselect filepath)
     (car (org-property-values "ROAM_REFS"))))
+
+;; Load after denote
+(after! org-roam
+(setq consult-notes-sources
+       `(("Roam"      ?r ,org-roam-directory))))
