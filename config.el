@@ -27,6 +27,32 @@
 ;; `load-theme' function. This is the default:
 ;;(setq doom-theme 'doom-palenight)
 
+
+(require 'ef-themes)
+
+;; If you like two specific themes and want to switch between them, you
+;; can specify them in `ef-themes-to-toggle' and then invoke the command
+;; `ef-themes-toggle'.  All the themes are included in the variable
+;; `ef-themes-collection'.
+(setq ef-themes-to-toggle '(ef-cyprus ef-winter))
+
+;; Make customisations that affect Emacs faces BEFORE loading a theme
+;; (any change needs a theme re-load to take effect).
+
+(setq ef-themes-headings
+      '((1 . (light variable-pitch 1.3))
+        (2 . (regular 1.1))
+        (3 . (1.0))
+        (t . (variable-pitch))))
+
+;; They are nil by default...
+(setq ef-themes-mixed-fonts t
+      ef-themes-variable-pitch-ui t)
+
+;; Disable all other themes to avoid awkward blending:
+(mapc #'disable-theme custom-enabled-themes)
+
+
 (setq modus-themes-italic-constructs t
         modus-themes-bold-constructs nil
         modus-themes-mixed-fonts t
@@ -38,7 +64,8 @@
 
 
 ;;(setq doom-theme 'modus-operandi)
-(setq doom-theme 'modus-vivendi)
+;;(setq doom-theme 'modus-vivendi)
+(setq doom-theme 'ef-light)
 ;;(setq doom-theme 'doom-one)
 
 ;; If you use `org' and don't want your org files in the default location below,

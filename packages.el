@@ -66,3 +66,5 @@
 (package! consult-notes)
 (package! org-roam-ui)
 (unpin! ox-hugo org-roam-ui)
+(package! obsidian)
+(package! ef-themes)
