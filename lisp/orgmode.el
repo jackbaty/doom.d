@@ -175,8 +175,8 @@
 ;; Load appointments
 ;;(org-agenda-to-appt)
 
-(after! org-journal
-(add-hook 'org-journal-mode-hook (lambda () (setq adaptive-wrap-prefix-mode nil))))
+;; (after! org-journal
+;; (add-hook 'org-journal-mode-hook (lambda () (setq adaptive-wrap-prefix-mode nil))))
 
 
 ;;(add-hook 'org-journal-mode-hook #'+zen/toggle)
@@ -294,5 +294,5 @@
 ;;(setq org-fold-core-style "overlays")
 
 ;; prevents link display issues in org-roam buffers
-;;(after! org
-;;     (setq org-fold-core-style "overlays"))
+;; (after! org
+;;      (setq org-fold-core-style "overlays"))

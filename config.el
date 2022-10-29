@@ -109,7 +109,7 @@
 (global-visual-line-mode)
 ;;(setq +zen-text-scale 0.5)  ;; Not quite so large, there Doom
 ;;(add-hook 'writeroom-mode-hook (lambda () (setq line-spacing 0.4)))
-(add-hook 'olivetti-mode-on-hook (lambda () (setq line-spacing 0.4)))
+;;(add-hook 'olivetti-mode-on-hook (lambda () (setq line-spacing 0.4)))
 ;;(add-hook 'olivetti-mode-on-hook (lambda () (olivetti-set-width 100)))
 (setq markdown-hide-urls t) ; prettier URL display
 (map! :leader "t z" #'olivetti-mode) ; Muscle memory from Doom's zen mode
@@ -135,11 +135,6 @@
 ;;(load! "lisp/blog")
 (load! "lisp/notmuch")
 
-;; Load after denote and org-roam
-(setq consult-notes-sources
-      `(("Denote"      ?d ,denote-directory)
-        ("Roam"        ?r "~/org/kb")))
-
 
 ;; My daily snippet evaluates a backquoted shell call. This stops it from warning me.
 (setq warning-suppress-types '((yasnippet backquote-change)))
@@ -147,3 +142,10 @@
 ;; Temporary?
 (defun native-comp-available-p () nil)
 
+
+;; Obsidian
+(after! obsidian
+  (setq obsidian-directory "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian Vault")
+  (setq global-obsidian-mode t)
+  (setq obsidian-inbox-directory "Inbox")
+  (map! :map obsidian-mode-map "\C-c \C-l" #'obsidian-insert-wikilink))
