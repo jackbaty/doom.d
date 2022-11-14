@@ -269,7 +269,7 @@
 (org-link-set-parameters "message"
   :follow (lambda (path) (shell-command (concat "open \"message:" path "\"")))))
 
-;;(load "org-maillink")
+(load "org-mac-link")
 
 ;; Elfeed
 (add-hook! 'elfeed-search-mode-hook 'elfeed-update)
