@@ -39,11 +39,11 @@
 ;; Make customisations that affect Emacs faces BEFORE loading a theme
 ;; (any change needs a theme re-load to take effect).
 
-(setq ef-themes-headings
-      '((1 . (light variable-pitch 1.3))
-        (2 . (regular 1.1))
-        (3 . (1.0))
-        (t . (variable-pitch))))
+;; (setq ef-themes-headings
+;;       '((1 . (light variable-pitch 1.3))
+;;         (2 . (regular 1.1))
+;;         (3 . (1.0))
+;;         (t . (variable-pitch))))
 
 ;; They are nil by default...
 (setq ef-themes-mixed-fonts t
@@ -65,7 +65,7 @@
 
 ;;(setq doom-theme 'modus-operandi)
 ;;(setq doom-theme 'modus-vivendi)
-(setq doom-theme 'ef-light)
+(setq doom-theme 'ef-frost)
 ;;(setq doom-theme 'doom-one)
 
 ;; If you use `org' and don't want your org files in the default location below,
@@ -107,14 +107,16 @@
 (setq bookmark-default-file "~/Sync/emacs/bookmarks")
 (setq bookmark-set-fringe-mark nil)
 (global-visual-line-mode)
-;;(setq +zen-text-scale 0.5)  ;; Not quite so large, there Doom
+(setq +zen-text-scale 0.3)  ;; Not quite so large, there Doom
 ;;(add-hook 'writeroom-mode-hook (lambda () (setq line-spacing 0.4)))
 ;;(add-hook 'olivetti-mode-on-hook (lambda () (setq line-spacing 0.4)))
 ;;(add-hook 'olivetti-mode-on-hook (lambda () (olivetti-set-width 100)))
 (setq markdown-hide-urls t) ; prettier URL display
-(map! :leader "t z" #'olivetti-mode) ; Muscle memory from Doom's zen mode
+;;(map! :leader "t z" #'olivetti-mode) ; Muscle memory from Doom's zen mode
 
 
+(after! writeroom-mode
+  (setq writeroom-mode-line t))
 
 (setq tab-bar-mode t)
 (setq tab-bar-new-tab-choice "*scratch*") ;; new tabs open scratch buffer
@@ -135,6 +137,8 @@
 ;;(load! "lisp/blog")
 (load! "lisp/notmuch")
 
+;; For markdown->html exports
+(setq markdown-css-paths '("https://static.baty.net/cdn/simple.min.css"))
 
 ;; My daily snippet evaluates a backquoted shell call. This stops it from warning me.
 (setq warning-suppress-types '((yasnippet backquote-change)))
