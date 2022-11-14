@@ -102,7 +102,7 @@
            ("mr" "Read Later" entry (file+olp "~/org/tasks.org" "Inbox")
             "* TODO Process %:subject\nSCHEDULED:%t\n%a\n\n%i")
           ("n" "Add a Note" entry
-           (file+headline ,(concat org-directory "notes.org") "Notes")
+           (file+headline ,(concat org-directory "notes.org") "2022")
            "* %?\n%U" :prepend t))))
 
 
