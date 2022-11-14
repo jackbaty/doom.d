@@ -175,8 +175,12 @@
 ;; Load appointments
 ;;(org-agenda-to-appt)
 
-;; (after! org-journal
-;; (add-hook 'org-journal-mode-hook (lambda () (setq adaptive-wrap-prefix-mode nil))))
+
+;; Fix incorrect indenting in (esp. org-journal) buffers
+(defun jab/disable-adaptive-wrap()
+    (adaptive-wrap-prefix-mode -1))
+
+(add-hook 'visual-line-mode-hook #'jab/disable-adaptive-wrap)
 
 
 ;;(add-hook 'org-journal-mode-hook #'+zen/toggle)
