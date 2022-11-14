@@ -62,9 +62,10 @@
 ;;(package! dired-narrow)
 ;;(package! denote)
 
-(package! olivetti)
+;;(package! olivetti)
 (package! consult-notes)
-(package! org-roam-ui)
-(unpin! ox-hugo org-roam-ui)
+;;(package! org-roam-ui)
+(unpin! ox-hugo)
 (package! obsidian)
 (package! ef-themes)
+(package! pandoc-mode)
