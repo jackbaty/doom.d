@@ -15,7 +15,7 @@
   (org-link-set-parameters "id"
                          :face '(:foreground "orange" :underline t)))
 
-(setq org-roam-directory "~/org")
+(setq org-roam-directory "~/org/kb")
 
 (setq org-roam-capture-templates
   '(("d"                                              ;; Key
