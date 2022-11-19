@@ -101,7 +101,7 @@
 (add-to-list 'load-path "~/Sync/emacs/lisp/denote")
 
 
-(setq initial-frame-alist '((width . 120) (height . 61)))
+(setq initial-frame-alist '((width . 200) (height . 61)))
 (add-to-list 'after-make-frame-functions #'jab/frame-center)
 
 (setq bookmark-default-file "~/Sync/emacs/bookmarks")
