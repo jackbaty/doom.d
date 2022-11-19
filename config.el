@@ -134,8 +134,7 @@
 (load! "lisp/latex")
 (load! "lisp/mappings")
 (load! "lisp/myfunctions")
-;;(load! "lisp/blog")
-(load! "lisp/notmuch")
+(load! "lisp/mu4e")
 
 ;; For markdown->html exports
 (setq markdown-css-paths '("https://static.baty.net/cdn/simple.min.css"))

@@ -25,7 +25,7 @@
    mu4e-compose-format-flowed t
    smtpmail-smtp-service 465
    mu4e-split-view 'horizontal
-   +org-capture-emails-file "~/org/todo.org"
+   +org-capture-emails-file "~/org/tasks.org"
    mu4e-headers-precise-alignment t
  mu4e-headers-fields
         '((:human-date . 12)
