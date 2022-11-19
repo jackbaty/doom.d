@@ -96,11 +96,8 @@
           ("d" "Doing now" entry
            (file+headline ,(concat org-directory "doing.org") "Currently")
            "* %U %?" :prepend t)
-         ("m" "Email Workflow")
-           ("mf" "Follow Up" entry (file+olp "~/org/tasks.org" "Inbox")
-            "* TODO Follow up with %:from on %a\nSCHEDULED:%t\n\n%i")
-           ("mr" "Read Later" entry (file+olp "~/org/tasks.org" "Inbox")
-            "* TODO Process %:subject\nSCHEDULED:%t\n%a\n\n%i")
+          ("m" "Capture email" entry (file+headline "tasks.org" "Inbox")
+           "* TODO %:fromname: %a %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+2d\"))")
           ("n" "Add a Note" entry
            (file+headline ,(concat org-directory "notes.org") "2022")
            "* %?\n%U" :prepend t))))
