@@ -59,13 +59,13 @@
 ;;(package! org2blog)
 (package! pretty-hydra)
 ;;(package! org-wild-notifier)
-;;(package! dired-narrow)
-;;(package! denote)
+(package! dired-narrow)
+;;(package! denote) ;; Use this if you don't want to track Main branch
 
 ;;(package! olivetti)
 (package! consult-notes)
 ;;(package! org-roam-ui)
 (unpin! ox-hugo)
-(package! obsidian)
 (package! ef-themes)
 (package! pandoc-mode)
+(package! mastodon)
