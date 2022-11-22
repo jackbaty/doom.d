@@ -1,5 +1,3 @@
-;;(setq org-startup-folded t)
-;;(setq org-cycle-hide-block-startup t)
 (setq org-attach-preferred-new-method 'dir)
 (setq org-attach-id-dir  "files/")
 (setq org-attach-dir-relative t)
@@ -9,16 +7,6 @@
 (setq org-attach-id-to-path-function-list
   '(org-attach-id-ts-folder-format
     org-attach-id-uuid-folder-format))
-
-;; Org Download and Attachments
-;; (setq org-download-image-dir  "img/")
-;; (setq org-download-image-org-width 800)
-;; (setq org-download-image-html-width 800)
-;; (setq org-download-heading-lvl 0)
-;; (setq org-download-timestamp "%Y%m%d-")
-;; (setq org-download-method 'attach)
-
-;;(setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
 
 (setq org-agenda-files (list
                    (concat org-directory "projects.org")
@@ -56,8 +44,8 @@
        org-tags-column 0
        org-log-done 'time
        org-log-into-drawer t
-       org-image-actual-width nil
-       ;;org-startup-with-inline-images "inlineimages"
+       org-image-actual-width '(600)
+       org-startup-with-inline-images t
        org-log-redeadline 'note
       ;; org-habit-show-all-today t
        org-agenda-text-search-extra-files (quote (agenda-archives))
@@ -86,7 +74,7 @@
            "* %u %? \n" :tree-type month)
           ("D" "Daybook" entry
            (file+olp+datetree ,(concat org-directory "daybook.org"))
-           "* %?\n%t\n" :time-prompt nil)
+           "* %? %^g\n%t\n" :time-prompt nil)
           ("e" "Event" entry
            (file+olp+datetree ,(concat org-directory "events.org"))
            "* %?\n%T\n" :time-prompt t)
