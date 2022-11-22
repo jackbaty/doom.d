@@ -18,7 +18,7 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 ;;(setq doom-font (font-spec :family "IBM Plex Mono" :size 15)
-(setq doom-font (font-spec :family "iosevka Comfy" :size 16)
+(setq doom-font (font-spec :family "Iosevka Comfy" :size 16)
       doom-variable-pitch-font (font-spec :family "iA Writer Quattro V" :size 16))
 
 
@@ -102,6 +102,7 @@
 
 
 (setq initial-frame-alist '((width . 200) (height . 61)))
+(setq default-frame-alist '((width . 150) (height . 55)))
 (add-to-list 'after-make-frame-functions #'jab/frame-center)
 
 (setq bookmark-default-file "~/Sync/emacs/bookmarks")
@@ -142,13 +143,9 @@
 ;; My daily snippet evaluates a backquoted shell call. This stops it from warning me.
 (setq warning-suppress-types '((yasnippet backquote-change)))
 
+(setq mastodon-instance-url "https://fosstodon.org"
+         mastodon-active-user "jackbaty")
 ;; Temporary?
 (defun native-comp-available-p () nil)
 
 
-;; Obsidian
-(after! obsidian
-  (setq obsidian-directory "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian Vault")
-  (setq global-obsidian-mode t)
-  (setq obsidian-inbox-directory "Inbox")
-  (map! :map obsidian-mode-map "\C-c \C-l" #'obsidian-insert-wikilink))
