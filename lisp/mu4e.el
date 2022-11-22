@@ -27,6 +27,7 @@
    mu4e-split-view 'horizontal
    +org-capture-emails-file "~/org/tasks.org"
    mu4e-headers-precise-alignment t
+   mu4e-update-interval 300
  mu4e-headers-fields
         '((:human-date . 12)
           (:flags . 4)
