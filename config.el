@@ -28,13 +28,13 @@
 ;;(setq doom-theme 'doom-palenight)
 
 
-(require 'ef-themes)
+;;(require 'ef-themes)
 
 ;; If you like two specific themes and want to switch between them, you
 ;; can specify them in `ef-themes-to-toggle' and then invoke the command
 ;; `ef-themes-toggle'.  All the themes are included in the variable
 ;; `ef-themes-collection'.
-(setq ef-themes-to-toggle '(ef-cyprus ef-winter))
+;;(setq ef-themes-to-toggle '(ef-cyprus ef-winter))
 
 ;; Make customisations that affect Emacs faces BEFORE loading a theme
 ;; (any change needs a theme re-load to take effect).
@@ -46,11 +46,11 @@
 ;;         (t . (variable-pitch))))
 
 ;; They are nil by default...
-(setq ef-themes-mixed-fonts t
-      ef-themes-variable-pitch-ui t)
+;;(setq ef-themes-mixed-fonts t
+;;      ef-themes-variable-pitch-ui t)
 
 ;; Disable all other themes to avoid awkward blending:
-(mapc #'disable-theme custom-enabled-themes)
+;;(mapc #'disable-theme custom-enabled-themes)
 
 
 (setq modus-themes-italic-constructs t
@@ -65,8 +65,8 @@
 
 ;;(setq doom-theme 'modus-operandi)
 ;;(setq doom-theme 'modus-vivendi)
-(setq doom-theme 'ef-frost)
-;;(setq doom-theme 'doom-one)
+;;(setq doom-theme 'ef-frost)
+(setq doom-theme 'doom-one)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
