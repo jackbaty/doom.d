@@ -14,7 +14,8 @@
  '(rustic-ansi-faces
    ["#ffffff" "#c82829" "#718c00" "#eab700" "#4271ae" "#c678dd" "#8abeb7" "#4d4d4c"])
  '(safe-local-variable-values
-   '((org-export-publishing-directory . "./public")
+   '((eval flycheck-mode nil)
+     (org-export-publishing-directory . "./public")
      (org-download-image-dir . "img/2022/")
      (org-hugo-base-dir . ~/sites/org-roam/)
      (org-hugo-section . post)
