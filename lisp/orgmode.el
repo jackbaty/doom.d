@@ -7,9 +7,10 @@
 (setq org-attach-id-to-path-function-list
   '(org-attach-id-ts-folder-format
     org-attach-id-uuid-folder-format))
+;;(setq org-download-timestamp "%Y%m%d-")
+(setq org-download-timestamp "")
 
 (setq org-agenda-files (list
-                   (concat org-directory "projects.org")
                    (concat org-directory "tasks.org")
                    (concat org-directory "inbox.org")
                    (concat org-directory "notes.org")
@@ -88,7 +89,7 @@
            "* TODO %:fromname: %a %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+2d\"))")
           ("n" "Add a Note" entry
            (file+headline ,(concat org-directory "notes.org") "2022")
-           "* %?\n%U" :prepend t))))
+           "* %? %^g\n%U" :prepend t))))
 
 
 
