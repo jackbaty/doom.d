@@ -2,6 +2,8 @@
 ;;
 
 (require 'denote)
+(require 'denote-org-dblock)
+
 
 ;; Remember to check the doc strings of those variables.
 (setq denote-directory (expand-file-name "~/org/notes/"))
@@ -19,6 +21,7 @@
 
 (setq denote-date-format nil) ; read doc string
 
+;;(setq denote-backlinks-show-context t)
 
 ;; By default, we fontify backlinks in their bespoke buffer.
 (setq denote-link-fontify-backlinks t)
