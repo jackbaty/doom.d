@@ -69,3 +69,4 @@
 (package! ef-themes)
 (package! pandoc-mode)
 (package! mastodon)
+(package! org-download)

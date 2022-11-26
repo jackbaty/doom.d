@@ -1,3 +1,4 @@
+
 (setq org-attach-preferred-new-method 'dir)
 (setq org-attach-id-dir  "files/")
 (setq org-attach-dir-relative t)
@@ -5,10 +6,20 @@
 (setq org-attach-store-link-p t)
 (setq org-id-method 'ts)
 (setq org-attach-id-to-path-function-list
-  '(org-attach-id-ts-folder-format
-    org-attach-id-uuid-folder-format))
-;;(setq org-download-timestamp "%Y%m%d-")
-(setq org-download-timestamp "")
+      '(org-attach-id-ts-folder-format
+        org-attach-id-uuid-folder-format))
+
+;; Org Download for drag-n-drop
+(after! org
+  (require 'org-download)
+  (setq org-download-method 'attach)
+  (setq org-download-image-dir "files")
+  (setq org-download-heading-lvl nil)
+  ;;(setq org-download-timestamp "%Y%m%d-")
+  (setq org-download-timestamp "")
+  (setq org-image-actual-width 300))
+
+
 
 (setq org-agenda-files (list
                    (concat org-directory "tasks.org")
@@ -258,6 +269,8 @@
   :follow (lambda (path) (shell-command (concat "open \"x-eaglefiler:" path "\""))))
 (org-link-set-parameters "message"
   :follow (lambda (path) (shell-command (concat "open \"message:" path "\"")))))
+
+
 
 (load "org-mac-link")
 
