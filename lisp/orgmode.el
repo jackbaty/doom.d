@@ -10,6 +10,19 @@
         org-attach-id-uuid-folder-format))
 
 ;; Org Download for drag-n-drop
+;; from: https://zzamboni.org/post/my-doom-emacs-configuration-with-commentary/
+(defun jab/org-download-paste-clipboard (&optional use-default-filename)
+  (interactive "P")
+  (require 'org-download)
+  (let ((file
+         (if (not use-default-filename)
+             (read-string (format "Filename [%s]: "
+                                  org-download-screenshot-basename)
+                          nil nil org-download-screenshot-basename)
+           nil)))
+    (org-download-clipboard file)))
+
+
 (after! org
   (require 'org-download)
   (setq org-download-method 'attach)
