@@ -1,4 +1,8 @@
 
+(add-hook! org-mode :append
+           #'visual-line-mode)
+
+
 (setq org-attach-preferred-new-method 'dir)
 (setq org-attach-id-dir  "files/")
 (setq org-attach-dir-relative t)
