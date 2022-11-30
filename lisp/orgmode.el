@@ -1,4 +1,4 @@
-
+;; -*- lexical-binding: t; -*-
 (add-hook! org-mode :append
            #'visual-line-mode)
 
@@ -26,6 +26,15 @@
            nil)))
     (org-download-clipboard file)))
 
+;; Fix for "Invalid Base64 data" when displaying attachments
+;; See https://github.com/doomemacs/doomemacs/issues/3185#issue-621758002
+(defadvice! no-errors/+org-inline-image-data-fn (_protocol link _description)
+  :override #'+org-inline-image-data-fn
+  "Interpret LINK as base64-encoded image data. Ignore all errors."
+  (ignore-errors
+    (base64-decode-string link)))
+
+
 
 (after! org
   (require 'org-download)
@@ -37,17 +46,12 @@
   (setq org-image-actual-width 300))
 
 
-
 (setq org-agenda-files (list
                    (concat org-directory "tasks.org")
                    (concat org-directory "inbox.org")
-                   (concat org-directory "notes.org")
                    (concat org-directory "events.org")
                    (concat org-directory "food.org")
-                   (concat org-directory "doing.org")
-                   (concat org-directory "daybook.org")
-                   (concat org-directory "projects/")
-                   "~/Library/Mobile Documents/iCloud~is~workflow~my~workflows/Documents/voicenotes.org"))
+                   (concat org-directory "daybook.org")))
 
 (setq org-refile-targets '(("projects.org" :regexp . "\\(?:\\(?:Note\\|Task\\)s\\)")
                            ("tasks.org" :maxlevel . 1)))
