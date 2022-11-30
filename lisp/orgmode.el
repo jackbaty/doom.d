@@ -304,6 +304,28 @@
 (with-eval-after-load 'ox-hugo
   (add-to-list 'org-hugo-special-block-type-properties '("sidenote" . (:trim-pre t :trim-post t))))
 
+
+(after! org-roam
+;; The buffer you put this code in must have lexical-binding set to t!
+;; See the final configuration at the end for more details.
+(defun my/org-roam-filter-by-tag (tag-name)
+  (lambda (node)
+    (member tag-name (org-roam-node-tags node))))
+
+(defun my/org-roam-list-notes-by-tag (tag-name)
+  (mapcar #'org-roam-node-file
+          (seq-filter
+           (my/org-roam-filter-by-tag tag-name)
+           (org-roam-node-list))))
+
+(defun my/org-roam-refresh-agenda-list ()
+  (interactive)
+  (setq org-agenda-files (append org-agenda-files (my/org-roam-list-notes-by-tag "Project"))))
+
+;; Build the agenda list the first time for the session
+(my/org-roam-refresh-agenda-list))
+
+
 ;; Temporary fix. See https://notes.baty.net/notes/possible-workaround-for-ox-hugo-error-during-exports/
 ;;(with-eval-after-load 'ox-hugo
 ;;  (setq org-hugo--preprocess-buffer nil))

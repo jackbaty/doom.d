@@ -50,6 +50,8 @@
 ;(unpin! t)
 
 
+(unpin! org)
+(unpin! org-roam)
 ;;(package! mu4e-alert :disable t)
 
 ;;(package! modus-themes)
@@ -64,7 +66,7 @@
 
 ;;(package! olivetti)
 (package! consult-notes)
-;;(package! org-roam-ui)
+(package! org-roam-ui)
 (unpin! ox-hugo)
 (package! ef-themes)
 (package! pandoc-mode)

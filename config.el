@@ -132,10 +132,13 @@
 (use-package! orderless
   :custom (completion-styles '(orderless)))
 
+;; Fixes org-roam backlinks display but breaks folding in org-cycle
+;;(setq org-fold-core-style "overlays")
+
 ;; Load my "modules"
 (load! "lisp/orgmode")
-(load! "lisp/denote")
-;;(load! "lisp/orgroam")
+;;(load! "lisp/denote")
+(load! "lisp/orgroam")
 (load! "lisp/latex")
 (load! "lisp/mappings")
 (load! "lisp/myfunctions")

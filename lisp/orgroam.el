@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (map!
  "\C-c n f" 'org-roam-node-find
  "s-k" 'org-roam-node-find
@@ -11,43 +12,46 @@
  "\C-c n s" 'jab/search-roam
  "\C-c n l" 'org-roam-buffer-toggle)
 
+
 (after! org-roam
   (org-link-set-parameters "id"
                          :face '(:foreground "orange" :underline t)))
 
-(setq org-roam-directory "~/org/kb")
+(setq org-roam-directory "~/org/roam")
 
-(setq org-roam-capture-templates
-  '(("d"                                              ;; Key
-     "default"                                        ;; Description
-     plain                                            ;; Type
-     (file "~/org/templates/DefaultRoamTemplate.org") ;; Template
-    :target (file "kb/%<%Y%m%d%H%M%S>-${slug}.org")   ;; Target
-    :unnarrowed t)
-    ("P"                                              ;; Key
-     "Public (published in /public)"                  ;; Description
-     plain                                            ;; Type
-     (file "~/org/templates/PublicTemplate.org")      ;; Template
-    :target (file "kb/public/${slug}.org")               ;; Target
-    :unnarrowed t)
-    ("c"                                         ;; Key
-     "Contact (Person)"                          ;; Description
-     plain                                       ;; Type
-     (file "~/org/templates/PersonTemplate.org") ;; Template
-     :target (file "kb/contacts/${slug}.org")        ;; Target
-     :unnarrowed t)
-    ("m"                                              ;; Key
-     "Movie"                                          ;; Description
-     plain                                            ;; Type
-     (file "~/org/templates/MovieTemplate.org")       ;; Template
-    :target (file "kb/public/${slug}.org")               ;; Target
-    :unnarrowed t)
-    ("p"                                              ;; Key
-     "project"                                        ;; Description
-     plain                                            ;; Type
-     (file "~/org/templates/ProjectTemplate.org")     ;; Template
-    :target (file "projects/%<%Y%m%d>-${slug}.org")   ;; Target
-    :unnarrowed t)))
+
+
+
+  ;; '(("d"                                              ;; Key
+  ;;    "default"                                        ;; Description
+  ;;    plain                                            ;; Type
+  ;;    (file "~/org/templates/DefaultRoamTemplate.org") ;; Template
+  ;;   :target (file "%<%Y%m%d%H%M%S>-${slug}.org")   ;; Target
+  ;;   :unnarrowed t)
+  ;;   ("P"                                              ;; Key
+  ;;    "Public (published in /public)"                  ;; Description
+  ;;    plain                                            ;; Type
+  ;;    (file "~/org/templates/PublicTemplate.org")      ;; Template
+  ;;   :target (file "public/${slug}.org")               ;; Target
+  ;;   :unnarrowed t)
+  ;;   ("c"                                         ;; Key
+  ;;    "Contact (Person)"                          ;; Description
+  ;;    plain                                       ;; Type
+  ;;    (file "~/org/templates/PersonTemplate.org") ;; Template
+  ;;    :target (file "contacts/${slug}.org")        ;; Target
+  ;;    :unnarrowed t)
+  ;;   ("m"                                              ;; Key
+  ;;    "Movie"                                          ;; Description
+  ;;    plain                                            ;; Type
+  ;;    (file "~/org/templates/MovieTemplate.org")       ;; Template
+  ;;   :target (file "public/${slug}.org")               ;; Target
+  ;;   :unnarrowed t)
+  ;;   ("p"                                              ;; Key
+  ;;    "project"                                        ;; Description
+  ;;    plain                                            ;; Type
+  ;;    (file "~/org/templates/ProjectTemplate.org")     ;; Template
+  ;;   :target (file "projects/%<%Y%m%d>-${slug}.org")   ;; Target
+  ;;   :unnarrowed t)))
 
 (use-package! websocket
     :after org-roam)
@@ -119,7 +123,9 @@
   (with-current-buffer (find-file-noselect filepath)
     (car (org-property-values "ROAM_REFS"))))
 
-;; Load after denote
+;; Load after roam
 (after! org-roam
 (setq consult-notes-sources
        `(("Roam"      ?r ,org-roam-directory))))
+
+
