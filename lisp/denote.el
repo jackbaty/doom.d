@@ -113,7 +113,9 @@
 ;; Should speed up backing buffer builds
 (setq xref-search-program 'ripgrep)
 
+(consult-notes-denote-mode)
+
 ;; Load after denote
-(after! denote
-(setq consult-notes-sources
-       `(("Denote"      ?d ,denote-directory))))
+;; (after! denote
+;;  (setq consult-notes-sources
+;;         `(("Denote"      ?d ,denote-directory))))
