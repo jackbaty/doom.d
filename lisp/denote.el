@@ -15,6 +15,17 @@
 
 (setq denote-date-prompt-use-org-read-date t) ; fancy date picker
 
+;; I'm using the ID property rather than Denotes "identifier"
+(setq denote-org-front-matter
+      ":PROPERTIES:
+:ID: %4$s
+:END:
+#+title:    %1$s
+#+date:     %2$s
+#+filetags: %3$s
+\n")
+
+
 ;; We allow multi-word keywords by default.  The author's personal
 ;; preference is for single-word keywords for a more rigid workflow.
 (setq denote-allow-multi-word-keywords nil)
