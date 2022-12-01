@@ -22,35 +22,57 @@
       doom-variable-pitch-font (font-spec :family "iA Writer Quattro V" :size 16))
 
 
+(add-load-path! "~/Sync/emacs/lisp")
+(add-to-list 'load-path "~/Sync/emacs/lisp/denote")
+(add-to-list 'load-path "~/Sync/emacs/lisp/standard-themes")
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;;(setq doom-theme 'doom-palenight)
 
-
-;;(require 'ef-themes)
-
-;; If you like two specific themes and want to switch between them, you
-;; can specify them in `ef-themes-to-toggle' and then invoke the command
-;; `ef-themes-toggle'.  All the themes are included in the variable
-;; `ef-themes-collection'.
-;;(setq ef-themes-to-toggle '(ef-cyprus ef-winter))
-
 ;; Make customisations that affect Emacs faces BEFORE loading a theme
 ;; (any change needs a theme re-load to take effect).
+(require 'standard-themes)
 
-;; (setq ef-themes-headings
-;;       '((1 . (light variable-pitch 1.3))
-;;         (2 . (regular 1.1))
-;;         (3 . (1.0))
-;;         (t . (variable-pitch))))
+;; THEME CONFIG
+;; Read the doc string of each of those user options.  These are some
+;; sample values.
+(setq standard-themes-bold-constructs t
+      standard-themes-italic-constructs t
+      standard-themes-mixed-fonts t
+      standard-themes-variable-pitch-ui t
+      standard-themes-mode-line-accented t
 
-;; They are nil by default...
-;;(setq ef-themes-mixed-fonts t
-;;      ef-themes-variable-pitch-ui t)
+      ;; Accepts a symbol value:
+      standard-themes-fringes 'subtle
+
+      ;; The following accept lists of properties
+      standard-themes-links '(neutral-underline)
+      standard-themes-region '(no-extend neutral intense)
+      standard-themes-prompts '(bold italic)
+
+      ;; more complex alist to set weight, height, and optional
+      ;; `variable-pitch' per heading level (t is for any level not
+      ;; specified):
+      standard-themes-headings
+      '((0 . (variable-pitch light 1.2))
+        (1 . (variable-pitch light 1.2))
+        (2 . (variable-pitch light 1.2))
+        (3 . (variable-pitch semilight 1.1))
+        (4 . (variable-pitch semilight 1.1))
+        (5 . (variable-pitch 1.1))
+        (6 . (variable-pitch 1.1))
+        (7 . (variable-pitch 1.1))
+        (t . (variable-pitch 1.0))))
 
 ;; Disable all other themes to avoid awkward blending:
-;;(mapc #'disable-theme custom-enabled-themes)
+(mapc #'disable-theme custom-enabled-themes)
+
+(load-theme 'standard-light :no-confirm)
+
+(define-key global-map (kbd "<f5>") #'standard-themes-toggle)
+;; /THEME CONFIG
+
 
 
 (setq modus-themes-italic-constructs t
@@ -66,7 +88,7 @@
 ;;(setq doom-theme 'modus-operandi)
 ;;(setq doom-theme 'modus-vivendi)
 ;;(setq doom-theme 'ef-frost)
-(setq doom-theme 'doom-one)
+(setq doom-theme 'standard-light)
 
 
 
@@ -101,8 +123,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-(add-load-path! "~/Sync/emacs/lisp")
-(add-to-list 'load-path "~/Sync/emacs/lisp/denote")
 
 
 (setq initial-frame-alist '((width . 200) (height . 61)))
@@ -137,8 +157,8 @@
 
 ;; Load my "modules"
 (load! "lisp/orgmode")
-;;(load! "lisp/denote")
-(load! "lisp/orgroam")
+(load! "lisp/denote")
+;;(load! "lisp/orgroam")
 (load! "lisp/latex")
 (load! "lisp/mappings")
 (load! "lisp/myfunctions")
