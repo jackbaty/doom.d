@@ -115,7 +115,11 @@
 
 (consult-notes-denote-mode)
 
-;; Load after denote
-;; (after! denote
-;;  (setq consult-notes-sources
-;;         `(("Denote"      ?d ,denote-directory))))
+;; Add all Denote files tagged as "project" to org-agenda-files
+(defun jab/denote-add-to-agenda-files (keyword)
+  "Append list of files containing 'keyword' to org-agenda-files"
+  (interactive)
+  (jab/init-org-agenda-files) ;; start over
+  (setq org-agenda-files (append org-agenda-files (directory-files denote-directory t keyword))))
+
+(jab/denote-add-to-agenda-files "_project")
