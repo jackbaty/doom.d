@@ -50,8 +50,8 @@
 ;(unpin! t)
 
 
-(unpin! org)
-(unpin! org-roam)
+;;(unpin! org)
+;;(unpin! org-roam)
 ;;(package! mu4e-alert :disable t)
 
 ;;(package! modus-themes)
@@ -72,3 +72,6 @@
 (package! pandoc-mode)
 (package! mastodon)
 (package! org-download)
+(package! lsp-dart)
+(package! lsp-treemacs)
+(package! lsp-ui)
