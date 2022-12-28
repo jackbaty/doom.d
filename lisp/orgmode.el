@@ -98,11 +98,11 @@
 
   (setq org-capture-templates
         `(("t" "Todo to Inbox" entry
-           (file+headline ,(concat org-directory "tasks.org") "Inbox")
+           (file+headline ,(concat org-directory "inbox.org") "Inbox")
            "* TODO %?\n"
            :empty-lines 1)
           ("T" "Todo to Inbox with Clipboard" entry
-           (file+headline ,(concat org-directory "tasks.org") "Inbox")
+           (file+headline ,(concat org-directory "inbox.org") "Inbox")
            "* TODO %?\n%c\n\n%i\n"
            :empty-lines 1)
           ("l" "Current file log entry" entry
@@ -120,10 +120,10 @@
           ("d" "Doing now" entry
            (file+headline ,(concat org-directory "doing.org") "Currently")
            "* %U %?" :prepend t)
-          ("m" "Capture email" entry (file+headline "tasks.org" "Inbox")
+          ("m" "Capture email" entry (file+headline "inbox.org" "Inbox")
            "* TODO %:fromname: %a %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+2d\"))")
           ("n" "Add a Note" entry
-           (file+headline ,(concat org-directory "notes.org") "2022")
+           (file+headline ,(concat org-directory "inbox.org") "Notes")
            "* %? %^g\n%U" :prepend t))))
 
 
@@ -205,6 +205,7 @@
 
 
 ;;(add-hook 'org-journal-mode-hook #'+zen/toggle)
+;;
 
 (setq org-export-with-broken-links t)
 
@@ -313,6 +314,10 @@
 
 
 
+(defun jab/md-to-org-region (start end)
+  "Convert region from markdown to org, replacing selection"
+  (interactive "r")
+  (shell-command-on-region start end "pandoc -f markdown -t org" t t))
 
 ;; Temporary fix. See https://notes.baty.net/notes/possible-workaround-for-ox-hugo-error-during-exports/
 ;;(with-eval-after-load 'ox-hugo
