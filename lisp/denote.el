@@ -32,7 +32,7 @@
 
 (setq denote-date-format nil) ; read doc string
 
-;;(setq denote-backlinks-show-context t)
+(setq denote-backlinks-show-context t)
 
 ;; By default, we fontify backlinks in their bespoke buffer.
 (setq denote-link-fontify-backlinks t)
@@ -61,14 +61,42 @@
 ;;(add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
 
 ;; Journaling (stolen from Denote's manual)
-(defun jab/denote-journal ()
-  "Create an entry tagged 'journal' with the date as its title."
-  (interactive)
-  (denote
-   (format-time-string "%A %e %B %Y") ; format like Tuesday 14 June 2022
-   '("journal")
-   nil
-   (concat denote-directory "journal"))) ; multiple keywords are a list of strings: '("one" "two")
+;; (defun jab/denote-journal ()
+;;   "Create an entry tagged 'journal' with the date as its title."
+;;   (interactive)
+;;   (denote
+;;    (format-time-string "%A %e %B %Y") ; format like Tuesday 14 June 2022
+;;    '("journal")
+;;    nil
+;;    (concat denote-directory "journal"))) ; multiple keywords are a list of strings: '("one" "two")
+
+;; This is from the Denote mailing list. I've lost the reference
+ (defun jab/is-todays-journal? (f)
+   "If f is today's journal in denote, f is returned"
+   (let* ((month-regexp (car (calendar-current-date)))
+          (day-regexp (nth 1 (calendar-current-date)))
+          (year-regexp (nth 2 (calendar-current-date)))
+          (journal-files (directory-files (denote-directory) nil "_journal"))
+          (day-match? (string-match-p (concat "^......" (format "%02d" day-regexp)) f))
+          (year-match? (string-match-p (concat "^" (number-to-string year-regexp)) f))
+          (month-match? (string-match-p (concat (number-to-string month-regexp) "..T") f)))
+     (when (and day-match? year-match? month-match?)
+       f)))
+
+ (defun jab/denote-journal ()
+   "Create an entry tagged 'journal' with the date as its title."
+   (interactive)
+   (let* ((journal-dir (concat (denote-directory) "journal"))
+          (today-journal
+           (car (-non-nil
+                 (mapcar #'jab/is-todays-journal? (directory-files journal-dir nil "_journal"))))))
+     (if today-journal
+         (find-file (concat journal-dir "/" today-journal))
+         (denote
+          (format-time-string "%A %e %B %Y")
+          '("journal") nil journal-dir))))
+
+
 
 (defun jab/search-denote ()
  "Run consult-ripgrep on the denote directory"
@@ -132,5 +160,39 @@
   (interactive)
   (jab/init-org-agenda-files) ;; start over
   (setq org-agenda-files (append org-agenda-files (directory-files denote-directory t keyword))))
+
+
+
+;; From Prot
+
+    (defvar my-denote-to-agenda-regexp "_project"
+      "Denote file names that are added to the agenda.
+    See `my-add-denote-to-agenda'.")
+
+    (defun my-denote-add-to-agenda ()
+      "Add current file to the `org-agenda-files', if needed.
+    The file's name must match the `my-denote-to-agenda-regexp'.
+
+    Add this to the `after-save-hook' or call it interactively."
+      (interactive)
+      (when-let* ((file (buffer-file-name))
+                  ((denote-file-is-note-p file))
+                  ((string-match-p my-denote-to-agenda-regexp (buffer-file-name))))
+        (add-to-list 'org-agenda-files file)))
+
+    ;; Example to add the file automatically.  Uncomment it:
+
+    (add-hook 'after-save-hook #'my-denote-add-to-agenda)
+
+    (defun my-denote-remove-from-agenda ()
+      "Remove current file from the `org-agenda-files'.
+    See `my-denote-add-to-agenda' for how to add files to the Org
+    agenda."
+      (interactive)
+      (when-let* ((file (buffer-file-name))
+                  ((string-match-p my-denote-to-agenda-regexp (buffer-file-name))))
+        (setq org-agenda-files (delete file org-agenda-files))))
+
+
 
 (jab/denote-add-to-agenda-files "_project")
