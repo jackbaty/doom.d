@@ -145,7 +145,6 @@
        ;;ocaml             ; an objective camel
        (org               ; organize your plain life in plain text
         +journal
-        +pretty
         +hugo
         +gnuplot
         +roam2
