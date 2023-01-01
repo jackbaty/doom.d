@@ -115,7 +115,7 @@
            (file+olp+datetree ,(concat org-directory "events.org"))
            "* %?\n%T\n" :time-prompt t)
           ("s" "Add to Spark File" entry
-           (file+headline ,(concat org-directory "sparkfile.org") "2022")
+           (file+headline ,(concat org-directory "sparkfile.org") "2023")
            "* %?\n%U" :prepend t)
           ("d" "Doing now" entry
            (file+headline ,(concat org-directory "doing.org") "Currently")
