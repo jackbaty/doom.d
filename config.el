@@ -111,8 +111,8 @@
 
 ;; Load my "modules"
 (load! "lisp/orgmode")
-(load! "lisp/denote")
-;;(load! "lisp/orgroam")
+;;(load! "lisp/denote")
+(load! "lisp/orgroam")
 (load! "lisp/latex")
 (load! "lisp/mappings")
 (load! "lisp/myfunctions")
