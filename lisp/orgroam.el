@@ -70,9 +70,10 @@
 
 
 
-;; (setq org-roam-dailies-capture-templates
-;;       '(("d" "default" entry "* %?\n%U" :target
-;;          (file+head "%<%Y-%m>.org" "#+title: Lab Notebook %<%Y-%m>\n"))))
+
+(setq org-roam-dailies-capture-templates
+   '(("d" "default" entry "* %?" :target
+  (file+head "%<%Y-%m-%d>.org" "#+title: Lab Notes %<%Y-%m-%d %a>\n"))))
 
 
 (defun jab/search-roam ()
