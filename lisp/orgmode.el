@@ -292,6 +292,8 @@
   :follow (lambda (path) (shell-command (concat "open x-devonthink-item:" path))))
 (org-link-set-parameters "x-eaglefiler"
   :follow (lambda (path) (shell-command (concat "open \"x-eaglefiler:" path "\""))))
+(org-link-set-parameters "evernote"
+  :follow (lambda (path) (shell-command (concat "open \"evernote:" path "\""))))
 (org-link-set-parameters "message"
   :follow (lambda (path) (shell-command (concat "open \"message:" path "\"")))))
 
