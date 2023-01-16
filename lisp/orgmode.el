@@ -3,15 +3,16 @@
            #'visual-line-mode)
 
 
+;; Don't muck with this or existing links may break
 (setq org-attach-preferred-new-method 'dir)
-(setq org-attach-id-dir  "files/")
-(setq org-attach-dir-relative t)
+(setq org-attach-id-dir  "~/org/attach/")
+;;(setq org-attach-dir-relative t)
 (setq org-attach-auto-tag "attach")
 (setq org-attach-store-link-p t)
-(setq org-id-method 'ts)
-(setq org-attach-id-to-path-function-list
-      '(org-attach-id-ts-folder-format
-        org-attach-id-uuid-folder-format))
+;;(setq org-id-method 'ts)
+;; (setq org-attach-id-to-path-function-list
+;;       '(org-attach-id-ts-folder-format
+;;         org-attach-id-uuid-folder-format))
 
 ;; Org Download for drag-n-drop
 ;; from: https://zzamboni.org/post/my-doom-emacs-configuration-with-commentary/
