@@ -1,8 +1,16 @@
 ;; Denote
 ;;
+;;
+(add-to-list 'load-path "~/Sync/emacs/lisp/denote")
+;;(add-to-list 'load-path "~/Sync/emacs/lisp/denote-menu")
+
 
 (require 'denote)
 (require 'denote-org-dblock)
+
+(after! denote
+  (org-link-set-parameters "denote"
+                         :face '(:foreground "orange" :underline t)))
 
 
 ;; Remember to check the doc strings of those variables.
@@ -10,20 +18,20 @@
 (setq denote-known-keywords '("emacs" "photography" "software" "person"))
 (setq denote-infer-keywords t)
 (setq denote-sort-keywords t)
-(setq denote-file-type nil) ; Org is the default, set others here
+(setq denote-file-type 'markdown-yaml) ; Org is the default, set others here
 (setq denote-prompts '(title keywords))
 
 (setq denote-date-prompt-use-org-read-date t) ; fancy date picker
 
 ;; I'm using the ID property rather than Denotes "identifier"
-(setq denote-org-front-matter
-      ":PROPERTIES:
-:ID: %4$s
-:END:
-#+title:    %1$s
-#+date:     %2$s
-#+filetags: %3$s
-\n")
+;; (setq denote-org-front-matter
+;;       ":PROPERTIES:
+;; :ID: %4$s
+;; :END:
+;; #+title:    %1$s
+;; #+date:     %2$s
+;; #+filetags: %3$s
+;; \n")
 
 
 ;; We allow multi-word keywords by default.  The author's personal
@@ -116,27 +124,27 @@
 ;; Denote does not define any key bindings.  This is for the user to
 ;; decide.  For example:
 (let ((map global-map))
-  (define-key map (kbd "C-c n n") #'denote)
-  (define-key map (kbd "C-c n N") #'denote-type)
-  (define-key map (kbd "C-c n d") #'denote-date)
-  (define-key map (kbd "C-c n S") #'denote-subdirectory)
-  (define-key map (kbd "C-c n j") #'jab/denote-journal) ; our custom command
-  (define-key map (kbd "C-c n s") #'jab/search-denote)
-  (define-key map (kbd "C-c n f") #'jab/find-denote-file)
-  (define-key map (kbd "s-k")     #'jab/find-denote-file)
+  (define-key map (kbd "C-c d n") #'denote)
+  (define-key map (kbd "C-c d N") #'denote-type)
+  (define-key map (kbd "C-c d d") #'denote-date)
+  (define-key map (kbd "C-c d S") #'denote-subdirectory)
+  (define-key map (kbd "C-c d j") #'jab/denote-journal) ; our custom command
+  (define-key map (kbd "C-c d s") #'jab/search-denote)
+  (define-key map (kbd "C-c d f") #'jab/find-denote-file)
+  ;;(define-key map (kbd "s-k")     #'jab/find-denote-file)
   ;; If you intend to use Denote with a variety of file types, it is
   ;; easier to bind the link-related commands to the `global-map', as
   ;; shown here.  Otherwise follow the same pattern for `org-mode-map',
   ;; `markdown-mode-map', and/or `text-mode-map'.
-  (define-key map (kbd "C-c n i") #'denote-link-or-create) ; "insert" mnemonic
-  (define-key map (kbd "C-c n I") #'denote-link-add-links)
-  (define-key map (kbd "C-c n l") #'denote-link-find-file) ; "list" links
-  (define-key map (kbd "C-c n b") #'denote-link-find-backlink)
-  (define-key map (kbd "s-l") #'denote-link-find-backlink)
+  (define-key map (kbd "C-c d i") #'denote-link-or-create) ; "insert" mnemonic
+  (define-key map (kbd "C-c d I") #'denote-link-add-links)
+  (define-key map (kbd "C-c d l") #'denote-link-find-file) ; "list" links
+  (define-key map (kbd "C-c d b") #'denote-link-find-backlink)
+  ;;(define-key map (kbd "s-l") #'denote-link-find-backlink)
   ;; Note that `denote-dired-rename-file' can work from any context, not
   ;; just Dired bufffers.  That is why we bind it here to the
   ;; `global-map'.
-  (define-key map (kbd "C-c n r") #'denote-rename-file))
+  (define-key map (kbd "C-c d r") #'denote-rename-file))
 
 (with-eval-after-load 'org-capture
   (setq denote-org-capture-specifiers "%l\n%i\n%?")
@@ -195,4 +203,4 @@
 
 
 
-(jab/denote-add-to-agenda-files "_project")
+;;(jab/denote-add-to-agenda-files "_project")
