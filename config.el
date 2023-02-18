@@ -18,12 +18,11 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 ;;(setq doom-font (font-spec :family "IBM Plex Mono" :size 15)
-(setq doom-font (font-spec :family "Iosevka Comfy" :size 16)
+(setq doom-font (font-spec :family "IBM Plex Mono" :size 15)
       doom-variable-pitch-font (font-spec :family "iA Writer Quattro V" :size 16))
 
 
 (add-load-path! "~/Sync/emacs/lisp")
-(add-to-list 'load-path "~/Sync/emacs/lisp/denote")
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
@@ -44,6 +43,8 @@
 ;;(setq doom-theme 'modus-vivendi)
 ;;(setq doom-theme 'ef-frost)
 
+;; Fixes org-roam backlinks display but breaks folding in org-cycle
+;;(setq org-fold-core-style "overlays")
 
 
 
@@ -51,6 +52,7 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/"
       org-attach-id-dir "files/")
+
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -106,12 +108,10 @@
 (use-package! orderless
   :custom (completion-styles '(orderless)))
 
-;; Fixes org-roam backlinks display but breaks folding in org-cycle
-;;(setq org-fold-core-style "overlays")
 
 ;; Load my "modules"
 (load! "lisp/orgmode")
-;;(load! "lisp/denote")
+(load! "lisp/denote")
 (load! "lisp/orgroam")
 (load! "lisp/latex")
 (load! "lisp/mappings")

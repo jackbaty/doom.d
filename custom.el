@@ -8,6 +8,12 @@
  '(jdee-db-active-breakpoint-face-colors (cons "#f2f2f2" "#4271ae"))
  '(jdee-db-requested-breakpoint-face-colors (cons "#f2f2f2" "#718c00"))
  '(jdee-db-spec-breakpoint-face-colors (cons "#f2f2f2" "#8e908c"))
+ '(ledger-reports
+   '(("bal" "ledger [[ledger-mode-flags]] -f /Users/jbaty/Documents/Ledger/2023.ledger bal")
+     ("reg Food" "ledger reg Food")
+     ("reg" "%(binary) -f %(ledger-file) reg")
+     ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
+     ("account" "%(binary) -f %(ledger-file) reg %(account)")))
  '(objed-cursor-color "#c82829")
  '(org-safe-remote-resources
    '("\\`https://fniessen\\.github\\.io/org-html-themes/org/theme-readtheorg\\.setup\\'"))
@@ -22,7 +28,9 @@
      (org-attach-id-directory . img/)
      (org-attach-directory . img/)))
  '(warning-suppress-types
-   '((org-element-cache)
+   '((doom-first-file-hook)
+     (doom-first-file-hook)
+     (org-element-cache)
      (org-element-cache)
      (org-element-cache)
      (yasnippet backquote-change))))
