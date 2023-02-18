@@ -144,7 +144,7 @@
 
 (defun my/org-roam-refresh-agenda-list ()
   (interactive)
-  (setq org-agenda-files (append org-agenda-files (my/org-roam-list-notes-by-tag "project"))))
+  (setq org-agenda-files (append org-agenda-files (my/org-roam-list-notes-by-tag "wip"))))
 
 ;; Build the agenda list the first time for the session
 (my/org-roam-refresh-agenda-list)
