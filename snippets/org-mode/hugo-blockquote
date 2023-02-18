@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: Hugo Blockquote
+# uuid: hugo-blockquote
+# key: hbq
+# condition: t
+# --
+
+@@html:
+{{< blockquote author="" link="" >}}
+
+{{< /blockquote >}}
+@@
