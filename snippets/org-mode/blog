@@ -8,6 +8,7 @@
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: `(format-time-string "%Y%m%d")`-${1:$(replace-regexp-in-string " " "-" (downcase yas-text))}
 :EXPORT_HUGO_SLUG: ${1:$(replace-regexp-in-string " " "-" (downcase yas-text))}
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :coverCaption This is the caption :coverAlt Post cover
 :END:
 
 $0
