@@ -58,8 +58,11 @@
 (jab/init-org-agenda-files)
 
 (setq org-refile-targets '(("projects.org" :regexp . "\\(?:\\(?:Note\\|Task\\)s\\)")
-                           ("tasks.org" :maxlevel . 1)))
+                           ("tasks.org" :maxlevel . 1)
+                           (org-agenda-files :tag . "refile")))
 
+(setq org-refile-targets '((org-agenda-files :maxlevel . 1)
+                           (org-agenda-files :tag . "refile")))
 
 
 (after! org
@@ -197,7 +200,6 @@
 ;; Load appointments
 ;;(org-agenda-to-appt)
 
-
 ;; Fix incorrect indenting in (esp. org-journal) buffers
 (defun jab/disable-adaptive-wrap()
     (adaptive-wrap-prefix-mode -1))
@@ -321,6 +323,13 @@
   "Convert region from markdown to org, replacing selection"
   (interactive "r")
   (shell-command-on-region start end "pandoc -f markdown -t org" t t))
+
+
+(defun my/show-agenda ()
+  (let ((agenda-frame (make-frame-command)))
+    (select-frame agenda-frame)
+    (org-agenda-list)
+    (x-focus-frame agenda-frame)))
 
 ;; Temporary fix. See https://notes.baty.net/notes/possible-workaround-for-ox-hugo-error-during-exports/
 ;;(with-eval-after-load 'ox-hugo
