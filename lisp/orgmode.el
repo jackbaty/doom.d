@@ -6,14 +6,9 @@
 ;; Don't muck with this or existing links may break
 (setq org-attach-preferred-new-method 'dir)
 (setq org-attach-id-dir  "~/org/attach/")
-;;(setq org-attach-dir-relative t)
 (setq org-attach-auto-tag "attach")
 (setq org-attach-store-link-p t)
-;;(setq org-id-method 'ts)
-;; (setq org-attach-id-to-path-function-list
-;;       '(org-attach-id-ts-folder-format
-;;         org-attach-id-uuid-folder-format))
-
+;;
 ;; Org Download for drag-n-drop
 ;; from: https://zzamboni.org/post/my-doom-emacs-configuration-with-commentary/
 (defun jab/org-download-paste-clipboard (&optional use-default-filename)
@@ -35,8 +30,6 @@
   (ignore-errors
     (base64-decode-string link)))
 
-
-
 (after! org
   (require 'org-download)
   (setq org-download-method 'attach)
@@ -49,7 +42,7 @@
 
 (defun jab/init-org-agenda-files ()
 (setq org-agenda-files (list
-                   (concat org-directory "tasks.org")
+                   (concat org-directory "todo.org")
                    (concat org-directory "inbox.org")
                    (concat org-directory "events.org")
                    (concat org-directory "food.org")
@@ -58,10 +51,11 @@
 (jab/init-org-agenda-files)
 
 (setq org-refile-targets '(("projects.org" :regexp . "\\(?:\\(?:Note\\|Task\\)s\\)")
-                           ("tasks.org" :maxlevel . 1)
+                           ("todo.org" :maxlevel . 1)
                            (org-agenda-files :tag . "refile")))
 
 (setq org-refile-targets '((org-agenda-files :maxlevel . 1)
+                           ("notes.org" :level . 2)
                            (org-agenda-files :tag . "refile")))
 
 
@@ -112,7 +106,7 @@
           ("l" "Current file log entry" entry
            (file+olp+datetree buffer-file-name)
            "* %u %? \n" :tree-type month)
-          ("D" "Daybook" entry
+          ("d" "Daybook" entry
            (file+olp+datetree ,(concat org-directory "daybook.org"))
            "* %? %^g\n%t\n" :time-prompt nil)
           ("e" "Event" entry
@@ -121,9 +115,6 @@
           ("s" "Add to Spark File" entry
            (file+headline ,(concat org-directory "sparkfile.org") "2023")
            "* %?\n%U" :prepend t)
-          ("d" "Doing now" entry
-           (file+headline ,(concat org-directory "doing.org") "Currently")
-           "* %U %?" :prepend t)
           ("m" "Capture email" entry (file+headline "inbox.org" "Inbox")
            "* TODO %:fromname: %a %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+2d\"))")
           ("n" "Add a Note" entry
