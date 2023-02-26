@@ -111,7 +111,7 @@
 
 ;; Load my "modules"
 (load! "lisp/orgmode")
-(load! "lisp/denote")
+;;(load! "lisp/denote")
 (load! "lisp/orgroam")
 (load! "lisp/latex")
 (load! "lisp/mappings")
@@ -126,6 +126,10 @@
 
 (setq mastodon-instance-url "https://fosstodon.org"
          mastodon-active-user "jackbaty")
+
+;;(use-package! ekg)
+
+
 ;; Temporary?
 (defun native-comp-available-p () nil)
 
