@@ -131,7 +131,7 @@
   (define-key map (kbd "C-c d j") #'jab/denote-journal) ; our custom command
   (define-key map (kbd "C-c d s") #'jab/search-denote)
   (define-key map (kbd "C-c d f") #'jab/find-denote-file)
-  ;;(define-key map (kbd "s-k")     #'jab/find-denote-file)
+  (define-key map (kbd "s-k")     #'jab/find-denote-file)
   ;; If you intend to use Denote with a variety of file types, it is
   ;; easier to bind the link-related commands to the `global-map', as
   ;; shown here.  Otherwise follow the same pattern for `org-mode-map',
@@ -140,7 +140,7 @@
   (define-key map (kbd "C-c d I") #'denote-link-add-links)
   (define-key map (kbd "C-c d l") #'denote-link-find-file) ; "list" links
   (define-key map (kbd "C-c d b") #'denote-link-find-backlink)
-  ;;(define-key map (kbd "s-l") #'denote-link-find-backlink)
+  (define-key map (kbd "s-l") #'denote-link-find-backlink)
   ;; Note that `denote-dired-rename-file' can work from any context, not
   ;; just Dired bufffers.  That is why we bind it here to the
   ;; `global-map'.
