@@ -79,3 +79,4 @@
 (package! lsp-dart)
 (package! lsp-treemacs)
 (package! lsp-ui)
+;;(package! ekg)
