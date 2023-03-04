@@ -18,7 +18,7 @@
 (setq denote-known-keywords '("emacs" "photography" "software" "person"))
 (setq denote-infer-keywords t)
 (setq denote-sort-keywords t)
-(setq denote-file-type 'markdown-yaml) ; Org is the default, set others here
+(setq denote-file-type nil) ; Org is the default, set others here
 (setq denote-prompts '(title keywords))
 
 (setq denote-date-prompt-use-org-read-date t) ; fancy date picker
@@ -124,22 +124,22 @@
 ;; Denote does not define any key bindings.  This is for the user to
 ;; decide.  For example:
 (let ((map global-map))
-  (define-key map (kbd "C-c d n") #'denote)
-  (define-key map (kbd "C-c d N") #'denote-type)
-  (define-key map (kbd "C-c d d") #'denote-date)
-  (define-key map (kbd "C-c d S") #'denote-subdirectory)
-  (define-key map (kbd "C-c d j") #'jab/denote-journal) ; our custom command
-  (define-key map (kbd "C-c d s") #'jab/search-denote)
-  (define-key map (kbd "C-c d f") #'jab/find-denote-file)
+  (define-key map (kbd "C-c n n") #'denote)
+  (define-key map (kbd "C-c n N") #'denote-type)
+  (define-key map (kbd "C-c n d") #'denote-date)
+  (define-key map (kbd "C-c n S") #'denote-subdirectory)
+  (define-key map (kbd "C-c n j") #'jab/denote-journal) ; our custom command
+  (define-key map (kbd "C-c n s") #'jab/search-denote)
+  (define-key map (kbd "C-c n f") #'jab/find-denote-file)
   (define-key map (kbd "s-k")     #'jab/find-denote-file)
   ;; If you intend to use Denote with a variety of file types, it is
   ;; easier to bind the link-related commands to the `global-map', as
   ;; shown here.  Otherwise follow the same pattern for `org-mode-map',
   ;; `markdown-mode-map', and/or `text-mode-map'.
-  (define-key map (kbd "C-c d i") #'denote-link-or-create) ; "insert" mnemonic
-  (define-key map (kbd "C-c d I") #'denote-link-add-links)
-  (define-key map (kbd "C-c d l") #'denote-link-find-file) ; "list" links
-  (define-key map (kbd "C-c d b") #'denote-link-find-backlink)
+  (define-key map (kbd "C-c n i") #'denote-link-or-create) ; "insert" mnemonic
+  (define-key map (kbd "C-c n I") #'denote-link-add-links)
+  (define-key map (kbd "C-c n l") #'denote-link-find-file) ; "list" links
+  (define-key map (kbd "C-c n b") #'denote-link-find-backlink)
   (define-key map (kbd "s-l") #'denote-link-find-backlink)
   ;; Note that `denote-dired-rename-file' can work from any context, not
   ;; just Dired bufffers.  That is why we bind it here to the

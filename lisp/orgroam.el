@@ -20,6 +20,10 @@
 (setq org-roam-directory "~/org/roam")
 
 
+(add-to-list 'load-path "~/Sync/emacs/lisp/nursery/lisp")
+
+(use-package! org-roam-dblocks
+  :hook (org-mode . org-roam-dblocks-autoupdate-mode))
 
 
   ;; '(("d"                                              ;; Key

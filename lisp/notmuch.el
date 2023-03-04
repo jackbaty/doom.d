@@ -5,7 +5,7 @@
 ;; UI
 (setq notmuch-hello-auto-refresh t)
 (setq notmuch-show-all-tags-list t)
-(setq notmuch-show-logo nil)
+(setq notmuch-show-logo t)
 (setq notmuch-search-oldest-first nil)
 (setq notmuch-show-empty-saved-searches t)
 (setq notmuch-hello-thousands-separator ",")
@@ -86,6 +86,10 @@
             :query "date:today"
             :sort-order newest-first
             :key ,(kbd "T"))
+          ( :name "recent"
+            :query "date:1w..today"
+            :sort-order newest-first
+            :key ,(kbd "R"))
           ( :name "mailing lists"
             :query "tag:list not tag:archived"
             :sort-order newest-first

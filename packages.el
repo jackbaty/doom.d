@@ -11,7 +11,7 @@
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
-;; https://github.com/raxod502/straight.el#the-recipe-format
+;; https://github.com/radian-software/straight.el#the-recipe-format
 ;(package! another-package
 ;  :recipe (:host github :repo "username/repo"))
 
@@ -34,7 +34,7 @@
 
 ;; Specify a `:branch' to install a package from a particular branch or tag.
 ;; This is required for some packages whose default branch isn't 'master' (which
-;; our package manager can't deal with; see raxod502/straight.el#279)
+;; our package manager can't deal with; see radian-software/straight.el#279)
 ;(package! builtin-package :recipe (:branch "develop"))
 
 ;; Use `:pin' to specify a particular commit to install.
@@ -50,33 +50,11 @@
 ;(unpin! t)
 
 
-;;(unpin! org)
-;;(unpin! org-roam)
-;;(package! mu4e-alert :disable t)
-
-;;(package! modus-themes)
-;;(package! orderless
-;;  :recipe (:host github :repo "oantolin/orderless"))
-
-;; Temporary. See https://github.com/doomemacs/doomemacs/issues/7078
-(package! transient :pin "c2bdf7e12c530eb85476d3aef317eb2941ab9440")
-(package! with-editor :pin "391e76a256aeec6b9e4cbd733088f30c677d965b")
-
-;;(package! org2blog)
-(package! pretty-hydra)
-;;(package! org-wild-notifier)
-(package! dired-narrow)
-;;(package! denote) ;; Use this if you don't want to track Main branch
-
-;;(package! olivetti)
 (package! consult-notes)
-(package! org-roam-ui)
-(unpin! ox-hugo)
-(package! ef-themes)
 (package! pandoc-mode)
-(package! mastodon)
 (package! org-download)
-(package! lsp-dart)
-(package! lsp-treemacs)
-(package! lsp-ui)
-;;(package! ekg)
+(package! org-roam-ui)
+
+(package! doom-nano-modeline
+  :recipe (:host github
+  :repo "ronisbr/doom-nano-modeline"))

@@ -50,13 +50,14 @@
 
 (jab/init-org-agenda-files)
 
-(setq org-refile-targets '(("projects.org" :regexp . "\\(?:\\(?:Note\\|Task\\)s\\)")
-                           ("todo.org" :maxlevel . 1)
-                           (org-agenda-files :tag . "refile")))
+;; (setq org-refile-targets '(("projects.org" :regexp . "\\(?:\\(?:Note\\|Task\\)s\\)")
+;;                            ("todo.org" :maxlevel . 1)
+;;                            (org-agenda-files :tag . "refile")))
 
+(after! org
 (setq org-refile-targets '((org-agenda-files :maxlevel . 1)
                            ("notes.org" :level . 2)
-                           (org-agenda-files :tag . "refile")))
+                           (org-agenda-files :tag . "refile"))))
 
 
 (after! org
