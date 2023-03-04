@@ -197,3 +197,6 @@
        :config
        ;;literate
        (default +bindings +smartparens))
+
+;; This only seems to work in init.el for some reason
+(setq evil-respect-visual-line-mode t)
