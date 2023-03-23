@@ -54,7 +54,9 @@
 (package! pandoc-mode)
 (package! org-download)
 (package! org-roam-ui)
-
-(package! doom-nano-modeline
-  :recipe (:host github
-  :repo "ronisbr/doom-nano-modeline"))
+(package! org-drill)
+(package! ts)
+;; (package! doom-nano-modeline
+;;   :recipe (:host github
+;;   :repo "ronisbr/doom-nano-modeline"))
+(package! tempel)
