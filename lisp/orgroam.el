@@ -19,43 +19,54 @@
 
 (setq org-roam-directory "~/org/roam")
 
-
+;; From https://github.com/chrisbarrett/nursery
 (add-to-list 'load-path "~/Sync/emacs/lisp/nursery/lisp")
 
 (use-package! org-roam-dblocks
   :hook (org-mode . org-roam-dblocks-autoupdate-mode))
 
+(use-package! org-roam-search
+       :commands (org-roam-search))
+(use-package! org-roam-links
+  :commands (org-roam-links))
 
-  ;; '(("d"                                              ;; Key
-  ;;    "default"                                        ;; Description
-  ;;    plain                                            ;; Type
-  ;;    (file "~/org/templates/DefaultRoamTemplate.org") ;; Template
-  ;;   :target (file "%<%Y%m%d%H%M%S>-${slug}.org")   ;; Target
-  ;;   :unnarrowed t)
-  ;;   ("P"                                              ;; Key
-  ;;    "Public (published in /public)"                  ;; Description
-  ;;    plain                                            ;; Type
-  ;;    (file "~/org/templates/PublicTemplate.org")      ;; Template
-  ;;   :target (file "public/${slug}.org")               ;; Target
-  ;;   :unnarrowed t)
-  ;;   ("c"                                         ;; Key
-  ;;    "Contact (Person)"                          ;; Description
-  ;;    plain                                       ;; Type
-  ;;    (file "~/org/templates/PersonTemplate.org") ;; Template
-  ;;    :target (file "contacts/${slug}.org")        ;; Target
-  ;;    :unnarrowed t)
-  ;;   ("m"                                              ;; Key
-  ;;    "Movie"                                          ;; Description
-  ;;    plain                                            ;; Type
-  ;;    (file "~/org/templates/MovieTemplate.org")       ;; Template
-  ;;   :target (file "public/${slug}.org")               ;; Target
-  ;;   :unnarrowed t)
-  ;;   ("p"                                              ;; Key
-  ;;    "project"                                        ;; Description
-  ;;    plain                                            ;; Type
-  ;;    (file "~/org/templates/ProjectTemplate.org")     ;; Template
-  ;;   :target (file "projects/%<%Y%m%d>-${slug}.org")   ;; Target
-  ;;   :unnarrowed t)))
+(setq org-roam-mode-sections
+      '((org-roam-backlinks-section :unique t)
+        org-roam-reflinks-section))
+
+
+(setq org-roam-capture-templates
+
+  '(("d"                                              ;; Key
+     "default"                                        ;; Description
+     plain                                            ;; Type
+     (file "~/org/templates/DefaultRoamTemplate.org") ;; Template
+    :target (file "%<%Y%m%d%H%M%S>-${slug}.org")   ;; Target
+    :unnarrowed t)
+    ("P"                                              ;; Key
+     "Public (published in /public)"                  ;; Description
+     plain                                            ;; Type
+     (file "~/org/templates/PublicTemplate.org")      ;; Template
+    :target (file "public/%<%Y%m%d%H%M%S>-${slug}.org")               ;; Target
+    :unnarrowed t)
+    ("c"                                         ;; Key
+     "Contact (Person)"                          ;; Description
+     plain                                       ;; Type
+     (file "~/org/templates/PersonTemplate.org") ;; Template
+     :target (file "contacts/${slug}.org")        ;; Target
+     :unnarrowed t)
+    ("m"                                              ;; Key
+     "Movie"                                          ;; Description
+     plain                                            ;; Type
+     (file "~/org/templates/MovieTemplate.org")       ;; Template
+    :target (file "public/${slug}.org")               ;; Target
+    :unnarrowed t)
+    ("p"                                              ;; Key
+     "project"                                        ;; Description
+     plain                                            ;; Type
+     (file "~/org/templates/ProjectTemplate.org")     ;; Template
+    :target (file "projects/%<%Y%m%d>-${slug}.org")   ;; Target
+    :unnarrowed t)))
 
 (use-package! websocket
     :after org-roam)
