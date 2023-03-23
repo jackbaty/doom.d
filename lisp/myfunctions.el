@@ -110,3 +110,9 @@ If FRAME is omitted or nil, use currently selected frame."
       ;; delete the newly created frame in this scenario.
       (user-error (when (string= (cadr err) "Abort")
                     (delete-frame))))))
+
+(defun jab/rate-item (rating)
+  "Apply rating to heading at current point."
+  (interactive "nRating (stars 1-5): ")
+  (if (> rating 0)
+      (org-set-property "rating" (s-repeat rating "★"))))
