@@ -2,7 +2,6 @@
 ;;
 ;;
 (add-to-list 'load-path "~/Sync/emacs/lisp/denote")
-;;(add-to-list 'load-path "~/Sync/emacs/lisp/denote-menu")
 
 
 (require 'denote)
@@ -202,5 +201,22 @@
         (setq org-agenda-files (delete file org-agenda-files))))
 
 
+;; https://lists.sr.ht/~protesilaos/denote/%3Cm0tu6q6bg0.fsf%40disroot.org%3E
+;; Doesn't seem to work
+(after! denote
+(defun my-denote-dired-mode-hook()
+  (denote-dired-mode-in-directories)
+  (if denote-dired-mode
+      (dired-hide-details-mode +1)
+    (diredfl-mode nil))))
 
+
+
+(add-hook 'dired-mode-hook #'my-denote-dired-mode-hook)
 ;;(jab/denote-add-to-agenda-files "_project")
+;;
+(defun jab/setup-denote-dired-mode()
+    (interactive)
+  (if denote-dired-mode
+      (dired-hide-details-mode +1)
+    (diredfl-mode nil)))
