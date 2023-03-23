@@ -82,13 +82,13 @@
        org-image-actual-width '(600)
        org-startup-with-inline-images t
        org-log-redeadline 'note
-      ;; org-habit-show-all-today t
+       org-habit-show-all-today t
        org-agenda-text-search-extra-files (quote (agenda-archives))
        org-agenda-window-setup (quote current-window))
 
 
   (add-to-list 'org-tags-exclude-from-inheritance "project")
-  ;;(add-to-list 'org-modules 'org-habit)
+  (add-to-list 'org-modules 'org-habit)
   (setq org-stuck-projects
       '("+project/-MAYBE-DONE" ("NEXT" "TODO")))
 
@@ -104,13 +104,13 @@
            (file+headline ,(concat org-directory "inbox.org") "Inbox")
            "* TODO %?\n%c\n\n%i\n"
            :empty-lines 1)
-          ("l" "Current file log entry" entry
+          ("l" "Log to current buffer (Datetree)" entry
            (file+olp+datetree buffer-file-name)
            "* %u %? \n" :tree-type month)
-          ("d" "Daybook" entry
+          ("d" "Daybook entry" entry
            (file+olp+datetree ,(concat org-directory "daybook.org"))
            "* %? %^g\n%t\n" :time-prompt nil)
-          ("e" "Event" entry
+          ("e" "Create an event" entry
            (file+olp+datetree ,(concat org-directory "events.org"))
            "* %?\n%T\n" :time-prompt t)
           ("s" "Add to Spark File" entry
@@ -118,7 +118,7 @@
            "* %?\n%U" :prepend t)
           ("m" "Capture email" entry (file+headline "inbox.org" "Inbox")
            "* TODO %:fromname: %a %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+2d\"))")
-          ("n" "Add a Note" entry
+          ("n" "Add a Note to Inbox.org" entry
            (file+headline ,(concat org-directory "inbox.org") "Notes")
            "* %? %^g\n%U" :prepend t))))
 
@@ -323,15 +323,3 @@
     (org-agenda-list)
     (x-focus-frame agenda-frame)))
 
-;; Temporary fix. See https://notes.baty.net/notes/possible-workaround-for-ox-hugo-error-during-exports/
-;;(with-eval-after-load 'ox-hugo
-;;  (setq org-hugo--preprocess-buffer nil))
-
-;;(setq org-id-extra-files (directory-files-recursively org-roam-directory "\.org$"))
-
-;; BUT, it also breaks org-cycle so I've disabled it
-;;(setq org-fold-core-style "overlays")
-
-;; prevents link display issues in org-roam buffers
-;; (after! org
-;;      (setq org-fold-core-style "overlays"))
