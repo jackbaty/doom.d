@@ -42,7 +42,7 @@
        ;;nav-flash         ; blink cursor line after big motions
        ;;neotree           ; a project drawer, like NERDTree for vim
        ophints           ; highlight the region an operation acts on
-       (popup +defaults)   ; tame sudden yet inevitable temporary windows
+       ;;(popup +defaults)   ; tame sudden yet inevitable temporary windows
        ;;tabs              ; a tab bar for Emacs
        treemacs          ; a project drawer, like neotree but cooler
        ;;unicode           ; extended unicode support for various languages
@@ -158,6 +158,7 @@
         +hugo
         +gnuplot
         +roam2
+        +noter
         +pandoc)
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
@@ -182,7 +183,7 @@
        ;;zig               ; C, but simpler
 
        :email
-       (mu4e +org)
+       mu4e
        ;;notmuch
        ;;(wanderlust +gmail)
 
