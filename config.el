@@ -87,8 +87,8 @@
 ;; **** HERE WE GO ***
 
 
-(setq initial-frame-alist '((width . 160) (height . 55)))
-(setq default-frame-alist '((width . 160) (height . 55)))
+(setq initial-frame-alist '((width . 100) (height . 55)))
+(setq default-frame-alist '((width . 100) (height . 55)))
 (add-to-list 'after-make-frame-functions #'jab/frame-center)
 
 (setq bookmark-default-file "~/Sync/emacs/bookmarks")
