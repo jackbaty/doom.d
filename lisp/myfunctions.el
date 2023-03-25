@@ -9,7 +9,8 @@
 (defun jab/deploy-daily-blog ()
   "Deploy website to daily.baty.net"
   (interactive)
-  (shell-command "~/Library/Scripts/Applications/Emacs/Deploy-daily.baty.net.sh"))
+  (save-window-excursion
+   (async-shell-command "~/Library/Scripts/Applications/Emacs/Deploy-daily.baty.net.sh")))
 
 (defun jab/deploy-blog ()
   "Deploy website to baty.net"
