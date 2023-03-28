@@ -53,7 +53,7 @@
      "Contact (Person)"                          ;; Description
      plain                                       ;; Type
      (file "~/org/templates/PersonTemplate.org") ;; Template
-     :target (file "contacts/${slug}.org")        ;; Target
+     :target (file "people/${slug}.org")        ;; Target
      :unnarrowed t)
     ("m"                                              ;; Key
      "Movie"                                          ;; Description
