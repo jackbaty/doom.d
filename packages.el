@@ -56,7 +56,4 @@
 (package! org-roam-ui)
 (package! org-drill)
 (package! ts)
-;; (package! doom-nano-modeline
-;;   :recipe (:host github
-;;   :repo "ronisbr/doom-nano-modeline"))
 (package! tempel)
