@@ -25,7 +25,7 @@
    mu4e-compose-format-flowed t
    smtpmail-smtp-service 465
    mu4e-split-view 'horizontal
-   +org-capture-emails-file "~/org/tasks.org"
+   +org-capture-emails-file "~/org/todo.org"
    mu4e-headers-precise-alignment t
    mu4e-update-interval 300
    mu4e-headers-sort-direction 'ascending
@@ -52,7 +52,9 @@
 (add-to-list 'mu4e-bookmarks
              '(:name "Yesterday's messages" :query "date:2d..1d" :key ?y) t))
 
-
+;; Starting in 1.10.
+(setq mu4e-read-option-use-builtin nil
+     mu4e-completing-read-function 'completing-read)
 
 ;; override Doom's default, which uses macOS keychain
 ;; I get errors about that being unsupported
