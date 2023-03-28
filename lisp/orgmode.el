@@ -117,7 +117,7 @@
            (file+headline ,(concat org-directory "sparkfile.org") "2023")
            "* %?\n%U" :prepend t)
           ("m" "Capture email" entry (file+headline "inbox.org" "Inbox")
-           "* TODO %:fromname: %a %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+2d\"))")
+           "* TODO Respond to %:fromname: %a :email: %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+2d\"))")
           ("n" "Add a Note to Inbox.org" entry
            (file+headline ,(concat org-directory "inbox.org") "Notes")
            "* %? %^g\n%U" :prepend t))))
