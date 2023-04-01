@@ -117,3 +117,27 @@ If FRAME is omitted or nil, use currently selected frame."
   (interactive "nRating (stars 1-5): ")
   (if (> rating 0)
       (org-set-property "rating" (s-repeat rating "★"))))
+
+(defun jab/process-daily-blog-export ()
+  "Converts Markdown file of concatenated daily.baty.net entries"
+  (interactive)
+  (save-excursion
+    ;; Replace title: lines with ## heading
+    (goto-char (point-min))
+    (while (re-search-forward "^title: \"\\(.*\\)\"$"  nil t)
+      (replace-match "## \\1"))
+
+    ;; Remove YAML delimiters "---"
+    (goto-char (point-min))
+    (while (re-search-forward "---$" nil t)
+      (replace-match "\n"))
+
+    ;; Make image paths relative
+    (goto-char (point-min))
+    (while (re-search-forward "](\/img\/202" nil t)
+      (replace-match "](./img/202"))
+
+    ;; Remove lines matching "^date: "
+    (goto-char (point-min))
+    (while (re-search-forward "^date: .*" nil t)
+      (delete-region (line-beginning-position) (line-end-position)))))
