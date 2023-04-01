@@ -9,11 +9,12 @@
 (setq notmuch-search-oldest-first nil)
 (setq notmuch-show-empty-saved-searches t)
 (setq notmuch-hello-thousands-separator ",")
+
 (setq notmuch-search-result-format
         '(("date" . "%12s  ")
           ("count" . "%-7s  ")
           ("authors" . "%-15s  ")
-          ("subject" . "%-50s ")
+          ("subject" . "%.50s ")
           ("tags" . "(%s)")))
 
 ;; Composing
