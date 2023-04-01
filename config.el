@@ -22,7 +22,7 @@
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 
 (setq doom-font (font-spec :family "IBM Plex Mono" :size 15)
-      doom-variable-pitch-font (font-spec :family "IBM Plex Sans" :size 15))
+      doom-variable-pitch-font (font-spec :family "Overpass" :size 15))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -172,5 +172,5 @@
 (load! "lisp/latex")
 (load! "lisp/mappings")
 (load! "lisp/myfunctions")
-(load! "lisp/mu4e")
-;;(load! "lisp/notmuch")
+;;(load! "lisp/mu4e")
+(load! "lisp/notmuch")

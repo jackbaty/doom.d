@@ -183,8 +183,8 @@
        ;;zig               ; C, but simpler
 
        :email
-       (mu4e +org)
-       ;;(notmuch +org)
+       ;;(mu4e +org)
+       (notmuch +org)
        ;;(wanderlust +gmail)
 
        :app
