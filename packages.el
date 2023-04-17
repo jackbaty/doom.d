@@ -49,6 +49,7 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+(unpin! org-roam)
 
 (package! consult-notes)
 (package! pandoc-mode)
