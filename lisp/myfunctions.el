@@ -141,3 +141,5 @@ If FRAME is omitted or nil, use currently selected frame."
     (goto-char (point-min))
     (while (re-search-forward "^date: .*" nil t)
       (delete-region (line-beginning-position) (line-end-position)))))
+
+
