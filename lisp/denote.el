@@ -130,7 +130,8 @@
   (define-key map (kbd "C-c n j") #'jab/denote-journal) ; our custom command
   (define-key map (kbd "C-c n s") #'jab/search-denote)
   (define-key map (kbd "C-c n f") #'jab/find-denote-file)
-  (define-key map (kbd "s-k")     #'jab/find-denote-file)
+  (define-key map (kbd "s-k")     #'denote-open-or-create)
+  ;;(define-key map (kbd "s-k")     #'jab/find-denote-file)
   ;; If you intend to use Denote with a variety of file types, it is
   ;; easier to bind the link-related commands to the `global-map', as
   ;; shown here.  Otherwise follow the same pattern for `org-mode-map',
@@ -139,6 +140,9 @@
   (define-key map (kbd "C-c n I") #'denote-link-add-links)
   (define-key map (kbd "C-c n l") #'denote-link-find-file) ; "list" links
   (define-key map (kbd "C-c n b") #'denote-link-find-backlink)
+  (define-key map (kbd "C-c n k") #'denote-keywords-add)
+  (define-key map (kbd "C-c n K") #'denote-keywords-remove)
+  (define-key map (kbd "C-c n r") #'denote-rename-file-using-front-matter)
   (define-key map (kbd "s-l") #'denote-link-find-backlink)
   ;; Note that `denote-dired-rename-file' can work from any context, not
   ;; just Dired bufffers.  That is why we bind it here to the
@@ -159,6 +163,7 @@
 ;; Should speed up backing buffer builds
 (setq xref-search-program 'ripgrep)
 
+(setq consult-notes-denote-display-id nil)
 (consult-notes-denote-mode)
 
 ;; Add all Denote files tagged as "project" to org-agenda-files
@@ -172,7 +177,7 @@
 
 ;; From Prot
 
-    (defvar my-denote-to-agenda-regexp "_project"
+    (defvar my-denote-to-agenda-regexp "_wip"
       "Denote file names that are added to the agenda.
     See `my-add-denote-to-agenda'.")
 
@@ -213,7 +218,7 @@
 
 
 (add-hook 'dired-mode-hook #'my-denote-dired-mode-hook)
-;;(jab/denote-add-to-agenda-files "_project")
+;;(jab/denote-add-to-agenda-files "_wip")
 ;;
 (defun jab/setup-denote-dired-mode()
     (interactive)
