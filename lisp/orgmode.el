@@ -55,7 +55,8 @@
 ;;                            (org-agenda-files :tag . "refile")))
 
 (after! org
-(setq org-refile-targets '((org-agenda-files :maxlevel . 1)
+(setq org-refile-targets '((nil :maxlevel . 3)
+                           (org-agenda-files :maxlevel . 1)
                            ("notes.org" :level . 2)
                            (org-agenda-files :tag . "refile"))))
 
