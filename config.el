@@ -33,10 +33,25 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; See below for NANO theme
-(setq doom-theme 'doom-one)
+;;(setq doom-theme 'doom-one)
+(setq doom-theme 'modus-operandi)
 
-;; (after! doom-themes
-;;   (load-theme 'doom-nano-light t))
+(setq modus-themes-completions '((t background intense accented)))
+(setq modus-operandi-theme-variable-pitch-headings t
+      modus-operandi-theme-slanted-constructs t
+      modus-operandi-theme-bold-constructs t
+      modus-operandi-theme-fringes 'subtle ; {nil,'subtle,'intense}
+      modus-operandi-theme-3d-modeline t
+      modus-operandi-theme-faint-syntax t
+      modus-operandi-theme-intense-hl-line t
+      modus-operandi-theme-intense-paren-match t
+      modus-operandi-theme-prompts 'subtle ; {nil,'subtle,'intense}
+      modus-operandi-theme-completions 'moderate ; {nil,'moderate,'opinionated}
+      modus-operandi-theme-subtle-diffs t
+      modus-operandi-theme-org-blocks 'greyscale ; {nil,'greyscale,'rainbow}
+      modus-operandi-theme-rainbow-headings t
+      modus-operandi-theme-section-headings nil
+      modus-operandi-theme-scale-headings nil)
 
 ;; (use-package! doom-nano-modeline
 ;;   :config
@@ -130,14 +145,16 @@
 
 (setq emojify-emoji-styles '(unicode github))
 
+(add-hook 'markdown-mode-hook (lambda() (company-mode 0)))
+
 
 ;; Configure Tempel
 (use-package tempel
   ;; Require trigger prefix before template name when completing.
-  ;; :custom
-  ;; (tempel-trigger-prefix "<")
+  ;;:custom
+  ;;(tempel-trigger-prefix "<")
 
-  :bind (("M-+" . tempel-complete) ;; Alternative tempel-expand
+  :bind (("M-+" . tempel-expand) ;; Alternative tempel-expand
          ("M-*" . tempel-insert))
 
   :init
@@ -162,9 +179,10 @@
   ;; Optionally make the Tempel templates available to Abbrev,
   ;; either locally or globally. `expand-abbrev' is bound to C-x '.
   ;; (add-hook 'prog-mode-hook #'tempel-abbrev-mode)
-  ;; (global-tempel-abbrev-mode)
+  (global-tempel-abbrev-mode)
   (setq tempel-path "~/.config/emacs/my-templates")
 )
+
 
 ;; Load my "modules"
 (load! "lisp/orgmode")
