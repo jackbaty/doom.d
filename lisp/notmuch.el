@@ -4,7 +4,7 @@
 
 ;; UI
 (setq notmuch-hello-auto-refresh t)
-(setq notmuch-show-all-tags-list t)
+(setq notmuch-show-all-tags-list nil)
 (setq notmuch-show-logo t)
 (setq notmuch-search-oldest-first nil)
 (setq notmuch-show-empty-saved-searches t)
@@ -45,6 +45,10 @@
         :n "K" #'notmuch-tag-jump)
 
 
+(map! :map notmuch-search-mode-map
+        :n "T" #'notmuch-tag-jump)
+
+
 (add-hook 'notmuch-mua-send-hook #'notmuch-mua-attachment-check)
 
 (setq notmuch-tagging-keys
@@ -52,8 +56,8 @@
           (,(kbd "d") ("+deleted" "-unread" "-inbox") "Mark for deletion")
           (,(kbd "f") ("+flag") "Flag as important")
           (,(kbd "s") ("+spam" "-inbox" "-unread") "Mark as spam")
-          (,(kbd "t") ("+todo" "-unread" "-archived") "To-do")
-          (,(kbd "T") ("-unread" "+archived") "To-do")
+          (,(kbd "t") ("+todo" "-unread" "-archived") "Tag as Todo")
+          (,(kbd "T") ("-todo" "+archived") "Remove Todo tag")
           (,(kbd "R") ("+readlater" "-unread" "-inbox") "Read later")
           (,(kbd "r") ("-unread") "Mark as read")
           (,(kbd "u") ("+unread") "Mark as unread")))
@@ -80,9 +84,13 @@
             :sort-order newest-first
             :key ,(kbd "r"))
           ( :name "todo"
-            :query "tag:todo not tag:archived"
+            :query "tag:todo"
             :sort-order newest-first
             :key ,(kbd "t"))
+          ( :name "flagged"
+            :query "tag:flagged"
+            :sort-order newest-first
+            :key ,(kbd "f"))
           ( :name "today"
             :query "date:today"
             :sort-order newest-first
@@ -141,5 +149,6 @@
   (jab/notmuch-search-message-delete 'down))
 
 ;; My own delete key
+;; Was jab/notmuch-search-message-delete-down)
 (map! :map notmuch-search-mode-map
-        :n "D" #'jab/notmuch-search-message-delete-down)
+        :n "D" #'+notmuch/search-delete)
