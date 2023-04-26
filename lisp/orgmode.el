@@ -46,6 +46,7 @@
                    (concat org-directory "inbox.org")
                    (concat org-directory "events.org")
                    (concat org-directory "food.org")
+                   ;;(concat org-directory "roam/people/contacts.org")
                    (concat org-directory "daybook.org"))))
 
 (jab/init-org-agenda-files)
@@ -65,7 +66,8 @@
  ;; (setq org-return-follows-link t)
    (setq org-agenda-include-diary t
        ;;org-agenda-start-on-weekday nil
-       ;;org-agenda-span 'week
+       org-agenda-span 'day
+       org-agenda-tags-column 'auto
        org-agenda-log-mode-items (quote (closed))
        org-agenda-persistent-filter t
        org-agenda-skip-scheduled-if-deadline-is-shown (quote not-today)
@@ -77,6 +79,7 @@
        org-agenda-start-with-clockreport-mode nil
        org-agenda-clockreport-parameter-plist '(:link t :maxlevel 6 :fileskip0 t :compact t :narrow 80 :score 0)
        org-pretty-entities t
+       org-ellipsis "…"
        org-tags-column 0
        org-log-done 'time
        org-log-into-drawer t
@@ -122,55 +125,6 @@
           ("n" "Add a Note to Inbox.org" entry
            (file+headline ,(concat org-directory "inbox.org") "Notes")
            "* %? %^g\n%U" :prepend t))))
-
-
-
-(setq org-agenda-custom-commands
-      '(("%" "Appointments" agenda* "Today's appointments"
-         ((org-agenda-span 1)
-          (org-agenda-max-entries 3)))
-        ("D" "Daily Action List" agenda ""
-                  ((org-agenda-span 1)
-                   (org-agenda-sorting-strategy
-                    (quote
-                     ((agenda time-up category-up tag-up))))
-                   (org-deadline-warning-days 7))
-                  nil)
-        ("X" agenda "" nil "~/tmp/agenda.ics")))
-(setq org-agenda-custom-commands
-      '(("%" "Appointments" agenda* "Today's appointments"
-         ((org-agenda-span 1)
-          (org-agenda-max-entries 3)))
-        ("D" "Daily Action List" agenda ""
-                  ((org-agenda-span 1)
-                   (org-agenda-sorting-strategy
-                    (quote
-                     ((agenda time-up category-up tag-up))))
-                   (org-deadline-warning-days 7))
-                  nil)
-        ("g" "Get Things Done (GTD)"
-         ((agenda ""
-                  ((org-agenda-skip-function
-                    '(org-agenda-skip-entry-if 'deadline))
-                   (org-deadline-warning-days 0)))
-          (todo "NEXT"
-                ((org-agenda-skip-function
-                  '(org-agenda-skip-entry-if 'deadline))
-                 (org-agenda-prefix-format "  %i %-12:c [%e] ")
-                 (org-agenda-overriding-header "\nTasks\n")))
-          (agenda nil
-                  ((org-agenda-entry-types '(:deadline))
-                   (org-agenda-format-date "")
-                   (org-deadline-warning-days 7)
-                   (org-agenda-skip-function
-                    '(org-agenda-skip-entry-if 'notregexp "\\* NEXT"))
-                   (org-agenda-overriding-header "\nDeadlines")))
-          (tags-todo "inbox"
-                     ((org-agenda-prefix-format "  %?-12t% s")
-                      (org-agenda-overriding-header "\nInbox\n")))
-          (tags "CLOSED>=\"<today>\""
-                ((org-agenda-overriding-header "\nCompleted today\n")))))))
-
 
 
 
@@ -295,6 +249,7 @@
 
 
 
+
 (load "org-mac-link")
 
 ;; Elfeed
@@ -306,6 +261,9 @@
 
 ;; See https://github.com/hlissner/doom-emacs/issues/5714
 (defalias '+org--restart-mode-h #'ignore)
+
+
+;;(global-org-modern-mode)
 
 (with-eval-after-load 'ox-hugo
   (add-to-list 'org-hugo-special-block-type-properties '("sidenote" . (:trim-pre t :trim-post t))))
@@ -324,3 +282,37 @@
     (org-agenda-list)
     (x-focus-frame agenda-frame)))
 
+
+
+
+;; See https://mike.puddingtime.org/posts/20230413-making-a-plaintext-personal-crm-with-org-contacts
+(defun jab/org-set-contacted-today ()
+  "Set the CONTACTED property of the current item to today's date."
+  (interactive)
+  (org-set-property "CONTACTED" (format-time-string "%Y-%m-%d")))
+
+(defun jab/org-set-contacted-date ()
+  "Set the CONTACTED property of the current item to a chosen date."
+  (interactive)
+  (let ((date (org-read-date nil t nil "Enter the date: ")))
+    (org-set-property "CONTACTED" (format-time-string "%Y-%m-%d" date))))
+
+(map! :mode org-mode
+      :localleader
+      :desc "Set CONTACTED property to today"
+      "c t" #'jab/org-set-contacted-today
+      "c d" #'jab/org-set-contacted-date
+      "c z" #'my/org-remove-todo
+                )
+
+;; Need org-contacted-more-than-days-ago code
+;; (add-to-list 'org-agenda-custom-commands
+;;              '("N" "Professional network last contacted > 90 days ago"
+;;                ((tags "network"
+;;                       ((org-agenda-overriding-header "Network contacts, not contacted in the past 90 days")
+;;                        (org-tags-match-list-sublevels t)
+;;                        (org-agenda-skip-function
+;;                         (lambda ()
+;;                           (unless (org-contacted-more-than-days-ago 90)
+;;                             (or (outline-next-heading)
+;;                                 (goto-char (point-max)))))))) )))
