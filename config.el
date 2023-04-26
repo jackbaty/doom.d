@@ -101,12 +101,22 @@
 
 ;; **** HERE WE GO ***
 
+;; Add frame borders and window dividers
+(modify-all-frames-parameters
+ '((right-divider-width . 20)
+   (internal-border-width . 20)))
+(dolist (face '(window-divider
+                window-divider-first-pixel
+                window-divider-last-pixel))
+  (face-spec-reset-face face)
+  (set-face-foreground face (face-attribute 'default :background)))
+(set-face-background 'fringe (face-attribute 'default :background))
 
-(setq initial-frame-alist '((width . 100) (height . 55)))
+(setq initial-frame-alist '((width . 170) (height . 55)))
 (setq default-frame-alist '((width . 100) (height . 55)))
 (add-to-list 'after-make-frame-functions #'jab/frame-center)
 
-(setq bookmark-default-file "~/Sync/emacs/bookmarks")
+(setq bookmark-default-file (concat doom-user-dir "bookmarks"))
 (setq bookmark-set-fringe-mark nil)
 (global-visual-line-mode)
 (setq +zen-text-scale 0.3)  ;; Not quite so large, there Doom
@@ -115,6 +125,9 @@
 ;;(add-hook 'olivetti-mode-on-hook (lambda () (olivetti-set-width 100)))
 (setq markdown-hide-urls t) ; prettier URL display
 ;;(map! :leader "t z" #'olivetti-mode) ; Muscle memory from Doom's zen mode
+;;
+
+
 
 
 (after! writeroom-mode
@@ -154,7 +167,7 @@
   ;;:custom
   ;;(tempel-trigger-prefix "<")
 
-  :bind (("M-+" . tempel-expand) ;; Alternative tempel-expand
+  :bind (("M-TAB" . tempel-expand) ;; Alternative tempel-expand
          ("M-*" . tempel-insert))
 
   :init
@@ -183,6 +196,10 @@
   (setq tempel-path "~/.config/emacs/my-templates")
 )
 
+(setq tempel-path (concat doom-user-dir "tempel"))
+(map! :leader :desc "Insert tempel template" "i s" #'tempel-insert)
+
+
 
 ;; Load my "modules"
 (load! "lisp/orgmode")
@@ -192,3 +209,8 @@
 (load! "lisp/myfunctions")
 ;;(load! "lisp/mu4e")
 (load! "lisp/notmuch")
+(load! "lisp/elfeed")
+;;(load! "lisp/crm")
+
+;; why doesn't this work?
+(jab/frame-center)
