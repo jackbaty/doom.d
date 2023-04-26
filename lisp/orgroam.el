@@ -10,6 +10,7 @@
  "\C-c n j" 'org-roam-dailies-capture-today
  "\C-c n c" 'org-roam-capture
  "\C-c n s" 'jab/search-roam
+ "\C-c n T" 'my/org-roam-capture-task
  "\C-c n l" 'org-roam-buffer-toggle)
 
 
@@ -17,7 +18,13 @@
   (org-link-set-parameters "id"
                          :face '(:foreground "orange" :underline t)))
 
-(setq org-roam-directory "~/org/roam")
+;; Set roam to reuse whole org directory as well when it loads
+(setq org-roam-directory org-directory)
+(setq org-roam-dailies-directory (concat org-roam-directory "roam/daily/"))
+
+;; Disable roam completion for nodes everywhere (we set keybind to insert)
+(setq org-roam-completion-everywhere nil)
+
 
 ;; From https://github.com/chrisbarrett/nursery
 (add-to-list 'load-path "~/Sync/emacs/lisp/nursery/lisp")
@@ -42,24 +49,6 @@
      plain                                            ;; Type
      (file "~/org/templates/DefaultRoamTemplate.org") ;; Template
     :target (file "%<%Y%m%d%H%M%S>-${slug}.org")   ;; Target
-    :unnarrowed t)
-    ("P"                                              ;; Key
-     "Public (published in /public)"                  ;; Description
-     plain                                            ;; Type
-     (file "~/org/templates/PublicTemplate.org")      ;; Template
-    :target (file "public/%<%Y%m%d%H%M%S>-${slug}.org")               ;; Target
-    :unnarrowed t)
-    ("c"                                         ;; Key
-     "Contact (Person)"                          ;; Description
-     plain                                       ;; Type
-     (file "~/org/templates/PersonTemplate.org") ;; Template
-     :target (file "people/${slug}.org")        ;; Target
-     :unnarrowed t)
-    ("m"                                              ;; Key
-     "Movie"                                          ;; Description
-     plain                                            ;; Type
-     (file "~/org/templates/MovieTemplate.org")       ;; Template
-    :target (file "public/${slug}.org")               ;; Target
     :unnarrowed t)
     ("p"                                              ;; Key
      "project"                                        ;; Description
@@ -159,7 +148,25 @@
 
 (defun my/org-roam-refresh-agenda-list ()
   (interactive)
-  (setq org-agenda-files (append org-agenda-files (my/org-roam-list-notes-by-tag "wip"))))
+  (setq org-agenda-files (append org-agenda-files (my/org-roam-list-notes-by-tag "wip")))
+  (setq org-agenda-files (append org-agenda-files (my/org-roam-list-notes-by-tag "area"))))
 
 ;; Build the agenda list the first time for the session
 (my/org-roam-refresh-agenda-list)
+
+(defun my/org-roam-filter-by-tag (tag-name)
+  (lambda (node)
+    (member tag-name (org-roam-node-tags node))))
+
+
+(defun my/org-roam-capture-task ()
+  (interactive)
+  ;; Capture the new task, creating the project file if necessary
+  (org-roam-capture- :node (org-roam-node-read
+                            nil
+                            (my/org-roam-filter-by-tag "wip"))
+                     :templates '(("p" "project" plain "** TODO %?"
+                                   :if-new (file+head+olp "%<%Y%m%d%H%M%S>-${slug}.org"
+                                                          "#+title: ${title}\n#+category: ${title}\n#+filetags: Project"
+                                                          ("Tasks"))))))
+
