@@ -143,3 +143,13 @@ If FRAME is omitted or nil, use currently selected frame."
       (delete-region (line-beginning-position) (line-end-position)))))
 
 
+;; Via https://codingquark.com/emacs/2023/04/07/a-clean-writing-setup-emacs.html
+(defun jab/lookup-word-in-dictionary ()
+  "Look up word at point using macOS Dictionary"
+  (interactive)
+  (let ((word (if (use-region-p)
+                  (buffer-substring-no-properties (region-beginning) (region-end))
+                (read-string "Word lookup: "))))
+    (if (eq system-type 'darwin)
+        (shell-command (format "open dict://%s" (shell-quote-argument word)))
+      (eww (concat "https://en.wiktionary.org/wiki/" word) 4))))
