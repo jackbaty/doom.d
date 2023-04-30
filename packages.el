@@ -56,5 +56,8 @@
 (package! org-download)
 (package! org-roam-ui)
 (package! org-drill)
+(package! org-modern)
+(package! org-super-agenda)
 (package! ts)
 (package! tempel)
+(package! doom-snippets :ignore t)
