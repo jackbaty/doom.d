@@ -43,11 +43,11 @@
      (:maildir "/Baty.net/Screened"    :key  ?r)
      (:maildir "/Baty.net/Sent Items"  :key  ?s)))
 
-(add-to-list 'mu4e-bookmarks
-  ;; add bookmark for showing inbox without "trashed" messages
-  '( :name "Inbox clean"
-     :key  ?i
-     :query "maildir:/Baty.net/INBOX NOT flag:trashed"))
+;; (add-to-list 'mu4e-bookmarks
+;;   ;; add bookmark for showing inbox without "trashed" messages
+;;   '( :name "Inbox clean"
+;;      :key  ?i
+;;      :query "maildir:/Baty.net/INBOX NOT flag:trashed"))
 
 (add-to-list 'mu4e-bookmarks
              '(:name "Yesterday's messages" :query "date:2d..1d" :key ?y) t))
@@ -79,3 +79,4 @@
     (copy-file
      (mu4e-message-field msg :path)
      (format "%s/%s" (or dir (read-directory-name "Copy message to: ")) target) 1)))
+
