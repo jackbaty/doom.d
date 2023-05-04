@@ -2,7 +2,19 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("Tempel Snippets"
+(("todo.org"
+ (filename . "~/org/todo.org")
+ (front-context-string . "* Todo [0/6]\n** ")
+ (rear-context-string . "rtup: overview\n\n")
+ (position . 122)
+ (last-modified 25679 46584 412981 0))
+("Weekly"
+ (filename . "~/org/weeklies/2023-W18.org")
+ (front-context-string . "* Monday, May 1,")
+ (rear-context-string . " List\n\n* Notes\n\n")
+ (position . 1805)
+ (last-modified 25679 41524 61560 0))
+("Tempel Snippets"
  (filename . "~/.config/emacs/my-templates")
  (front-context-string . "\n(today (format-")
  (rear-context-string . "able everywhere\n")
@@ -22,11 +34,6 @@
  (front-context-string . "2023-01-01-bring")
  (rear-context-string . "34 Feb 22 10:24 ")
  (position . 158))
-("todo.org"
- (filename . "~/org/todo.org")
- (front-context-string . "* Todo [0/2]\n\n**")
- (rear-context-string . "rtup: overview\n\n")
- (position . 55))
 ("daily.baty.net"
  (filename . "~/sites/daily.baty.net/content/posts/2023/")
  (front-context-string)
@@ -93,11 +100,11 @@
  (rear-context-string . "es from the phon")
  (position . 35))
 ("org-refile-last-stored"
- (filename . "~/org/todo.org")
- (front-context-string . "** TODO Contact ")
- (rear-context-string . "023-04-27 Thu>\n\n")
- (position . 540)
- (last-modified 25676 60226 222955 0))
+ (filename . "~/org/roam/projects/20230415-new_gm_car_for_aidan_2023.org")
+ (front-context-string . "* Chevy Trailbla")
+ (rear-context-string . "bout lead times\n")
+ (position . 9056)
+ (last-modified 25679 53081 598097 0))
 ("blog.org"
  (filename . "~/sites/blog/content-org/blog.org")
  (front-context-string . " 2022\n**** DONE ")
@@ -109,9 +116,9 @@
  (rear-context-string . "021-12-31 Fri>\n\n")
  (position . 147699))
 ("org-capture-last-stored"
- (filename . "~/org/20230430100832-fastmail.org")
- (front-context-string . "#+title: Fastmai")
- (rear-context-string . "4f7adbabe\n:END:\n")
- (position . 68)
- (last-modified 25678 30318 435061 0))
+ (filename . "~/org/roam/daily/2023-05-04.org")
+ (front-context-string . "* Set up Arq Bac")
+ (rear-context-string . " 2023-05-04 Thu\n")
+ (position . 102)
+ (last-modified 25683 47084 455065 0))
 )
