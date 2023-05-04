@@ -252,6 +252,17 @@
 
 (load "org-mac-link")
 
+;; So org-attach-reveal opens the folder in Finder
+;; Needed to change the directory entry
+(after! org
+  (setq org-file-apps
+        '((remote . emacs)
+          (auto-mode . emacs)
+          (directory . "open %s")
+          ("\\.mm\\'" . default)
+          ("\\.x?html?\\'" . default)
+          ("\\.pdf\\'" . default))))
+
 ;; Elfeed
 (add-hook! 'elfeed-search-mode-hook 'elfeed-update)
 (after! elfeed
@@ -281,6 +292,9 @@
     (select-frame agenda-frame)
     (org-agenda-list)
     (x-focus-frame agenda-frame)))
+
+(after! org
+(add-hook 'org-mode-hook 'org-indent-mode))
 
 
 
