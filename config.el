@@ -40,7 +40,8 @@
 (setq modus-operandi-theme-variable-pitch-headings t
       modus-operandi-theme-slanted-constructs t
       modus-operandi-theme-bold-constructs t
-      modus-operandi-theme-fringes 'subtle ; {nil,'subtle,'intense}
+      modus-operandi-theme-fringes 'nil ; {nil,'subtle,'intense}
+      modus-theme-fringes 'nil ; {nil,'subtle,'intense}
       modus-operandi-theme-3d-modeline t
       modus-operandi-theme-faint-syntax t
       modus-operandi-theme-intense-hl-line t
