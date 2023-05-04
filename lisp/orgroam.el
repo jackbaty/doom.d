@@ -50,6 +50,12 @@
      (file "~/org/templates/DefaultRoamTemplate.org") ;; Template
     :target (file "%<%Y%m%d%H%M%S>-${slug}.org")   ;; Target
     :unnarrowed t)
+    ("w"                                              ;; Key
+     "Weekly"                                        ;; Description
+     plain                                            ;; Type
+     (file "~/org/templates/RoamWeeklyTemplate.org") ;; Template
+    :target (file "~/org/weeklies/%<%Y-W%W>.org")   ;; Target
+    :unnarrowed t)
     ("p"                                              ;; Key
      "project"                                        ;; Description
      plain                                            ;; Type
@@ -159,7 +165,7 @@
     (member tag-name (org-roam-node-tags node))))
 
 
-(defun my/org-roam-capture-task ()
+(defun my/org-roam-capture-project-task ()
   (interactive)
   ;; Capture the new task, creating the project file if necessary
   (org-roam-capture- :node (org-roam-node-read
