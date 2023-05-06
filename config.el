@@ -208,10 +208,8 @@
 (load! "lisp/latex")
 (load! "lisp/mappings")
 (load! "lisp/myfunctions")
-;;(load! "lisp/mu4e")
-(load! "lisp/notmuch")
+(load! "lisp/mu4e")
+;;(load! "lisp/notmuch")
 (load! "lisp/elfeed")
 ;;(load! "lisp/crm")
 
-;; why doesn't this work?
-(jab/frame-center)
