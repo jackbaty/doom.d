@@ -61,3 +61,4 @@
 (package! ts)
 (package! tempel)
 (package! doom-snippets :ignore t)
+(unpin! evil-collection) ;; fix for mu4e bindings
