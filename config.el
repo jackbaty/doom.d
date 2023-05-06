@@ -103,15 +103,15 @@
 ;; **** HERE WE GO ***
 
 ;; Add frame borders and window dividers
-(modify-all-frames-parameters
- '((right-divider-width . 20)
-   (internal-border-width . 20)))
-(dolist (face '(window-divider
-                window-divider-first-pixel
-                window-divider-last-pixel))
-  (face-spec-reset-face face)
-  (set-face-foreground face (face-attribute 'default :background)))
-(set-face-background 'fringe (face-attribute 'default :background))
+;; (modify-all-frames-parameters
+;;  '((right-divider-width . 20)
+;;    (internal-border-width . 20)))
+;; (dolist (face '(window-divider
+;;                 window-divider-first-pixel
+;;                 window-divider-last-pixel))
+;;   (face-spec-reset-face face)
+;;   (set-face-foreground face (face-attribute 'default :background)))
+;; (set-face-background 'fringe (face-attribute 'default :background))
 
 (setq initial-frame-alist '((width . 170) (height . 55)))
 (setq default-frame-alist '((width . 100) (height . 55)))
