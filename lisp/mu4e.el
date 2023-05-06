@@ -50,7 +50,10 @@
 ;;      :query "maildir:/Baty.net/INBOX NOT flag:trashed"))
 
 (add-to-list 'mu4e-bookmarks
-             '(:name "Yesterday's messages" :query "date:2d..1d" :key ?y) t))
+             '(:name "Yesterday's messages" :query "date:2d..1d" :key ?y) t)
+
+(add-to-list 'mu4e-bookmarks
+             '(:name "Inbox" :query "maildir:/Baty.net/INBOX NOT flag:trashed" :key ?i) t))
 
 ;; Starting in 1.10.
 (setq mu4e-read-option-use-builtin nil
