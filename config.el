@@ -21,7 +21,7 @@
 ;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 
-(setq doom-font (font-spec :family "IBM Plex Mono" :size 15)
+(setq doom-font (font-spec :family "Calling Code" :size 15)
       doom-variable-pitch-font (font-spec :family "Overpass" :size 15))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
