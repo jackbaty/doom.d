@@ -34,7 +34,11 @@
 ;; `load-theme' function. This is the default:
 ;; See below for NANO theme
 ;;(setq doom-theme 'doom-one)
-(setq doom-theme 'modus-operandi)
+;;(setq doom-theme 'modus-operandi)
+(setq doom-theme 'leuven)
+
+(setq leuven-scale-outline-headlines 1.25)
+(setq leuven-scale-org-agenda-structure 1.25)
 
 (setq modus-themes-completions '((t background intense accented)))
 (setq modus-operandi-theme-variable-pitch-headings t
