@@ -44,23 +44,29 @@
 
 (setq org-roam-capture-templates
 
-  '(("d"                                              ;; Key
-     "default"                                        ;; Description
-     plain                                            ;; Type
-     (file "~/org/templates/DefaultRoamTemplate.org") ;; Template
-    :target (file "%<%Y%m%d%H%M%S>-${slug}.org")   ;; Target
+  '(("d"                                                    ;; Key
+     "default"                                              ;; Description
+     plain                                                  ;; Type
+     (file "~/org/templates/DefaultRoamTemplate.org")       ;; Template
+    :target (file "~/org/roam/%<%Y%m%d%H%M%S>-${slug}.org") ;; Target
     :unnarrowed t)
-    ("w"                                              ;; Key
-     "Weekly"                                        ;; Description
-     plain                                            ;; Type
-     (file "~/org/templates/RoamWeeklyTemplate.org") ;; Template
-    :target (file "~/org/weeklies/%<%Y-W%W>.org")   ;; Target
+    ("w"                                                    ;; Key
+     "Weekly"                                               ;; Description
+     plain                                                  ;; Type
+     (file "~/org/templates/RoamWeeklyTemplate.org")        ;; Template
+    :target (file "~/org/weeklies/%<%Y-W%W>.org")           ;; Target
     :unnarrowed t)
-    ("p"                                              ;; Key
-     "project"                                        ;; Description
-     plain                                            ;; Type
-     (file "~/org/templates/ProjectTemplate.org")     ;; Template
-    :target (file "projects/%<%Y%m%d>-${slug}.org")   ;; Target
+    ("P"                                                    ;; Key
+     "Person"                                               ;; Description
+     plain                                                  ;; Type
+     (file "~/org/templates/PersonTemplate.org")            ;; Template
+    :target (file "people/${slug}.org")                     ;; Target
+    :unnarrowed t)
+    ("p"                                                    ;; Key
+     "project"                                              ;; Description
+     plain                                                  ;; Type
+     (file "~/org/templates/ProjectTemplate.org")           ;; Template
+    :target (file "projects/%<%Y%m%d>-${slug}.org")         ;; Target
     :unnarrowed t)))
 
 (use-package! websocket
