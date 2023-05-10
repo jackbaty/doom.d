@@ -85,6 +85,7 @@
        org-log-into-drawer t
        org-image-actual-width '(600)
        org-startup-with-inline-images t
+       org-startup-folded 'content
        org-log-redeadline 'note
        org-habit-show-all-today t
        org-agenda-text-search-extra-files (quote (agenda-archives))
