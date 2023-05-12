@@ -297,7 +297,10 @@
 (after! org
 (add-hook 'org-mode-hook 'org-indent-mode))
 
-
+(after! org
+  (setq org-agenda-time-grid '((weekly today remove-match)
+                               (800 1000 1200 1400 1600 1800 2000)
+                               " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")))
 
 
 ;; See https://mike.puddingtime.org/posts/20230413-making-a-plaintext-personal-crm-with-org-contacts
