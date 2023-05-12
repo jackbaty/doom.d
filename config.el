@@ -128,7 +128,7 @@
 ;;(add-hook 'writeroom-mode-hook (lambda () (setq line-spacing 0.4)))
 ;;(add-hook 'olivetti-mode-on-hook (lambda () (setq line-spacing 0.4)))
 ;;(add-hook 'olivetti-mode-on-hook (lambda () (olivetti-set-width 100)))
-(setq markdown-hide-urls t) ; prettier URL display
+(setq markdown-hide-urls nil) ; Hidden URLs are too hard to edit
 ;;(map! :leader "t z" #'olivetti-mode) ; Muscle memory from Doom's zen mode
 ;;
 
