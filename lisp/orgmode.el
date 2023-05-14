@@ -40,16 +40,16 @@
   (setq org-image-actual-width 300))
 
 
-(defun jab/init-org-agenda-files ()
+(after! org
 (setq org-agenda-files (list
                    (concat org-directory "todo.org")
                    (concat org-directory "inbox.org")
                    (concat org-directory "events.org")
                    (concat org-directory "food.org")
-                   ;;(concat org-directory "roam/people/contacts.org")
+                   (concat org-directory "projects/")
+                   (concat org-directory "areas/")
                    (concat org-directory "daybook.org"))))
 
-(jab/init-org-agenda-files)
 
 ;; (setq org-refile-targets '(("projects.org" :regexp . "\\(?:\\(?:Note\\|Task\\)s\\)")
 ;;                            ("todo.org" :maxlevel . 1)
