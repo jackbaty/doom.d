@@ -164,7 +164,7 @@
   (setq org-agenda-files (append org-agenda-files (my/org-roam-list-notes-by-tag "area"))))
 
 ;; Build the agenda list the first time for the session
-(my/org-roam-refresh-agenda-list)
+;;(my/org-roam-refresh-agenda-list)
 
 (defun my/org-roam-filter-by-tag (tag-name)
   (lambda (node)
