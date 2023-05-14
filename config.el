@@ -117,7 +117,7 @@
 ;;   (set-face-foreground face (face-attribute 'default :background)))
 ;; (set-face-background 'fringe (face-attribute 'default :background))
 
-(setq initial-frame-alist '((width . 170) (height . 55)))
+(setq initial-frame-alist '((width . 180) (height . 55)))
 (setq default-frame-alist '((width . 100) (height . 55)))
 (add-to-list 'after-make-frame-functions #'jab/frame-center)
 
@@ -208,7 +208,6 @@
 
 ;; Load my "modules"
 (load! "lisp/orgmode")
-(load! "lisp/orgroam")
 (load! "lisp/latex")
 (load! "lisp/mappings")
 (load! "lisp/myfunctions")
@@ -216,4 +215,4 @@
 ;;(load! "lisp/notmuch")
 (load! "lisp/elfeed")
 ;;(load! "lisp/crm")
-
+(load! "lisp/orgroam")
