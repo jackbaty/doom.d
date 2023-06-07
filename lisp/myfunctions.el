@@ -28,14 +28,6 @@
         (insert "{{{mark("))))
 
 
-(defun jab/openfriends ()
-  "Open daily haunt websites"
-    (interactive)
-    (progn
-      (browse-url "https://fondoftea.com")
-      (browse-url "https://youneedastereo.com/#")
-      (browse-url "https://alexjj.com")
-      (browse-url "https://nice-marmot.net/")))
 
 ;; From https://christiantietze.de/posts/2021/07/open-finder-window-in-dired/
 (defun jab/finder-path ()
