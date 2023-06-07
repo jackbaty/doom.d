@@ -119,6 +119,9 @@
           ("s" "Add to Spark File" entry
            (file+headline ,(concat org-directory "sparkfile.org") "2023")
            "* %?\n%U" :prepend t)
+          ("c" "Add to Commonplace book" entry
+           (file ,(concat org-directory "commonplace.org"))
+           "* %?\n%U\n\n#+begin_quote\n\n#+end_quote" :prepend t)
           ("m" "Capture email" entry (file+headline "inbox.org" "Inbox")
            "* TODO Follow up w/%:fromname: %a :email: %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+2d\"))")
           ("W" "Weight" table-line
