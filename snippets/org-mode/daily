@@ -7,7 +7,12 @@
 :PROPERTIES:
 :EXPORT_FILE_NAME: index
 :EXPORT_HUGO_BUNDLE: `(format-time-string "%Y-%m-%d-%A")`
-:EXPORT_HUGO_SLUG: `(format-time-string "%Y-%m-%d")`
+:EXPORT_HUGO_SLUG: `(format-time-string "%Y-%m-%d")`-journal
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER: :showtoc true :tocopen true
 :END:
+
+#+begin_description
+
+#+end_description
 
 $0
