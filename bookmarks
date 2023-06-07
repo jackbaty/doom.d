@@ -8,42 +8,16 @@
  (rear-context-string . "rtup: overview\n\n")
  (position . 122)
  (last-modified 25679 46584 412981 0))
-("Weekly"
- (filename . "~/org/weeklies/2023-W18.org")
- (front-context-string . "* Monday, May 1,")
- (rear-context-string . " List\n\n* Notes\n\n")
- (position . 1805)
- (last-modified 25679 41524 61560 0))
 ("Tempel Snippets"
  (filename . "~/.config/emacs/my-templates")
  (front-context-string . "\n(today (format-")
  (rear-context-string . "able everywhere\n")
  (position . 42))
-("Blot journal"
- (filename . "~/Dropbox/Apps/Blot/[Journal]/2023/")
- (front-context-string . "2023-04-11.md\n  ")
- (rear-context-string . "71 Apr 11 13:16 ")
- (position . 141))
-("Blot posts"
- (filename . "~/Dropbox/Apps/Blot/posts/2023/04/")
- (front-context-string)
- (rear-context-string . "06-coteditor.md\n")
- (position . 301))
 ("Blog"
- (filename . "~/sites/baty.net-eleventy/content/posts/2023/")
+ (filename . "~/sites/blog/content/posts/2023/06-June/")
  (front-context-string . "2023-01-01-bring")
  (rear-context-string . "34 Feb 22 10:24 ")
  (position . 158))
-("daily.baty.net"
- (filename . "~/sites/daily.baty.net/content/posts/2023/")
- (front-context-string)
- (rear-context-string . "3K Feb 20 10:24 ")
- (position . 1160))
-("Blot 2023"
- (filename . "~/Dropbox/Apps/Blot/posts/2023/")
- (front-context-string . "  total used in ")
- (rear-context-string . "lot/posts/2023:\n")
- (position . 46))
 ("Ledger"
  (filename . "~/Documents/Ledger/2023.ledger")
  (front-context-string . "2023/01/01 Patre")
@@ -64,11 +38,6 @@
  (front-context-string . "0. Inbox\n  drwxr")
  (rear-context-string . "64 Jan 16 08:06 ")
  (position . 181))
-("Projects"
- (filename . "~/org/projects/projects.org")
- (front-context-string . "* Current Projec")
- (rear-context-string . " 0:20 |\n#+END:\n\n")
- (position . 1532))
 ("Inbox"
  (filename . "~/org/inbox.org")
  (front-context-string . "x\n\n** TODO This ")
@@ -80,15 +49,10 @@
  (rear-context-string . "4K Jun 17 06:05 ")
  (position . 300))
 ("Denotes"
- (filename . "~/org/notes/")
+ (filename . "~/Documents/Notes/")
  (front-context-string . "  total used in ")
  (rear-context-string . "ocuments/notes:\n")
  (position . 33))
-("NotePlan"
- (filename . "~/Library/Containers/co.noteplan.NotePlan-setapp/Data/Library/Application Support/co.noteplan.NotePlan-setapp/")
- (front-context-string . "Backups\n  drwxr-")
- (rear-context-string . "60 May 26 16:16 ")
- (position . 218))
 ("Espanso Config"
  (filename . "~/Library/Preferences/espanso/match/")
  (front-context-string . "packages\n  -rw-r")
@@ -100,11 +64,10 @@
  (rear-context-string . "es from the phon")
  (position . 35))
 ("org-refile-last-stored"
- (filename . "~/org/roam/projects/20230415-new_gm_car_for_aidan_2023.org")
- (front-context-string . "* Chevy Trailbla")
- (rear-context-string . "bout lead times\n")
- (position . 9056)
- (last-modified 25679 53081 598097 0))
+ (filename . "~/org/todo.org")
+ (front-context-string . "** TODO Decide a")
+ (rear-context-string . "4-18 Tue 10:00>\n")
+ (position . 2067))
 ("blog.org"
  (filename . "~/sites/blog/content-org/blog.org")
  (front-context-string . " 2022\n**** DONE ")
@@ -116,9 +79,8 @@
  (rear-context-string . "021-12-31 Fri>\n\n")
  (position . 147699))
 ("org-capture-last-stored"
- (filename . "~/org/roam/daily/2023-05-04.org")
- (front-context-string . "* Set up Arq Bac")
- (rear-context-string . " 2023-05-04 Thu\n")
- (position . 102)
- (last-modified 25683 47084 455065 0))
+ (filename . "~/Documents/Notes/20211103T063429--batynet.org")
+ (front-context-string . "*** [2023-06-06 ")
+ (rear-context-string . "ck to WordPress\n")
+ (position . 3323))
 )
