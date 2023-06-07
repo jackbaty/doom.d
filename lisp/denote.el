@@ -13,7 +13,7 @@
 
 
 ;; Remember to check the doc strings of those variables.
-(setq denote-directory (expand-file-name "~/org/notes/"))
+(setq denote-directory (expand-file-name "~/Documents/Notes/"))
 (setq denote-known-keywords '("emacs" "photography" "software" "person"))
 (setq denote-infer-keywords t)
 (setq denote-sort-keywords t)
@@ -42,7 +42,7 @@
 (setq denote-backlinks-show-context t)
 
 ;; By default, we fontify backlinks in their bespoke buffer.
-(setq denote-link-fontify-backlinks t)
+;;(setq denote-link-fontify-backlinks t)
 
 ;; Also see `denote-link-backlinks-display-buffer-action' which is a bit
 ;; advanced.
@@ -68,40 +68,28 @@
 ;;(add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
 
 ;; Journaling (stolen from Denote's manual)
-;; (defun jab/denote-journal ()
-;;   "Create an entry tagged 'journal' with the date as its title."
-;;   (interactive)
-;;   (denote
-;;    (format-time-string "%A %e %B %Y") ; format like Tuesday 14 June 2022
-;;    '("journal")
-;;    nil
-;;    (concat denote-directory "journal"))) ; multiple keywords are a list of strings: '("one" "two")
 
-;; This is from the Denote mailing list. I've lost the reference
- (defun jab/is-todays-journal? (f)
-   "If f is today's journal in denote, f is returned"
-   (let* ((month-regexp (car (calendar-current-date)))
-          (day-regexp (nth 1 (calendar-current-date)))
-          (year-regexp (nth 2 (calendar-current-date)))
-          (journal-files (directory-files (denote-directory) nil "_journal"))
-          (day-match? (string-match-p (concat "^......" (format "%02d" day-regexp)) f))
-          (year-match? (string-match-p (concat "^" (number-to-string year-regexp)) f))
-          (month-match? (string-match-p (concat (number-to-string month-regexp) "..T") f)))
-     (when (and day-match? year-match? month-match?)
-       f)))
+(defun my-denote-journal ()
+  "Create an entry tagged 'journal' with the date as its title.
+If a journal for the current day exists, visit it.  If multiple
+entries exist, prompt with completion for a choice between them.
+Else create a new file."
+  (interactive)
+  (let* ((today (format-time-string "%A %B %e %Y"))
+         (string (denote-sluggify today))
+         (files (denote-directory-files-matching-regexp string)))
+    (cond
+     ((> (length files) 1)
+      (find-file (completing-read "Select file: " files nil :require-match)))
+     (files
+      (find-file (car files)))
+     (t
+      (denote
+       today
+       '("journal")
+       nil
+       "~/Documents/Notes/journal")))))
 
- (defun jab/denote-journal ()
-   "Create an entry tagged 'journal' with the date as its title."
-   (interactive)
-   (let* ((journal-dir (concat (denote-directory) "journal"))
-          (today-journal
-           (car (-non-nil
-                 (mapcar #'jab/is-todays-journal? (directory-files journal-dir nil "_journal"))))))
-     (if today-journal
-         (find-file (concat journal-dir "/" today-journal))
-         (denote
-          (format-time-string "%A %e %B %Y")
-          '("journal") nil journal-dir))))
 
 
 
@@ -127,11 +115,11 @@
   (define-key map (kbd "C-c n N") #'denote-type)
   (define-key map (kbd "C-c n d") #'denote-date)
   (define-key map (kbd "C-c n S") #'denote-subdirectory)
-  (define-key map (kbd "C-c n j") #'jab/denote-journal) ; our custom command
+  (define-key map (kbd "C-c n j") #'my-denote-journal) ; our custom command
   (define-key map (kbd "C-c n s") #'jab/search-denote)
   (define-key map (kbd "C-c n f") #'jab/find-denote-file)
-  (define-key map (kbd "s-k")     #'denote-open-or-create)
-  ;;(define-key map (kbd "s-k")     #'jab/find-denote-file)
+  ;;(define-key map (kbd "s-k")     #'denote-open-or-create)
+  (define-key map (kbd "s-k")     #'jab/find-denote-file)
   ;; If you intend to use Denote with a variety of file types, it is
   ;; easier to bind the link-related commands to the `global-map', as
   ;; shown here.  Otherwise follow the same pattern for `org-mode-map',
@@ -208,20 +196,26 @@
 
 ;; https://lists.sr.ht/~protesilaos/denote/%3Cm0tu6q6bg0.fsf%40disroot.org%3E
 ;; Doesn't seem to work
-(after! denote
+;; (after! denote
+;; (defun my-denote-dired-mode-hook()
+;;   (denote-dired-mode-in-directories)
+;;   (if denote-dired-mode
+;;       (dired-hide-details-mode +1)
+;;     (diredfl-mode nil))))
+
 (defun my-denote-dired-mode-hook()
   (denote-dired-mode-in-directories)
   (if denote-dired-mode
       (dired-hide-details-mode +1)
-    (diredfl-mode nil))))
-
-
+    (diredfl-mode +1)))
 
 (add-hook 'dired-mode-hook #'my-denote-dired-mode-hook)
+
+
+(add-hook 'dired-mode-hook #'jab/setup-denote-dired-mode)
 ;;(jab/denote-add-to-agenda-files "_wip")
 ;;
 (defun jab/setup-denote-dired-mode()
     (interactive)
   (if denote-dired-mode
-      (dired-hide-details-mode +1)
-    (diredfl-mode nil)))
+      (dired-hide-details-mode +1)))

@@ -35,10 +35,10 @@
 ;; See below for NANO theme
 ;;(setq doom-theme 'doom-one)
 ;;(setq doom-theme 'modus-operandi)
-(setq doom-theme 'leuven)
+(setq doom-theme 'doom-nord)
 
-(setq leuven-scale-outline-headlines 1.25)
-(setq leuven-scale-org-agenda-structure 1.25)
+(setq leuven-scale-outline-headlines 1.10)
+(setq leuven-scale-org-agenda-structure 1.10)
 
 (setq modus-themes-completions '((t background intense accented)))
 (setq modus-operandi-theme-variable-pitch-headings t
@@ -215,4 +215,4 @@
 ;;(load! "lisp/notmuch")
 (load! "lisp/elfeed")
 ;;(load! "lisp/crm")
-(load! "lisp/orgroam")
+(load! "lisp/denote")
