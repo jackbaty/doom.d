@@ -46,8 +46,6 @@
                    (concat org-directory "inbox.org")
                    (concat org-directory "events.org")
                    (concat org-directory "food.org")
-                   (concat org-directory "projects/")
-                   (concat org-directory "areas/")
                    (concat org-directory "daybook.org"))))
 
 
