@@ -19,7 +19,7 @@
                          :face '(:foreground "orange" :underline t)))
 
 ;; Set roam to reuse whole org directory as well when it loads
-(setq org-roam-directory org-directory)
+(setq org-roam-directory "~/org/roam")
 (setq org-roam-dailies-directory (concat org-roam-directory "roam/daily/"))
 
 ;; Disable roam completion for nodes everywhere (we set keybind to insert)
