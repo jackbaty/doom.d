@@ -249,6 +249,8 @@
   :follow (lambda (path) (shell-command (concat "open \"x-eaglefiler:" path "\""))))
 (org-link-set-parameters "evernote"
   :follow (lambda (path) (shell-command (concat "open \"evernote:" path "\""))))
+(org-link-set-parameters "curio"
+  :follow (lambda (path) (shell-command (concat "open \"curio:" path "\""))))
 (org-link-set-parameters "message"
   :follow (lambda (path) (shell-command (concat "open \"message:" path "\"")))))
 
