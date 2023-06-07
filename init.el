@@ -157,7 +157,7 @@
         +journal
         +hugo
         +gnuplot
-        +roam2
+       ;;+roam2
         +noter
         +pandoc)
        ;;php               ; perl's insecure younger brother
