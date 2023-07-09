@@ -13,7 +13,7 @@
 
 
 ;; Remember to check the doc strings of those variables.
-(setq denote-directory (expand-file-name "~/Documents/Notes/"))
+(setq denote-directory (expand-file-name "~/Denotes/"))
 (setq denote-known-keywords '("emacs" "photography" "software" "person"))
 (setq denote-infer-keywords t)
 (setq denote-sort-keywords t)
@@ -42,7 +42,7 @@
 (setq denote-backlinks-show-context t)
 
 ;; By default, we fontify backlinks in their bespoke buffer.
-;;(setq denote-link-fontify-backlinks t)
+(setq denote-link-fontify-backlinks t)
 
 ;; Also see `denote-link-backlinks-display-buffer-action' which is a bit
 ;; advanced.
@@ -135,7 +135,7 @@ Else create a new file."
   ;; Note that `denote-dired-rename-file' can work from any context, not
   ;; just Dired bufffers.  That is why we bind it here to the
   ;; `global-map'.
-  (define-key map (kbd "C-c d r") #'denote-rename-file))
+  (define-key map (kbd "C-c n R") #'denote-rename-file))
 
 (with-eval-after-load 'org-capture
   (setq denote-org-capture-specifiers "%l\n%i\n%?")
@@ -219,3 +219,51 @@ Else create a new file."
     (interactive)
   (if denote-dired-mode
       (dired-hide-details-mode +1)))
+
+;; Publishing
+;; Mike Hall: https://gist.github.com/pdxmph/1d17833f910dbfd86068d94cfac585f9
+(setq org-html-divs
+    '((preamble "header" "preamble")
+      (content "main" "content")
+      (postamble "footer" "postamble")))
+
+(setq org-html-validation-link nil            ;; Don't show validation link
+      org-html-head-include-scripts nil       ;; Use our own scripts
+      org-html-head-include-default-style nil ;; Use our own styles
+      org-export-with-author nil
+      org-html-head "<link rel=\"stylesheet\" href=\"https://cdn.simplecss.org/simple.min.css\" />
+                     <link rel=\"stylesheet\" href=\"/local.css\" />
+                     <script src=\"https://cdn.jsdelivr.net/npm/fuse.js@6.6.2\"></script>")
+
+(setq org-publish-project-alist
+      `(("denote"
+         :base-directory "~/Denotes"
+         :base-extension "org"
+         :publishing-directory "~/Denotes-web/"
+         :publishing-function org-html-publish-to-html
+         :recursive t
+         :auto-sitemap t
+         :with-tags t
+         :html-validation-link t
+         :section-numbers nil
+         :sitemap-sort-files anti-chronologically
+         :html-preamble "<nav><ul>
+                           <li><a href=\"/\" class=\"home\">Home</a>
+                           <li><a href=\"/sitemap.html\">All Notes</a>
+                           </ul>
+                         </nav>
+                         "
+         :sitemap-format-entry (lambda (entry style project)
+                        (let ((title (org-publish-find-title entry project))
+                              (date (format-time-string "%Y-%m-%d" (org-publish-find-date entry project))))
+                          (if (not (equal entry ""))
+                              (format "[[file:%s][%s]] (%s)" entry title date)
+                            ""))))))
+
+;; Set as a post-save hook
+(defun mph/publish-and-update-index ()
+  "Publish our projects then update the fuse index."
+  (interactive)
+  (progn
+    (call-interactively 'org-publish-all)
+    (shell-command "python3 ~/bin/fuse-index.py /Users/jbaty/Denotes-web")))
