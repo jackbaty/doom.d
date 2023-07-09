@@ -9,6 +9,8 @@
 :EXPORT_HUGO_BUNDLE: `(format-time-string "%Y-%m-%d-%A")`
 :EXPORT_HUGO_SLUG: `(format-time-string "%Y-%m-%d")`-journal
 :EXPORT_HUGO_CUSTOM_FRONT_MATTER: :showtoc true :tocopen true
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :cover '((image . "cover.jpg") (caption . ""))
+
 :END:
 
 #+begin_description
