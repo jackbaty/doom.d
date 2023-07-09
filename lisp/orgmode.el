@@ -95,7 +95,7 @@
   (setq org-stuck-projects
       '("+project/-MAYBE-DONE" ("NEXT" "TODO")))
 
- (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "HOLD(h)" "|" "DONE(d)" "CANC(c)")))
+ (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "HOLD(h)" "|" "DONE(d)" "CNCL(c)")))
 
 
   (setq org-capture-templates
@@ -145,9 +145,9 @@
     org-journal-enable-encryption nil
     org-journal-date-format "%A, %B %d %Y")
 
-
-;;(setq org-id-ts-format "%Y%m%d%H%M")
-;;(setq org-id-method 'ts)
+;; I don't need completion or syntax checking in org files
+(add-hook 'org-mode-hook (lambda () (company-mode -1)))
+(add-hook 'org-mode-hook (lambda () (flycheck-mode -1)))
 
 
 ;; Load appointments
@@ -329,6 +329,26 @@
       "c d" #'jab/org-set-contacted-date
       "c z" #'my/org-remove-todo
                 )
+
+
+(setq org-gtd-update-ack "3.0.0")
+(use-package! org-gtd
+  :after org
+  :config
+  (setq org-gtd-directory "~/org/gtd/")
+  (setq org-edna-use-inheritance t)
+  (setq org-edna-use-inheritance t)
+  (setq org-gtd-areas-of-focus '("Home" "Health" "Family" "Career" "220"))
+  (org-edna-mode)
+  (map! :leader
+        (:prefix ("d" . "org-gtd")
+         :desc "Capture"        "c"  #'org-gtd-capture
+         :desc "Engage"         "e"  #'org-gtd-engage
+         :desc "Process inbox"  "p"  #'org-gtd-process-inbox
+         :desc "Show all next"  "n"  #'org-gtd-show-all-next
+         :desc "Stuck projects" "s"  #'org-gtd-review-stuck-projects))
+  (map! :map org-gtd-clarify-map
+        :desc "Organize this item" "C-c c" #'org-gtd-organize))
 
 ;; Need org-contacted-more-than-days-ago code
 ;; (add-to-list 'org-agenda-custom-commands
