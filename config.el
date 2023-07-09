@@ -35,7 +35,7 @@
 ;; See below for NANO theme
 ;;(setq doom-theme 'doom-one)
 ;;(setq doom-theme 'modus-operandi)
-(setq doom-theme 'doom-nord)
+(setq doom-theme 'modus-vivendi)
 
 (setq leuven-scale-outline-headlines 1.10)
 (setq leuven-scale-org-agenda-structure 1.10)
@@ -117,7 +117,7 @@
 ;;   (set-face-foreground face (face-attribute 'default :background)))
 ;; (set-face-background 'fringe (face-attribute 'default :background))
 
-(setq initial-frame-alist '((width . 180) (height . 55)))
+(setq initial-frame-alist '((width . 100) (height . 55)))
 (setq default-frame-alist '((width . 100) (height . 55)))
 (add-to-list 'after-make-frame-functions #'jab/frame-center)
 
